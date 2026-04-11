@@ -156,8 +156,8 @@ IMPORTANT: Cette estimation est indicative et non contractuelle.
 Un devis précis sera établi après étude de site et validation
 des paramètres techniques par nos experts.
 
-Pour plus d'informations: contact@binova.fr
-Téléphone: +33 (0)1 23 45 67 89
+Pour plus d'informations: mail....
+Téléphone: Tel......
     `.trim()
 
     const element = document.createElement('a')
@@ -325,7 +325,7 @@ Téléphone: +33 (0)1 23 45 67 89
               <Input
                 value={formData.phone}
                 onChange={(e) => handleInputChange('phone', e.target.value)}
-                placeholder="+33 (0)1 XX XX XX XX"
+                placeholder="XX XX XX XX XX"
               />
             </div>
           </div>

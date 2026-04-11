@@ -18,10 +18,10 @@ export default function MentionsLegales() {
             <h2 className="text-2xl font-bold text-foreground mb-4">Propriétaire du site</h2>
             <p>
               BINOVA ROCKBUILDERS<br/>
-              123 Avenue de la République<br/>
-              75011 Paris<br/>
-              France<br/>
-              SIRET: 123 456 789 000 12
+              Lieu....<br/>
+              ......<br/>
+              .......<br/>
+              ........
             </p>
 
             <h2 className="text-2xl font-bold text-foreground mb-4 mt-8">Responsable de publication</h2>

@@ -2,190 +2,176 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Mail, Phone, MapPin, ArrowRight, Linkedin, Twitter, Facebook } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
-  return (
-    <footer className="relative bg-gradient-to-b from-background via-black to-black text-white overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-accent/50 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
-      </div>
+  const stats = [
+    { label: 'Projets', value: '847+' },
+    { label: 'Années', value: '28' },
+    { label: 'Experts', value: '250+' }
+  ]
 
+  return (
+    <footer className="bg-black text-white relative overflow-hidden border-t border-white/10">
       {/* Main Content */}
-      <div className="relative z-10">
-        {/* Top Section with CTA */}
-        <div className="max-w-7xl mx-auto px-6 py-16 sm:py-20 border-b border-white/10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl sm:text-5xl font-serif font-bold mb-6 bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent">
-                Prêt à Transformer Votre Projet?
-              </h2>
-              <p className="text-lg text-white/70 font-light mb-8 leading-relaxed">
-                Nos experts en BTP sont disponibles pour discuter de vos besoins spécifiques et vous proposer des solutions sur-mesure.
-              </p>
+      <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
+        
+        {/* Statistics Section */}
+        <div className="grid grid-cols-3 gap-0 mb-20 border border-white/20">
+          {stats.map((stat, i) => (
+            <div key={i} className={`py-10 px-4 text-center ${i < stats.length - 1 ? 'border-r border-white/20' : ''}`}>
+              <div className="text-3xl sm:text-4xl font-serif font-bold text-white mb-2">{stat.value}</div>
+              <div className="text-xs sm:text-sm text-white/50 uppercase tracking-widest font-medium">{stat.label}</div>
             </div>
-            <div className="flex flex-col gap-4">
-              <Link href="/devis">
-                <button className="w-full px-8 py-4 bg-gradient-to-r from-accent to-accent/80 text-black rounded-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group">
-                  Obtenir un Devis <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+          ))}
+        </div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
+          
+          {/* Brand Section */}
+          <div className="md:col-span-2 space-y-8">
+            <div className="flex items-end gap-4">
+              <div className="relative w-16 h-16 flex-shrink-0">
+                <Image 
+                  src="/logo.png" 
+                  alt="Binova Rock Builders" 
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="font-serif text-3xl font-bold tracking-tight">BINOVA</h3>
+                <p className="text-xs text-white/60 font-medium uppercase tracking-widest mt-1">Rock Builders</p>
+              </div>
+            </div>
+
+            <p className="text-white/70 text-sm font-light leading-relaxed max-w-sm">
+              Spécialistes en infrastructures souterraines complexes. Solutions premium depuis 1998.
+            </p>
+
+            {/* Contact Information */}
+            <div className="space-y-3 pt-4">
+              <div className="flex items-center gap-3 group">
+                <div className="w-8 h-8 border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
+                  <Phone size={16} className="text-white/50 group-hover:text-white transition-colors" />
+                </div>
+                <span className="text-sm text-white/60 group-hover:text-white transition-colors font-light"></span>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <div className="w-8 h-8 border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
+                  <Mail size={16} className="text-white/50 group-hover:text-white transition-colors" />
+                </div>
+                <span className="text-sm text-white/60 group-hover:text-white transition-colors font-light"></span>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <div className="w-8 h-8 border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
+                  <MapPin size={16} className="text-white/50 group-hover:text-white transition-colors" />
+                </div>
+                <span className="text-sm text-white/60 group-hover:text-white transition-colors font-light"></span>
+              </div>
+            </div>
+          </div>
+
+          {/* Solutions */}
+          <div className="space-y-8 md:border-l border-white/20 md:pl-8">
+            <h4 className="font-serif text-xs font-bold uppercase tracking-widest text-white">Solutions</h4>
+            <ul className="space-y-3">
+              {[
+                { name: 'Tunnelage', href: '/tunnelage' },
+                { name: 'Minage', href: '/minage' },
+                { name: 'Terrassement', href: '/terrassement' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-sm text-white/60 hover:text-white transition-colors font-light inline-flex items-center gap-2 group">
+                    <span className="w-1 h-1 bg-white/40 group-hover:bg-white transition-colors"></span>
+                    <span className="group-hover:translate-x-0.5 transition-transform">{item.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div className="space-y-8 md:border-l border-white/20 md:pl-8">
+            <h4 className="font-serif text-xs font-bold uppercase tracking-widest text-white">Services</h4>
+            <ul className="space-y-3">
+              {[
+                { name: 'Engagement Client', href: '/engagement-clients' },
+                { name: 'Travaux Souterrains', href: '/travaux-souterrains' },
+                { name: 'Devis IA', href: '/devis' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-sm text-white/60 hover:text-white transition-colors font-light inline-flex items-center gap-2 group">
+                    <span className="w-1 h-1 bg-white/40 group-hover:bg-white transition-colors"></span>
+                    <span className="group-hover:translate-x-0.5 transition-transform">{item.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div className="space-y-8 md:border-l border-white/20 md:pl-8">
+            <h4 className="font-serif text-xs font-bold uppercase tracking-widest text-white">Légal</h4>
+            <ul className="space-y-3">
+              {[
+                { name: 'Mentions Légales', href: '/mentions-legales' },
+                { name: 'Confidentialité', href: '/politique-confidentialite' },
+                { name: 'Conditions', href: '/conditions-utilisation' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-sm text-white/60 hover:text-white transition-colors font-light inline-flex items-center gap-2 group">
+                    <span className="w-1 h-1 bg-white/40 group-hover:bg-white transition-colors"></span>
+                    <span className="group-hover:translate-x-0.5 transition-transform">{item.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="border-t border-white/20 pt-16 mb-16">
+          <div className="max-w-2xl">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold mb-4 text-white">Transformez Votre Vision</h2>
+            <p className="text-white/70 mb-8 text-sm font-light leading-relaxed">
+              Experts en génie civil complexe. Disponibles pour discuter de votre projet et proposer une solution adaptée.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/contact" className="flex items-center justify-center gap-2 px-8 py-3 bg-white text-black font-semibold hover:bg-white/90 transition-colors">
+                Nous Contacter <ArrowRight size={18} />
               </Link>
-              <Link href="/contact">
-                <button className="w-full px-8 py-4 border-2 border-accent/50 text-white rounded-lg font-semibold hover:bg-accent/10 transition-all duration-300">
-                  Nous Contacter
-                </button>
+              <Link href="/devis" className="flex items-center justify-center gap-2 px-8 py-3 border-2 border-white text-white font-semibold hover:bg-white hover:text-black transition-colors">
+                Devis Gratuit
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Content Grid */}
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-            {/* Brand Section */}
-            <div className="group">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="relative w-16 h-16 flex-shrink-0 hover:scale-110 transition-transform duration-300">
-                  <Image 
-                    src="/logo.png" 
-                    alt="Binova Rock Builders" 
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-              <h3 className="font-serif font-bold text-lg mb-2 text-white">BINOVA</h3>
-              <p className="text-sm text-accent font-medium mb-4">Rock Builders</p>
-              <p className="text-sm text-white/60 font-light mb-6 leading-relaxed">
-                Leader en travaux de roche, tunnelage et mines. Solutions premium depuis 25 ans.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start gap-3 text-white/60 hover:text-accent transition-colors group/item">
-                  <Phone size={16} className="flex-shrink-0 mt-1 group-hover/item:rotate-12 transition-transform" />
-                  <span className="text-sm font-light"></span>
-                </div>
-                <div className="flex items-start gap-3 text-white/60 hover:text-accent transition-colors group/item">
-                  <Mail size={16} className="flex-shrink-0 mt-1 group-hover/item:rotate-12 transition-transform" />
-                  <span className="text-sm font-light"></span>
-                </div>
-                <div className="flex items-start gap-3 text-white/60 hover:text-accent transition-colors group/item">
-                  <MapPin size={16} className="flex-shrink-0 mt-1 group-hover/item:rotate-12 transition-transform" />
-                  <span className="text-sm font-light"></span>
-                </div>
-              </div>
-            </div>
-
-            {/* Solutions */}
-            <div>
-              <h4 className="font-serif font-bold text-base mb-8 text-white flex items-center gap-2">
-                <div className="w-1 h-6 bg-gradient-to-b from-accent to-accent/50 rounded-full"></div>
-                Solutions
-              </h4>
-              <ul className="space-y-4">
-                {[
-                  { name: 'Tunnelage', href: '/tunnelage' },
-                  { name: 'Minage', href: '/minage' },
-                  { name: 'Terrassement', href: '/terrassement' }
-                ].map((item) => (
-                  <li key={item.name}>
-                    <Link href={item.href} className="text-sm text-white/60 hover:text-accent transition-colors font-light group/link flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent/50 group-hover/link:bg-accent transition-colors"></span>
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div>
-              <h4 className="font-serif font-bold text-base mb-8 text-white flex items-center gap-2">
-                <div className="w-1 h-6 bg-gradient-to-b from-accent to-accent/50 rounded-full"></div>
-                Services
-              </h4>
-              <ul className="space-y-4">
-                {[
-                  { name: 'Engagement Client', href: '/engagement-clients' },
-                  { name: 'Travaux Souterrains', href: '/travaux-souterrains' },
-                  { name: 'Devis IA', href: '/devis' }
-                ].map((item) => (
-                  <li key={item.name}>
-                    <Link href={item.href} className="text-sm text-white/60 hover:text-accent transition-colors font-light group/link flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent/50 group-hover/link:bg-accent transition-colors"></span>
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Legal */}
-            <div>
-              <h4 className="font-serif font-bold text-base mb-8 text-white flex items-center gap-2">
-                <div className="w-1 h-6 bg-gradient-to-b from-accent to-accent/50 rounded-full"></div>
-                Légal
-              </h4>
-              <ul className="space-y-4">
-                {[
-                  { name: 'Mentions Légales', href: '/mentions-legales' },
-                  { name: 'Confidentialité', href: '/politique-confidentialite' },
-                  { name: 'Conditions', href: '/conditions-utilisation' }
-                ].map((item) => (
-                  <li key={item.name}>
-                    <Link href={item.href} className="text-sm text-white/60 hover:text-accent transition-colors font-light group/link flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent/50 group-hover/link:bg-accent transition-colors"></span>
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-12"></div>
-
-          {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="text-sm text-white/50 font-light text-center md:text-left">
-              <p>© {currentYear} BINOVA ROCKBUILDERS. Tous droits réservés.</p>
-              <p className="mt-2">Engineered for Excellence | Built for the Future</p>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-6">
-              {[
-                { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com' },
-                { icon: Twitter, label: 'Twitter', href: 'https://twitter.com' },
-                { icon: Facebook, label: 'Facebook', href: 'https://facebook.com' }
-              ].map((social) => {
-                const Icon = social.icon
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-white/10 hover:bg-accent hover:text-black flex items-center justify-center transition-all duration-300 group"
-                    title={social.label}
-                  >
-                    <Icon size={18} className="group-hover:scale-110 transition-transform" />
-                  </a>
-                )
-              })}
-            </div>
-
-            {/* Back to Top */}
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center gap-2 px-4 py-2 border border-white/20 rounded-lg hover:border-accent hover:bg-accent/10 transition-all duration-300 text-sm font-light"
-            >
-              Retour au Haut <ArrowRight size={16} className="rotate-90" />
-            </button>
+        {/* Bottom Bar */}
+        <div className="border-t border-white/20 pt-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+          <p className="text-xs text-white/50 font-light">
+            © {currentYear} BINOVA ROCKBUILDERS — Tous droits réservés
+          </p>
+          <div className="flex items-center gap-10">
+            {[
+              { name: 'LinkedIn', href: 'https://linkedin.com' },
+              { name: 'Twitter', href: 'https://twitter.com' },
+              { name: 'Facebook', href: 'https://facebook.com' }
+            ].map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-white/50 hover:text-white transition-colors font-semibold uppercase tracking-wider"
+              >
+                {social.name}
+              </a>
+            ))}
           </div>
         </div>
       </div>
