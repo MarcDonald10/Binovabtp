@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 import { HeroSection } from '@/components/hero-section'
 import { Mail, Phone, MapPin, Send, Clock, CheckCircle } from 'lucide-react'
 
@@ -49,11 +47,8 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Header />
-      
-      <main className="flex-1">
-        {/* Hero Section */}
+    <>
+      {/* Hero Section */}
         <HeroSection
           title="Nous Contacter"
           description="Une question? Un projet à discuter? Notre équipe d'experts est prête à vous aider et à explorer les meilleures solutions pour vos besoins."
@@ -69,23 +64,23 @@ export default function ContactPage() {
                 {
                   icon: <Phone className="w-8 h-8" />,
                   title: 'Téléphone',
-                  content: '+33 (0)1 23 45 67 89',
+                  content: 'Tel......',
                   subtitle: 'Appelez-nous directement'
                 },
                 {
                   icon: <Mail className="w-8 h-8" />,
                   title: 'Email',
-                  content: 'contact@binova.fr',
+                  content: 'mail....',
                   subtitle: 'Réponse sous 24h'
                 },
                 {
                   icon: <MapPin className="w-8 h-8" />,
                   title: 'Adresse',
-                  content: 'Paris, France',
-                  subtitle: '3 bureaux régionaux'
+                  content: 'Lieu....',
+                  subtitle: '........'
                 }
               ].map((info, i) => (
-                <div key={i} data-animate className="opacity-0 p-8 bg-card border border-border/50 rounded-sm hover:border-accent hover:shadow-xl transition-all duration-300 group text-center">
+                <div key={i} data-animate className=" p-8 bg-card border border-border/50 rounded-sm hover:border-accent hover:shadow-xl transition-all duration-300 group text-center">
                   <div className="w-16 h-16 bg-accent/10 rounded-sm flex items-center justify-center mx-auto mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
                     <div className="text-accent group-hover:text-accent-foreground transition-colors">{info.icon}</div>
                   </div>
@@ -98,7 +93,7 @@ export default function ContactPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               {/* Contact Form */}
-              <div data-animate className="opacity-0">
+              <div data-animate className="">
                 <h2 className="text-4xl font-serif font-bold mb-8">Envoyez-Nous un Message</h2>
                 
                 {submitted ? (
@@ -141,7 +136,7 @@ export default function ContactPage() {
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
-                          placeholder="+33 1 23 45 67 89"
+                          placeholder="........."
                           className="w-full px-4 py-3 bg-muted/50 border border-border rounded-sm focus:outline-none focus:border-accent transition-colors"
                         />
                       </div>
@@ -184,7 +179,7 @@ export default function ContactPage() {
 
               {/* Additional Info */}
               <div className="space-y-8">
-                <div data-animate className="opacity-0">
+                <div data-animate className="">
                   <h3 className="text-3xl font-serif font-bold mb-6">Heures d&apos;Ouverture</h3>
                   <div className="space-y-3">
                     {[
@@ -200,7 +195,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div data-animate className="opacity-0">
+                <div data-animate className="">
                   <h3 className="text-3xl font-serif font-bold mb-6">Temps de Réponse</h3>
                   <div className="space-y-4">
                     {[
@@ -219,7 +214,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div data-animate className="opacity-0 p-6 bg-accent/10 border border-accent rounded-sm">
+                <div data-animate className=" p-6 bg-accent/10 border border-accent rounded-sm">
                   <p className="text-sm text-muted-foreground font-light">
                     <strong>Besoin d&apos;une estimation rapide?</strong> Utilisez notre <a href="/devis" className="text-accent font-semibold hover:underline">outil de devis IA</a> pour une première évaluation instantanée.
                   </p>
@@ -237,25 +232,25 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  name: 'Siège Social - Île-de-France',
-                  address: '123 Avenue des Champs, 75000 Paris',
-                  phone: '+33 (0)1 23 45 67 89',
-                  email: 'paris@binova.fr'
+                  name: 'Siège Social',
+                  address: 'Lieu....',
+                  phone: 'Tel......',
+                  email: 'mail....'
                 },
                 {
-                  name: 'Bureau Régional - Rhône-Alpes',
-                  address: '456 Rue de la Paix, 69000 Lyon',
-                  phone: '+33 (0)4 78 90 12 34',
-                  email: 'lyon@binova.fr'
+                  name: 'Bureau Régional',
+                  address: 'Lieu....',
+                  phone: 'Tel......',
+                  email: 'mail....'
                 },
                 {
                   name: 'Bureau Régional - Provence',
-                  address: '789 Boulevard du Sud, 13000 Marseille',
-                  phone: '+33 (0)4 91 56 78 90',
-                  email: 'marseille@binova.fr'
+                  address: 'Lieu....',
+                  phone: 'Tel......',
+                  email: 'mail....'
                 }
               ].map((office, i) => (
-                <div key={i} data-animate className="opacity-0 p-8 bg-background border border-border/50 rounded-sm hover:border-accent hover:shadow-lg transition-all duration-300">
+                <div key={i} data-animate className=" p-8 bg-background border border-border/50 rounded-sm hover:border-accent hover:shadow-lg transition-all duration-300">
                   <h3 className="text-xl font-serif font-bold mb-4">{office.name}</h3>
                   <div className="space-y-3 text-sm">
                     <p className="text-muted-foreground font-light">{office.address}</p>
@@ -267,9 +262,6 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+    </>
   )
 }

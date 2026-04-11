@@ -1,0 +1,63 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradBurkinaGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F4B400;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#CC8C00;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#4A4A4A;stop-opacity:0.85" />
+    </linearGradient>
+    <pattern id="desertSand" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#CC8C00"/>
+      <circle cx="20" cy="20" r="3" fill="#8c5e00" opacity="0.3"/>
+      <circle cx="70" cy="50" r="2" fill="#8c5e00" opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background Desert -->
+  <rect width="1200" height="800" fill="url(#gradBurkinaGold)"/>
+  <rect width="1200" height="800" fill="url(#desertSand)" opacity="0.5"/>
+  
+  <!-- Mine Pit Terrain -->
+  <polygon points="0,400 200,350 400,310 600,280 800,320 1000,380 1200,420 1200,800 0,800" fill="rgba(140,102,63,0.4)" stroke="#1E6B3A" stroke-width="2"/>
+  
+  <!-- Extraction Level 1 -->
+  <polygon points="200,380 400,350 500,420 300,450" fill="rgba(244,180,0,0.2)" stroke="#1E6B3A" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Extraction Level 2 -->
+  <polygon points="450,410 650,380 700,470 550,500" fill="rgba(244,180,0,0.15)" stroke="#1E6B3A" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Gold Ore Deposits (stylized) -->
+  <g opacity="0.4">
+    <circle cx="300" cy="420" r="25" fill="#FFD54F" stroke="#8c5e00" stroke-width="2"/>
+    <circle cx="600" cy="390" r="30" fill="#FFD54F" stroke="#8c5e00" stroke-width="2"/>
+    <circle cx="850" cy="450" r="28" fill="#FFD54F" stroke="#8c5e00" stroke-width="2"/>
+  </g>
+  
+  <!-- Mining Equipment -->
+  <g opacity="0.6">
+    <rect x="250" y="320" width="80" height="50" fill="#4A4A4A" stroke="#F4B400" stroke-width="2" rx="3"/>
+    <rect x="550" y="300" width="75" height="45" fill="#4A4A4A" stroke="#F4B400" stroke-width="2" rx="3"/>
+    <rect x="850" y="340" width="70" height="40" fill="#4A4A4A" stroke="#F4B400" stroke-width="2" rx="3"/>
+  </g>
+  
+  <!-- Rock Face Detail -->
+  <g stroke="#8c5e00" stroke-width="1" opacity="0.3">
+    <line x1="200" y1="350" x2="220" y2="370" />
+    <line x1="400" y1="350" x2="420" y2="370" />
+    <line x1="600" y1="280" x2="620" y2="300" />
+  </g>
+  
+  <!-- Production Arrow -->
+  <g stroke="#8CC63F" stroke-width="3" fill="none" opacity="0.5">
+    <path d="M 300 550 L 900 550" stroke-dasharray="10,5"/>
+    <polygon points="900,550 880,540 880,560" fill="#8CC63F"/>
+  </g>
+  
+  <!-- Statistics -->
+  <rect x="50" y="50" width="350" height="180" fill="rgba(0,0,0,0.6)" stroke="#F4B400" stroke-width="2" rx="4"/>
+  <text x="70" y="85" font-size="16" font-weight="bold" fill="#F4B400">BURKINA FASO - OR</text>
+  <text x="70" y="110" font-size="12" fill="#8CC63F">400,000 tonnes/an</text>
+  <text x="70" y="135" font-size="12" fill="#8CC63F">€1.8 Milliards</text>
+  <text x="70" y="160" font-size="12" fill="#8CC63F">91% taux récupération</text>
+  <text x="70" y="185" font-size="12" fill="#FFD54F">500+ emplois locaux</text>
+  <text x="70" y="210" font-size="11" fill="#8CC63F">Impact: €150M/an région</text>
+</svg>

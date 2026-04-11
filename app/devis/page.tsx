@@ -1,5 +1,3 @@
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 import { DevisForm } from '@/components/devis-form'
 import { Zap, Clock, Shield, TrendingUp } from 'lucide-react'
 
@@ -10,11 +8,8 @@ export const metadata = {
 
 export default function DevisPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1">
-        {/* Hero Section */}
+    <>
+      {/* Hero Section */}
         <section className="py-20 bg-gradient-to-b from-muted/50 to-background">
           <div className="max-w-4xl mx-auto px-6">
             <h1 className="text-5xl font-bold mb-6">Devis Instantané IA</h1>
@@ -126,9 +121,6 @@ export default function DevisPage() {
             </a>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+    </>
   )
 }

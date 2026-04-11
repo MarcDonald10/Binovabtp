@@ -1,5 +1,3 @@
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 
 export const metadata = {
   title: 'Conditions d\'Utilisation | BINOVA ROCKBUILDERS',
@@ -8,10 +6,7 @@ export const metadata = {
 
 export default function ConditionsUtilisation() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1">
+    <>
         <section className="py-20 bg-gradient-to-b from-muted/50 to-background">
           <div className="max-w-4xl mx-auto px-6">
             <h1 className="text-5xl font-bold mb-6">Conditions d&apos;Utilisation</h1>
@@ -76,14 +71,11 @@ export default function ConditionsUtilisation() {
               Pour toute question concernant ces conditions:
             </p>
             <p>
-              contact@binova.fr<br/>
-              +33 (0)1 23 45 67 89
+              mail....<br/>
+              Tel .....
             </p>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+    </>
   )
 }

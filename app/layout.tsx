@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -55,7 +57,9 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased">
+        <Header />
         {children}
+        <Footer />
         <Analytics />
       </body>
     </html>

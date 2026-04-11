@@ -1,0 +1,57 @@
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradDam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0066cc;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#004a99;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#1E6B3A;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0099ff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#004a99;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Sky -->
+  <rect width="1920" height="1080" fill="url(#gradDam)"/>
+  
+  <!-- Water -->
+  <rect y="500" width="1920" height="580" fill="url(#waterGrad)"/>
+  
+  <!-- Dam Structure -->
+  <polygon points="300,500 600,350 1400,350 1600,500" fill="#4A4A4A" stroke="#F4B400" stroke-width="4" opacity="0.8"/>
+  
+  <!-- Dam Face Detail -->
+  <g opacity="0.4">
+    <rect x="400" y="380" width="15" height="120" fill="#8CC63F"/>
+    <rect x="600" y="380" width="15" height="120" fill="#8CC63F"/>
+    <rect x="800" y="380" width="15" height="120" fill="#8CC63F"/>
+    <rect x="1000" y="380" width="15" height="120" fill="#8CC63F"/>
+    <rect x="1200" y="380" width="15" height="120" fill="#8CC63F"/>
+  </g>
+  
+  <!-- Water Flow -->
+  <g stroke="#00ffff" stroke-width="3" opacity="0.4" fill="none">
+    <path d="M 700 520 Q 750 560 800 600" />
+    <path d="M 1100 520 Q 1150 560 1200 600" />
+  </g>
+  
+  <!-- Turbines (stylized) -->
+  <circle cx="450" cy="640" r="60" fill="rgba(244,180,0,0.2)" stroke="#F4B400" stroke-width="2" opacity="0.5"/>
+  <circle cx="1450" cy="640" r="60" fill="rgba(244,180,0,0.2)" stroke="#F4B400" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Spillway -->
+  <polygon points="900,500 850,540 950,540" fill="rgba(0,255,255,0.3)" stroke="#00ffff" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Mountains -->
+  <polygon points="0,400 400,200 600,450" fill="rgba(30,107,58,0.3)" opacity="0.5"/>
+  <polygon points="1500,200 1700,450 1920,300" fill="rgba(30,107,58,0.3)" opacity="0.5"/>
+  
+  <!-- Accent Lights -->
+  <circle cx="100" cy="100" r="80" fill="rgba(244,180,0,0.15)" opacity="0.3"/>
+  <circle cx="1800" cy="950" r="120" fill="rgba(0,255,255,0.1)" opacity="0.3"/>
+  
+  <!-- Text -->
+  <text x="960" y="250" font-size="72" font-weight="bold" fill="rgba(255,255,255,0.1)" text-anchor="middle" font-family="Arial">
+    BARRAGES & RETENUES
+  </text>
+</svg>

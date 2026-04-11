@@ -1,5 +1,3 @@
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 
 export const metadata = {
   title: 'Politique de Confidentialité | BINOVA ROCKBUILDERS',
@@ -8,10 +6,7 @@ export const metadata = {
 
 export default function PolitiqueConfidentialite() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1">
+    <>
         <section className="py-20 bg-gradient-to-b from-muted/50 to-background">
           <div className="max-w-4xl mx-auto px-6">
             <h1 className="text-5xl font-bold mb-6">Politique de Confidentialité</h1>
@@ -23,8 +18,8 @@ export default function PolitiqueConfidentialite() {
             <h2 className="text-2xl font-bold text-foreground mb-4">1. Responsable du traitement</h2>
             <p>
               BINOVA ROCKBUILDERS<br/>
-              contact@binova.fr<br/>
-              123 Avenue de la République, 75011 Paris
+              mail......<br/>
+              Lieu........
             </p>
 
             <h2 className="text-2xl font-bold text-foreground mb-4 mt-8">2. Données collectées</h2>
@@ -97,14 +92,11 @@ export default function PolitiqueConfidentialite() {
               Pour exercer vos droits ou obtenir plus d&apos;informations:
             </p>
             <p>
-              contact@binova.fr<br/>
-              +33 (0)1 23 45 67 89
+              mail......<br/>
+              Lieu........
             </p>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+    </>
   )
 }

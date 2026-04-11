@@ -1,7 +1,5 @@
 'use client'
 
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 import { HeroSection } from '@/components/hero-section'
 import Link from 'next/link'
 import { ArrowRight, Target, Zap, ShieldCheck, TrendingUp, CheckCircle } from 'lucide-react'
@@ -25,11 +23,8 @@ export default function Tunnelage() {
   }, [])
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Header />
-      
-      <main className="flex-1">
-        {/* Hero Section */}
+    <>
+      {/* Hero Section */}
         <HeroSection
           title="Expertise en Tunnelage Premium"
           description="Techniques avancées et leadership technologique pour vos infrastructures souterraines les plus complexes. 25+ années d'excellence et 500+ projets réussis."
@@ -176,9 +171,6 @@ export default function Tunnelage() {
             </div>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+    </>
   )
 }

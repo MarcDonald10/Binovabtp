@@ -1,0 +1,43 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradLyonTurin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E6B3A;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#4A4A4A;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="800" fill="url(#gradLyonTurin)"/>
+  
+  <!-- Mountain Range -->
+  <polygon points="0,300 300,100 600,200 900,80 1200,250 1200,800 0,800" fill="rgba(30,107,58,0.3)"/>
+  
+  <!-- Tunnel Entrance -->
+  <ellipse cx="300" cy="420" rx="100" ry="80" fill="#1c1f26" stroke="#F4B400" stroke-width="3"/>
+  <ellipse cx="300" cy="420" rx="90" ry="70" fill="#0a0a0a"/>
+  
+  <!-- Tunnel Boring Machine -->
+  <circle cx="500" cy="480" r="60" fill="rgba(244,180,0,0.2)" stroke="#F4B400" stroke-width="2"/>
+  <line x1="560" y1="480" x2="700" y2="480" stroke="#8CC63F" stroke-width="8" opacity="0.6"/>
+  
+  <!-- Construction Progress Lines -->
+  <g stroke="#F4B400" stroke-width="2" opacity="0.4">
+    <line x1="100" y1="520" x2="1100" y2="520" />
+    <line x1="100" y1="540" x2="1100" y2="540" />
+  </g>
+  
+  <!-- Mountain Details -->
+  <polygon points="600,200 800,150 750,350" fill="rgba(140,198,63,0.2)" opacity="0.5"/>
+  
+  <!-- Flag/Marker for 58km -->
+  <rect x="950" y="200" width="4" height="200" fill="#F4B400" opacity="0.6"/>
+  <circle cx="952" cy="200" r="12" fill="#F4B400" opacity="0.7"/>
+  
+  <!-- Statistics Box -->
+  <rect x="50" y="50" width="300" height="150" fill="rgba(0,0,0,0.6)" stroke="#F4B400" stroke-width="2" rx="4"/>
+  <text x="70" y="85" font-size="14" font-weight="bold" fill="#F4B400">LYON - TURIN</text>
+  <text x="70" y="110" font-size="12" fill="#8CC63F">58 km de tunnel</text>
+  <text x="70" y="135" font-size="12" fill="#8CC63F">€12.5 Milliards</text>
+  <text x="70" y="160" font-size="12" fill="#8CC63F">0 incident SSE</text>
+  <text x="70" y="185" font-size="12" fill="#FFD54F">8 ans d'excellence</text>
+</svg>

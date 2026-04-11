@@ -1,5 +1,3 @@
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { ArrowRight, Gauge, Shield, Zap, BarChart3 } from 'lucide-react'
@@ -11,11 +9,8 @@ export const metadata = {
 
 export default function Minage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1">
-        {/* Hero Section */}
+    <>
+      {/* Hero Section */}
         <section className="py-20 bg-gradient-to-b from-muted/50 to-background">
           <div className="max-w-4xl mx-auto px-6">
             <h1 className="text-5xl font-bold mb-6">Expertise en Minage</h1>
@@ -232,9 +227,6 @@ export default function Minage() {
             </Link>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+    </>
   )
 }

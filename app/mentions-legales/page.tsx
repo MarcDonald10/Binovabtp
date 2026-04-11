@@ -1,5 +1,3 @@
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 
 export const metadata = {
   title: 'Mentions Légales | BINOVA ROCKBUILDERS',
@@ -8,10 +6,7 @@ export const metadata = {
 
 export default function MentionsLegales() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1">
+    <>
         <section className="py-20 bg-gradient-to-b from-muted/50 to-background">
           <div className="max-w-4xl mx-auto px-6">
             <h1 className="text-5xl font-bold mb-6">Mentions Légales</h1>
@@ -32,16 +27,10 @@ export default function MentionsLegales() {
             <h2 className="text-2xl font-bold text-foreground mb-4 mt-8">Responsable de publication</h2>
             <p>
               Direction générale de BINOVA ROCKBUILDERS<br/>
-              contact@binova.fr
+              mail....
             </p>
 
-            <h2 className="text-2xl font-bold text-foreground mb-4 mt-8">Hébergeur</h2>
-            <p>
-              Vercel Inc.<br/>
-              440 N Barranca Ave<br/>
-              Covina, CA 91723<br/>
-              États-Unis
-            </p>
+            
 
             <h2 className="text-2xl font-bold text-foreground mb-4 mt-8">Propriété intellectuelle</h2>
             <p>
@@ -59,9 +48,6 @@ export default function MentionsLegales() {
             </p>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+    </>
   )
 }
