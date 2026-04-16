@@ -127,7 +127,7 @@ export default function Home() {
       {/* Trust Badges Section - Animated Stats */}
       <TrustBadges />
 
-      {/* Major Clients Section */}
+      {/* Major Clients Sections */}
       <MajorClientsSection />
 
       {/* ================= PREMIUM SERVICES SECTION WITH IMAGES ================= */}
