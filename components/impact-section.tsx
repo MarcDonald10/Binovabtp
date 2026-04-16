@@ -1,110 +1,241 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { companyStats } from '@/lib/data'
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+// Counter animation component
+function AnimatedCounter({ value, suffix = '' }: { value: number | string; suffix?: string }) {
+  const numValue = typeof value === 'string' ? parseInt(value.replace(/[^0-9]/g, '')) : value
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <motion.span
+        className="text-5xl sm:text-6xl font-serif font-bold text-accent"
+      >
+        {typeof value === 'string' ? value : numValue}
+      </motion.span>
+      <span className="text-5xl sm:text-6xl font-serif font-bold text-accent">{suffix}</span>
+    </motion.div>
+  )
+}
 
 export function ImpactSection() {
   return (
     <section className="py-20 bg-foreground text-primary-foreground relative overflow-hidden">
-      {/* Background Accent */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl" />
+      {/* Premium animated background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], y: [0, -50, 0] }}
+          transition={{ duration: 25, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.3, 1], x: [0, -40, 0], y: [0, 40, 0] }}
+          transition={{ duration: 20, repeat: Infinity, delay: 2 }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold mb-4">Notre Impact Vérifié</h2>
-          <p className="text-primary-foreground/80 font-light text-lg">
-            Les chiffres qui parlent de notre excellence
-          </p>
-        </div>
+        {/* Premium Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <motion.h2
+            className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold mb-4 leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.8 }}
+          >
+            Notre <motion.span
+              className="text-accent"
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              Impact Vérifié
+            </motion.span>
+          </motion.h2>
+          <motion.p
+            className="text-lg text-primary-foreground/80 font-light max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            Les chiffres qui racontent nos succès : expertise mesurable et résultats vérifiés
+          </motion.p>
+        </motion.div>
 
-        {/* Stats Grid */}
-        <div className="grid md:grid-cols-3 gap-10">
-          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0s' }}>
-            <div className="text-5xl sm:text-6xl font-serif font-bold text-accent mb-3">
-              {companyStats.yearsInBusiness}+
-            </div>
-            <p className="text-lg font-light text-primary-foreground/90">Ans d&apos;Expertise Éprouvée</p>
-            <p className="text-sm text-primary-foreground/60 font-light mt-2">
-              Leader européen du BTP depuis {companyStats.yearsInBusiness} ans
-            </p>
-          </div>
+        {/* Primary Stats Grid - Documentaire style */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid md:grid-cols-3 gap-8 mb-12"
+        >
+          {[
+            { value: companyStats.yearsInBusiness, suffix: '+', label: 'Ans d\'Expertise', desc: 'Leader européen du BTP' },
+            { value: companyStats.totalProjects, suffix: '+', label: 'Projets Réussis', desc: 'Moyenne 30 projets/an' },
+            { value: companyStats.successRate, suffix: '%', label: 'Taux de Succès', desc: 'À temps, à budget, sécurité' }
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              className="group text-center p-6 rounded-2xl border border-primary-foreground/20 bg-primary-foreground/5 backdrop-blur-sm hover:border-accent/40 hover:bg-primary-foreground/10 transition-all duration-500 cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+            >
+              {/* Animated border */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl border border-accent/0 group-hover:border-accent/40 transition-colors duration-700"
+                initial={false}
+              />
 
-          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            <div className="text-5xl sm:text-6xl font-serif font-bold text-accent mb-3">
-              {companyStats.totalProjects}+
-            </div>
-            <p className="text-lg font-light text-primary-foreground/90">Projets Complétés</p>
-            <p className="text-sm text-primary-foreground/60 font-light mt-2">
-              Moyenne 30 projets/an depuis {companyStats.yearsInBusiness} ans
-            </p>
-          </div>
+              {/* Glow */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-700 rounded-2xl"
+                initial={false}
+              />
 
-          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <div className="text-5xl sm:text-6xl font-serif font-bold text-accent mb-3">
-              {companyStats.successRate}%
-            </div>
-            <p className="text-lg font-light text-primary-foreground/90">Taux de Succès</p>
-            <p className="text-sm text-primary-foreground/60 font-light mt-2">
-              Livrés à temps, à budget, et en sécurité
-            </p>
-          </div>
-        </div>
+              <motion.div
+                className="text-5xl sm:text-6xl font-serif font-bold text-accent mb-3 relative z-10"
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: i * 0.1 }}
+              >
+                <motion.span animate={{ y: [0, -4, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 }}>
+                  {stat.value}{stat.suffix}
+                </motion.span>
+              </motion.div>
 
-        {/* Additional Stats */}
-        <div className="grid md:grid-cols-2 gap-8 mt-12 pt-12 border-t border-primary-foreground/20">
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <div className="text-3xl sm:text-4xl font-serif font-bold text-accent mb-2">
-              {companyStats.teamMembers}+
-            </div>
-            <p className="text-primary-foreground/90 font-light">Experts Permanents</p>
-            <p className="text-sm text-primary-foreground/60 font-light mt-2">
-              Ingénieurs qualifiés, formés annuellement, certifiés internationalement
-            </p>
-          </div>
+              <motion.p
+                className="text-lg font-light text-primary-foreground/90 mb-2 relative z-10"
+                initial={false}
+              >
+                {stat.label}
+              </motion.p>
+              <motion.p
+                className="text-sm text-primary-foreground/60 font-light relative z-10"
+                initial={false}
+              >
+                {stat.desc}
+              </motion.p>
+            </motion.div>
+          ))}
+        </motion.div>
 
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <div className="text-3xl sm:text-4xl font-serif font-bold text-accent mb-2">
-              {companyStats.countriesOperating}
-            </div>
-            <p className="text-primary-foreground/90 font-light">Pays Opérationnels</p>
-            <p className="text-sm text-primary-foreground/60 font-light mt-2">
-              Présence européenne et africaine avec standards globaux
-            </p>
-          </div>
+        {/* Secondary Stats Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid md:grid-cols-2 gap-6 pt-12 border-t border-primary-foreground/20"
+        >
+          {[
+            { value: companyStats.teamMembers, suffix: '+', label: 'Experts Permanents', desc: 'Ingénieurs certifiés & formés' },
+            { value: companyStats.countriesOperating, suffix: '', label: 'Pays Opérationnels', desc: 'Standards globaux' },
+            { value: companyStats.rocksExcavated, suffix: '', label: 'Millions Tonnes', desc: 'Travaux souterrains & minage' },
+            { value: companyStats.totalRevenue, suffix: '', label: 'Chiffre d\'Affaires', desc: 'Croissance annuelle prouvée' }
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              className="group p-5 rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 backdrop-blur-sm hover:border-accent/30 hover:bg-primary-foreground/10 transition-all duration-500"
+              whileHover={{ scale: 1.03 }}
+            >
+              {/* Glow */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-700 rounded-xl"
+                initial={false}
+              />
 
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-            <div className="text-3xl sm:text-4xl font-serif font-bold text-accent mb-2">
-              {companyStats.rocksExcavated}
-            </div>
-            <p className="text-primary-foreground/90 font-light">Roche Excavée</p>
-            <p className="text-sm text-primary-foreground/60 font-light mt-2">
-              Travaux souterrains et minage à haute productivité
-            </p>
-          </div>
+              <motion.div
+                className="text-3xl sm:text-4xl font-serif font-bold text-accent mb-2 relative z-10"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: i * 0.2 }}
+              >
+                {stat.value}{stat.suffix}
+              </motion.div>
 
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <div className="text-3xl sm:text-4xl font-serif font-bold text-accent mb-2">
-              {companyStats.totalRevenue}
-            </div>
-            <p className="text-primary-foreground/90 font-light">Chiffre d&apos;Affaires</p>
-            <p className="text-sm text-primary-foreground/60 font-light mt-2">
-              Croissance annuelle et stabilité financière prouvée
-            </p>
-          </div>
-        </div>
+              <motion.p
+                className="text-primary-foreground/90 font-light mb-1 relative z-10"
+                initial={false}
+              >
+                {stat.label}
+              </motion.p>
+              <motion.p
+                className="text-sm text-primary-foreground/60 font-light relative z-10"
+                initial={false}
+              >
+                {stat.desc}
+              </motion.p>
+            </motion.div>
+          ))}
+        </motion.div>
 
-        {/* Key Achievement */}
-        <div className="mt-12 pt-12 border-t border-primary-foreground/20 text-center animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
-          <div className="inline-block">
-            <p className="text-3xl sm:text-4xl font-serif font-bold text-accent mb-3">0</p>
-            <p className="text-lg text-primary-foreground/90 font-light">Accidents Mortels depuis 2015</p>
-            <p className="text-sm text-primary-foreground/60 font-light mt-2">
-              Standards de sécurité les plus élevés du secteur
-            </p>
-          </div>
-        </div>
+        {/* Key Achievement - Documentaire */}
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="mt-12 pt-8 text-center"
+        >
+          <motion.div
+            className="inline-block relative"
+            whileHover={{ scale: 1.05 }}
+          >
+            <motion.p
+              className="text-4xl sm:text-5xl font-serif font-bold text-accent mb-3"
+              animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              0
+            </motion.p>
+            <motion.p
+              className="text-lg text-primary-foreground/90 font-light"
+              initial={false}
+            >
+              Accidents Mortels depuis 2015
+            </motion.p>
+            <motion.p
+              className="text-sm text-primary-foreground/60 font-light mt-2"
+              initial={false}
+            >
+              Standards sécurité les plus élevés du secteur
+            </motion.p>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

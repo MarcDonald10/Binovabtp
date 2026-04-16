@@ -1,228 +1,251 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 const slides = [
   {
-    title: "Génie Civil Premium",
-    subtitle: "847 projets livrés avec excellence",
-    description: "Ouvrages iconiques, structures complexes, solutions innovantes",
-    image: "/slides/civil.jpg",
+    tag: "Génie Civil",
+    title: "Ouvrages d'exception,\nrésultats durables",
+    description: "847 projets livrés avec excellence. Structures complexes, innovations techniques, délais maîtrisés.",
     cta: "Découvrir",
-    link: "/metier/genie-civil"
+    ctaSecondary: "En savoir plus",
+    link: "/metier/genie-civil",
+    image: "/hero-background.jpg",
+    stats: [
+      { value: "847", label: "PROJETS LIVRÉS" },
+      { value: "32",  label: "PAYS COUVERTS" },
+      { value: "98%", label: "SATISFACTION" },
+    ],
   },
   {
-    title: "Travaux Souterrains",
-    subtitle: "156 tunnels excavés, 850+ km creusés",
-    description: "Excellence profonde, sécurité absolue, 28 ans sans accident",
-    image: "/slides/tunnels.jpg",
-    cta: "Voir Expertise",
-    link: "/metier/travaux-souterrains"
+    tag: "Travaux Souterrains",
+    title: "Excellence en profondeur,\nsécurité absolue",
+    description: "156 tunnels excavés, 850+ km creusés. 28 ans d'excellence sans accident enregistré.",
+    cta: "Voir l'expertise",
+    ctaSecondary: "En savoir plus",
+    link: "/metier/travaux-souterrains",
+    image: "/tunnelage-hero.jpg",
+    stats: [
+      { value: "156",  label: "TUNNELS EXCAVÉS" },
+      { value: "850+", label: "KM CREUSÉS" },
+      { value: "28",   label: "ANS D'EXPÉRIENCE" },
+    ],
   },
   {
-    title: "Barrages & Retenues",
-    subtitle: "32 barrages construits, 1850 km³ stockés",
-    description: "Maîtrise de l'eau, électricité renouvelable, infrastructure vitale",
-    image: "/slides/dams.jpg",
-    cta: "En Savoir Plus",
-    link: "/metier/barrages"
+    tag: "Barrages & Retenues",
+    title: "Maîtrise de l'eau,\nénergie renouvelable",
+    description: "32 barrages construits, 1 850 km³ stockés. Infrastructure vitale pour les générations futures.",
+    cta: "En savoir plus",
+    ctaSecondary: "Voir les projets",
+    link: "/metier/barrages",
+    image: "/minage-hero.jpg",
+    stats: [
+      { value: "32",   label: "BARRAGES" },
+      { value: "1850", label: "KM³ STOCKÉS" },
+      { value: "12",   label: "GW PRODUITS" },
+    ],
   },
   {
-    title: "Carrières Premium",
-    subtitle: "35+ carrières opérées, 15M tonnes/an",
-    description: "Extraction responsable, restauration écologique garantie",
-    image: "/slides/quarries.jpg",
+    tag: "Carrières Premium",
+    title: "Extraction responsable,\navenir préservé",
+    description: "35+ carrières opérées, 15M tonnes/an extraites. Restauration écologique garantie après exploitation.",
     cta: "Consulter",
-    link: "/metier/carrieres"
-  }
+    ctaSecondary: "En savoir plus",
+    link: "/metier/carrieres",
+    image: "/terrassement-hero.jpg",
+    stats: [
+      { value: "35+", label: "CARRIÈRES" },
+      { value: "15M", label: "TONNES/AN" },
+      { value: "100%", label: "RESTAURATION" },
+    ],
+  },
 ]
+
+const INTERVAL = 5000
 
 export function HeroCarousel() {
   const [current, setCurrent] = useState(0)
-  const [isAutoPlay, setIsAutoPlay] = useState(true)
+  const [progress, setProgress] = useState(0)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const total = slides.length
+
+  const go = useCallback((index: number) => {
+    setCurrent(((index % total) + total) % total)
+  }, [total])
+
+  const resetProgress = useCallback(() => {
+    setProgress(0)
+    if (progressRef.current) clearInterval(progressRef.current)
+    const step = 100 / (INTERVAL / 100)
+    progressRef.current = setInterval(() => {
+      setProgress(p => {
+        if (p >= 100) { clearInterval(progressRef.current!); return 100 }
+        return +(p + step).toFixed(1)
+      })
+    }, 100)
+  }, [])
+
+  const startTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => go(current + 1), INTERVAL)
+    resetProgress()
+  }, [current, go, resetProgress])
 
   useEffect(() => {
-    if (!isAutoPlay) return
-    
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length)
-    }, 5000)
-    
-    return () => clearInterval(timer)
-  }, [isAutoPlay])
+    startTimer()
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+      if (progressRef.current) clearInterval(progressRef.current)
+    }
+  }, [startTimer])
 
-  const next = () => {
-    setCurrent((prev) => (prev + 1) % slides.length)
-    setIsAutoPlay(false)
+  const handleNav = (dir: 1 | -1) => {
+    go(current + dir)
+    startTimer()
   }
 
-  const prev = () => {
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length)
-    setIsAutoPlay(false)
+  const handleDot = (i: number) => {
+    go(i)
+    startTimer()
   }
 
-  const goToSlide = (index: number) => {
-    setCurrent(index)
-    setIsAutoPlay(false)
-  }
+  const slide = slides[current]
 
   return (
-    <div className="relative h-[90vh] max-h-screen overflow-hidden bg-black">
-      {/* Slides Container */}
-      <div className="relative w-full h-full">
-        {slides.map((slide, index) => (
+    <section className="relative h-[90vh] overflow-hidden bg-[#0a0a0a]">
+
+      {/* Slides */}
+      {slides.map((s, i) => (
+        <div
+          key={i}
+          className={`absolute inset-0 transition-opacity duration-[900ms] ease-in-out ${
+            i === current ? 'opacity-100 z-10' : 'opacity-0 z-0'
+          }`}
+        >
+          {/* BG image */}
           <div
-            key={index}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-              index === current ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            className={`absolute inset-0 bg-cover bg-center transition-transform duration-[6000ms] ease-out ${
+              i === current ? 'scale-100' : 'scale-105'
             }`}
+            style={{ backgroundImage: `url(${s.image})` }}
+          />
+
+          {/* Overlay directionnel */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/20" />
+        </div>
+      ))}
+
+      {/* Contenu principal */}
+      <div className="relative z-20 h-full flex items-center px-12 lg:px-16 max-w-[680px]">
+        <div>
+          {/* Tag */}
+          <span
+            key={`tag-${current}`}
+            className="inline-block mb-5 px-4 py-1.5 rounded-full text-xs font-medium tracking-widest uppercase
+                       bg-white/10 border border-white/20 text-white/70
+                       animate-fade-in-up"
           >
-            {/* Background Image */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url(${slide.image})`,
-                backgroundPosition: 'center',
-              }}
-            />
-            
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
-            
-            {/* Animated Floating Elements */}
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute top-10 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse" />
-              <div className="absolute bottom-10 left-10 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-pulse" />
-            </div>
+            {slide.tag}
+          </span>
 
-            {/* Content */}
-            <div className="relative h-full flex items-center justify-center">
-              <div className="max-w-4xl mx-auto px-6 text-center z-20">
-                {/* Page Flip Effect Container */}
-                <div 
-                  className="perspective"
-                  style={{
-                    animation: index === current ? 'pageFlip 0.8s ease-out' : 'none'
-                  }}
-                >
-                  <div className="inline-block mb-6 animate-slideUp">
-                    <span className="px-4 py-2 bg-white/10 border border-accent/50 rounded-full text-sm font-semibold text-accent backdrop-blur-md hover:bg-white/20 transition-all duration-300">
-                      ✨ {slide.subtitle.split(',')[0]}
-                    </span>
-                  </div>
-                  
-                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight text-white animate-slideUp animation-delay-100">
-                    {slide.title}
-                  </h1>
-                  
-                  <p className="text-lg sm:text-xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed font-light animate-slideUp animation-delay-200">
-                    {slide.description}
-                  </p>
+          {/* Titre */}
+          <h1
+            key={`title-${current}`}
+            className="text-5xl lg:text-6xl font-semibold leading-[1.1] text-white mb-4 whitespace-pre-line
+                       animate-fade-in-up [animation-delay:150ms]"
+          >
+            {slide.title}
+          </h1>
 
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slideUp animation-delay-300">
-                    <Link href={slide.link}>
-                      <button className="w-full sm:w-auto px-8 py-4 bg-accent text-accent-foreground rounded-sm font-semibold hover:shadow-2xl hover:shadow-accent/50 transition-all duration-300 hover:scale-105 text-base flex items-center justify-center gap-2 group">
-                        {slide.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                      </button>
-                    </Link>
-                    <button className="w-full sm:w-auto px-8 py-4 border-2 border-white text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm text-base">
-                      En Savoir Plus
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Description */}
+          <p
+            key={`desc-${current}`}
+            className="text-base text-white/60 leading-relaxed mb-9 max-w-lg
+                       animate-fade-in-up [animation-delay:300ms]"
+          >
+            {slide.description}
+          </p>
+
+          {/* CTAs */}
+          <div
+            key={`btns-${current}`}
+            className="flex gap-3 animate-fade-in-up [animation-delay:450ms]"
+          >
+            <Link href={slide.link}>
+              <button className="flex items-center gap-2 px-7 py-3.5 bg-[#d4a853] hover:bg-[#c49740]
+                                 text-white text-sm font-medium rounded-sm transition-colors duration-200">
+                {slide.cta} <ArrowRight size={14} />
+              </button>
+            </Link>
+            <button className="px-7 py-3.5 border border-white/30 text-white text-sm font-medium
+                               rounded-sm hover:bg-white/10 transition-colors duration-200 backdrop-blur-sm">
+              {slide.ctaSecondary}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats latérales */}
+      <div className="absolute right-12 lg:right-16 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-5">
+        {slide.stats.map((stat, i) => (
+          <div
+            key={`${current}-${i}`}
+            className="text-right animate-fade-in-right"
+            style={{ animationDelay: `${i * 120 + 300}ms` }}
+          >
+            <p className="text-2xl font-semibold text-[#d4a853] leading-none">{stat.value}</p>
+            <p className="text-[11px] tracking-wide text-white/45 mt-0.5">{stat.label}</p>
           </div>
         ))}
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation arrows */}
       <button
-        onClick={prev}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-30 p-3 bg-white/10 hover:bg-accent hover:text-accent-foreground backdrop-blur-md rounded-full transition-all duration-300 group"
+        onClick={() => handleNav(-1)}
+        className="absolute left-5 top-1/2 -translate-y-1/2 z-30
+                   w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15
+                   flex items-center justify-center text-white transition-colors duration-200"
+        aria-label="Précédent"
       >
-        <ChevronLeft size={28} className="group-hover:scale-110 transition-transform" />
-      </button>
-      
-      <button
-        onClick={next}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-30 p-3 bg-white/10 hover:bg-accent hover:text-accent-foreground backdrop-blur-md rounded-full transition-all duration-300 group"
-      >
-        <ChevronRight size={28} className="group-hover:scale-110 transition-transform" />
+        <ChevronLeft size={20} strokeWidth={1.5} />
       </button>
 
-      {/* Indicator Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3">
-        {slides.map((_, index) => (
+      <button
+        onClick={() => handleNav(1)}
+        className="absolute right-5 top-1/2 -translate-y-1/2 z-30
+                   w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15
+                   flex items-center justify-center text-white transition-colors duration-200"
+        aria-label="Suivant"
+      >
+        <ChevronRight size={20} strokeWidth={1.5} />
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-7 left-12 lg:left-16 z-30 flex items-center gap-2">
+        {slides.map((_, i) => (
           <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`transition-all duration-300 rounded-full ${
-              index === current
-                ? 'w-8 h-3 bg-accent'
-                : 'w-3 h-3 bg-white/30 hover:bg-white/60'
+            key={i}
+            onClick={() => handleDot(i)}
+            aria-label={`Slide ${i + 1}`}
+            className={`h-0.5 rounded-full transition-all duration-300 ${
+              i === current ? 'w-11 bg-[#d4a853]' : 'w-7 bg-white/25 hover:bg-white/40'
             }`}
-            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* Auto-play indicator */}
-      <button
-        onClick={() => setIsAutoPlay(!isAutoPlay)}
-        className="absolute top-8 right-8 z-30 px-4 py-2 bg-white/10 hover:bg-accent/20 backdrop-blur-md rounded-full text-white text-sm font-medium transition-all duration-300"
-      >
-        {isAutoPlay ? '⏸ Pause' : '▶ Play'}
-      </button>
+      {/* Compteur */}
+      <div className="absolute bottom-6 right-12 lg:right-16 z-30 text-[11px] tracking-widest text-white/35">
+        {String(current + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+      </div>
 
-      <style jsx>{`
-        @keyframes pageFlip {
-          0% {
-            transform: perspective(1200px) rotateY(-90deg);
-            opacity: 0;
-          }
-          50% {
-            transform: perspective(1200px) rotateY(-45deg);
-          }
-          100% {
-            transform: perspective(1200px) rotateY(0deg);
-            opacity: 1;
-          }
-        }
+      {/* Barre de progression */}
+      <div className="absolute bottom-0 left-0 h-[2px] bg-[#d4a853] z-30 transition-none"
+           style={{ width: `${progress}%` }} />
 
-        @keyframes slideUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-slideUp {
-          animation: slideUp 0.6s ease-out forwards;
-        }
-
-        .animation-delay-100 {
-          animation-delay: 0.1s;
-        }
-
-        .animation-delay-200 {
-          animation-delay: 0.2s;
-        }
-
-        .animation-delay-300 {
-          animation-delay: 0.3s;
-        }
-
-        .perspective {
-          perspective: 1200px;
-        }
-      `}</style>
-    </div>
+    </section>
   )
 }

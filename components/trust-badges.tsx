@@ -1,82 +1,101 @@
 'use client'
 
 import { companyStats, trustIndicators } from '@/lib/data'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Trophy, Users, Globe, Check, BarChart3, Lock } from 'lucide-react'
 
 const iconMap: Record<string, React.ComponentType<{ size: number; className?: string }>> = {
-  Trophy,
-  Users,
-  Globe,
-  Check,
-  BarChart3,
-  Lock,
+  Trophy, Users, Globe, Check, BarChart3, Lock,
+}
+
+function easeOut(t: number) {
+  return 1 - Math.pow(1 - t, 3)
+}
+
+function useCountUp(target: number, duration = 1800) {
+  const ref = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const start = performance.now()
+
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1)
+      el.textContent = String(Math.round(target * easeOut(t)))
+      if (t < 1) requestAnimationFrame(tick)
+    }
+
+    requestAnimationFrame(tick)
+  }, [target, duration])
+
+  return ref
+}
+
+function StatItem({ target, suffix = '', label, delay }: {
+  target: number
+  suffix?: string
+  label: string
+  delay: number
+}) {
+  const ref = useCountUp(target)
+
+  return (
+    <div
+      className="flex-1 px-8 py-7 text-center border-r border-border last:border-r-0
+                 animate-fade-in-up"
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      <p className="text-[38px] font-semibold leading-none text-[#d4a853] mb-2 tabular-nums">
+        <span ref={ref}>0</span>{suffix}
+      </p>
+      <p className="text-xs uppercase tracking-wide text-muted-foreground">{label}</p>
+    </div>
+  )
 }
 
 export function TrustBadges() {
-  const [counts, setCounts] = useState({
-    years: 0,
-    projects: 0,
-    team: 0,
-    countries: 0,
-  })
-
-  useEffect(() => {
-    const intervals = [
-      setInterval(() => setCounts(prev => ({ ...prev, years: Math.min(prev.years + 1, companyStats.yearsInBusiness) })), 30),
-      setInterval(() => setCounts(prev => ({ ...prev, projects: Math.min(prev.projects + 15, companyStats.totalProjects) })), 2),
-      setInterval(() => setCounts(prev => ({ ...prev, team: Math.min(prev.team + 5, companyStats.teamMembers) })), 15),
-      setInterval(() => setCounts(prev => ({ ...prev, countries: Math.min(prev.countries + 0.5, companyStats.countriesOperating) })), 50),
-    ]
-
-    return () => intervals.forEach(clearInterval)
-  }, [])
-
   return (
-    <section className="py-12 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Main Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-12">
-          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0s' }}>
-            <div className="text-3xl sm:text-4xl font-serif font-bold text-accent mb-2">
-              {counts.years}+
-            </div>
-            <p className="text-sm font-light text-muted-foreground">Ans d&apos;Expertise</p>
-          </div>
-          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            <div className="text-3xl sm:text-4xl font-serif font-bold text-accent mb-2">
-              {counts.projects.toLocaleString()}+
-            </div>
-            <p className="text-sm font-light text-muted-foreground">Projets Complétés</p>
-          </div>
-          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <div className="text-3xl sm:text-4xl font-serif font-bold text-accent mb-2">
-              {counts.team}+
-            </div>
-            <p className="text-sm font-light text-muted-foreground">Experts en Équipe</p>
-          </div>
-          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <div className="text-3xl sm:text-4xl font-serif font-bold text-accent mb-2">
-              {Math.round(counts.countries)}
-            </div>
-            <p className="text-sm font-light text-muted-foreground">Pays Opérationnels</p>
-          </div>
+    <section className="py-14 bg-muted/30">
+      <div className="max-w-6xl mx-auto px-6">
+
+        {/* Stats row — une seule carte unifiée */}
+        <div className="flex rounded-xl border border-border bg-background overflow-hidden mb-10">
+          <StatItem target={companyStats.yearsInBusiness}   suffix="+" label="Ans d'expertise"     delay={0}   />
+          <StatItem target={companyStats.totalProjects}     suffix="+" label="Projets complétés"    delay={80}  />
+          <StatItem target={companyStats.teamMembers}       suffix="+" label="Experts en équipe"    delay={160} />
+          <StatItem target={companyStats.countriesOperating}          label="Pays opérationnels"   delay={240} />
         </div>
 
-        {/* Trust Indicators */}
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
+        {/* Séparateur */}
+        <div className="flex justify-center mb-8">
+          <div className="w-10 h-px bg-[#d4a853]/40" />
+        </div>
+
+        {/* Trust badges — grille unifiée avec séparateurs */}
+        <div className="grid grid-cols-3 sm:grid-cols-6 divide-x divide-y sm:divide-y-0 divide-border
+                        border border-border rounded-xl overflow-hidden bg-background">
           {trustIndicators.map((indicator, idx) => {
-            const IconComponent = iconMap[indicator.icon]
+            const Icon = iconMap[indicator.icon]
             return (
-              <div key={idx} className="text-center animate-fade-in-up p-3 rounded-sm hover:bg-background transition-colors" style={{ animationDelay: `${0.4 + idx * 0.05}s` }}>
-                <div className="flex justify-center mb-2">
-                  {IconComponent && <IconComponent size={24} className="text-accent" />}
+              <div
+                key={idx}
+                className="flex flex-col items-center gap-2.5 px-4 py-5
+                           hover:bg-muted/50 transition-colors duration-200
+                           animate-fade-in-up"
+                style={{ animationDelay: `${320 + idx * 60}ms` }}
+              >
+                <div className="w-9 h-9 rounded-full bg-[#d4a853]/10 flex items-center justify-center shrink-0">
+                  {Icon && <Icon size={18} className="text-[#d4a853]" />}
                 </div>
-                <p className="text-xs font-light text-foreground leading-tight">{indicator.text}</p>
+                <p className="text-[11px] text-muted-foreground text-center leading-snug">
+                  {indicator.text}
+                </p>
               </div>
             )
           })}
         </div>
+
       </div>
     </section>
   )
