@@ -1,186 +1,269 @@
 'use client'
 
-import { Zap, TrendingUp, Target, Shield, Users, Award } from 'lucide-react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { ArrowRight, Zap, Target, Shield, Users, Award, TrendingUp } from 'lucide-react'
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 70 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: [0.23, 1, 0.32, 1], delay },
+  }),
+}
 
 export default function TravauxSouterrainMetierPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-muted/30 to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">Travaux Souterrains</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mb-8">
-            Grâce à nos équipes expérimentées et leur capacité d'innovation continue, nous maitrisons toutes les techniques de creusements et de soutènement (tunneliers), 
-            ce qui nous permet d'intervenir sur tous types de terrain.
+      {/* ==================== HERO SECTION ==================== */}
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-[#0a0906] text-white">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1581092160607-5d9c2d6c4b6e?q=80&w=2070')`, // Image tunnel / travaux souterrains
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              variants={fadeUp}
+              custom={0}
+              className="inline-flex items-center gap-4 text-[#E89A7A] tracking-[4px] text-sm font-medium mb-6"
+            >
+              <div className="h-px w-16 bg-current" />
+              TRAVAUX SOUTERRAINS
+              <div className="h-px w-16 bg-current" />
+            </motion.div>
+
+            <motion.h1 
+              variants={fadeUp}
+              custom={0.1}
+              className="font-serif text-[clamp(54px,8.5vw,92px)] leading-[1.02] font-light mb-8"
+            >
+              Maîtriser la profondeur.<br />
+              Construire l’avenir.
+            </motion.h1>
+
+            <motion.p 
+              variants={fadeUp}
+              custom={0.3}
+              className="max-w-3xl text-2xl text-white/90 font-light leading-relaxed"
+            >
+              Grâce à nos équipes expérimentées et à notre maîtrise des techniques les plus avancées 
+              (tunneliers, minage de précision, soutènements complexes), nous intervenons sur tous types 
+              de terrains et dans les conditions les plus exigeantes.
+            </motion.p>
+          </motion.div>
+        </div>
+
+        <motion.div 
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/70 flex flex-col items-center"
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity }}
+        >
+          <span className="text-xs tracking-widest">EXPLORER EN PROFONDEUR</span>
+          <div className="mt-3 w-px h-16 bg-gradient-to-b from-transparent via-white/60 to-transparent" />
+        </motion.div>
+      </section>
+
+      {/* ==================== STATS ==================== */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { value: "156", label: "Tunnels complétés", desc: "Tous types et géologies" },
+              { value: "850+", label: "Kilomètres creusés", desc: "Longueur totale réalisée" },
+              { value: "28 ans", label: "Sans accident mortel", desc: "Record de sécurité exemplaire" },
+              { value: "€45B", label: "Valeur des projets", desc: "Travaux souterrains" },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i * 0.1}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="p-10 bg-white border border-gray-100 rounded-3xl hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+              >
+                <div className="text-6xl font-serif font-light text-[#C9826B] mb-6 group-hover:scale-110 transition-transform">
+                  {stat.value}
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-3">{stat.label}</h3>
+                <p className="text-gray-600">{stat.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== DOMAINES DE MAÎTRISE ==================== */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-6xl font-light text-gray-950">Nos Domaines de Maîtrise</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {[
+              {
+                icon: Zap,
+                title: "Tunnelage par Tunnelier (TBM)",
+                desc: "Tunnel boring machines de 6 à 12 mètres de diamètre. Percement en géologies complexes avec gestion des pressions et consolidations adaptées."
+              },
+              {
+                icon: Target,
+                title: "Excavation Contrôlée & Minage",
+                desc: "Minage de précision, utilisation d’explosifs écologiques, contrôle strict des vibrations et protection des structures environnantes."
+              },
+              {
+                icon: Shield,
+                title: "Géotechnique & Soutènement Avancé",
+                desc: "Soutènements complexes, contrôle des tassements, consolidation sol-roche et prévention des effondrements en environnement urbain ou montagneux."
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i * 0.15}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="bg-white p-12 rounded-3xl border border-gray-100 hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+              >
+                <div className="w-20 h-20 rounded-2xl bg-[#C9826B]/10 flex items-center justify-center mb-10 group-hover:bg-[#C9826B] group-hover:text-white transition-all">
+                  <item.icon size={42} />
+                </div>
+                <h3 className="text-3xl font-semibold text-gray-900 mb-6">{item.title}</h3>
+                <p className="text-gray-700 text-[17px] leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== PROJETS EMBLÉMATIQUES ==================== */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="font-serif text-6xl font-light text-center mb-16">Projets Emblématiques</h2>
+
+          <div className="space-y-12 max-w-5xl mx-auto">
+            {[
+              {
+                title: "Lyon-Turin : Base Tunnel",
+                location: "France – Italie",
+                value: "€12.5B",
+                desc: "Plus long tunnel ferroviaire d’Europe (58 km). Conditions géologiques extrêmes, TBM de 9,58 m et coordination binationale exemplaire."
+              },
+              {
+                title: "Extensions du Métro de Bangkok",
+                location: "Thaïlande",
+                value: "€3.2B",
+                desc: "5 tunnels entrelacés sous une ville ultra-dense. Excavation avec TBM multi-usages et protection rigoureuse des bâtiments environnants."
+              },
+              {
+                title: "Mine d’Or Souterraine – Afrique",
+                location: "Burkina Faso",
+                value: "€1.8B",
+                desc: "Réseau de galeries à plus de 3 500 m de profondeur. 400 000 tonnes/an extraites avec un taux de récupération de 91 % et sécurité maximale."
+              },
+            ].map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-gray-50 rounded-3xl p-12 md:p-16 border border-gray-100 hover:border-[#C9826B]/30 transition-all"
+              >
+                <div className="flex flex-col md:flex-row justify-between gap-10">
+                  <div className="flex-1">
+                    <h3 className="text-3xl font-semibold text-gray-900 mb-2">{project.title}</h3>
+                    <p className="text-gray-600 mb-6">{project.location}</p>
+                    <p className="text-gray-700 text-[17.5px] leading-relaxed">{project.desc}</p>
+                  </div>
+                  <div className="text-right self-start">
+                    <div className="text-[#C9826B] text-4xl font-light font-serif">{project.value}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== EXCELLENCE TECHNIQUE ==================== */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="font-serif text-6xl font-light text-center mb-16">Excellence Technique</h2>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                icon: Users,
+                title: "Équipes Hautement Spécialisées",
+                desc: "Plus de 150 ingénieurs et techniciens certifiés en tunnelage. Experts en géologie, hydrogéologie, structures et sismique."
+              },
+              {
+                icon: TrendingUp,
+                title: "Monitoring en Temps Réel",
+                desc: "Plus de 1 000 capteurs par tunnel. Surveillance continue des déformations, pressions d’eau, vibrations et stabilité."
+              },
+              {
+                icon: Award,
+                title: "Gestion des Risques",
+                desc: "Plans d’urgence détaillés, simulations d’incidents et protocoles de sécurité renforcés."
+              },
+              {
+                icon: Shield,
+                title: "Sécurité Absolue",
+                desc: "28 ans sans accident mortel. Ventilation active, systèmes de sauvetage et formations SSE continues."
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i * 0.15}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="bg-white p-10 rounded-3xl border border-gray-100 hover:shadow-xl hover:border-[#C9826B]/30 transition-all group"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-[#C9826B]/10 flex items-center justify-center mb-8 group-hover:bg-[#C9826B] group-hover:text-white transition-all">
+                  <item.icon size={36} />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-5">{item.title}</h3>
+                <p className="text-gray-700 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== FINAL CTA ==================== */}
+      <section className="py-28 bg-[#0a0906] text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="font-serif text-6xl font-light leading-tight mb-8">
+            Percer en profondeur.<br />
+            Construire avec maîtrise.
+          </h2>
+          <p className="text-2xl text-white/80 mb-12">
+            156 tunnels réalisés • 850+ km creusés • 28 ans de sécurité exemplaire
           </p>
-        </div>
-      </section>
 
-      {/* Expertise Matrix */}
-      <section className="py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-serif font-bold mb-12">Domaines de Maîtrise</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 border border-border/50 rounded-lg hover:border-accent/50 transition-colors">
-              <Zap className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Tunnelage TBM</h3>
-              <p className="text-muted-foreground text-sm">
-                Tunnel boring machines 6 à 12m. Percement géologies complexes, gestion pressions, consolidations adaptées.
-              </p>
-            </div>
-            <div className="p-6 border border-border/50 rounded-lg hover:border-accent/50 transition-colors">
-              <Target className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Excavation Contrôlée</h3>
-              <p className="text-muted-foreground text-sm">
-                Minage de précision, explosifs écologiques, vibrations minimales, protection environnement strict.
-              </p>
-            </div>
-            <div className="p-6 border border-border/50 rounded-lg hover:border-accent/50 transition-colors">
-              <Shield className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Géotechnique Avancée</h3>
-              <p className="text-muted-foreground text-sm">
-                Soutènements complexes, contrôle tassements, consolidation sol-roche et prévention d'effondrements.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Achievements */}
-      <section className="py-20 bg-muted/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">156</div>
-              <p className="font-semibold">Tunnels complétés</p>
-              <p className="text-sm text-muted-foreground">Tous types</p>
-            </div>
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">850+ km</div>
-              <p className="font-semibold">Longueur totale</p>
-              <p className="text-sm text-muted-foreground">Tunnels construits</p>
-            </div>
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">28 ans</div>
-              <p className="font-semibold">Sans accident mortel</p>
-              <p className="text-sm text-muted-foreground">Sécurité exemplaire</p>
-            </div>
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">€45B</div>
-              <p className="font-semibold">Valeur travaux</p>
-              <p className="text-sm text-muted-foreground">Souterrains</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Flagship Projects */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-serif font-bold mb-12">Exploits Souterrains</h2>
-          <div className="space-y-6">
-            <div className="border border-border/50 rounded-lg p-6 hover:border-accent/50 transition-colors">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold">Lyon-Turin : 58km sous les Alpes</h3>
-                  <p className="text-sm text-muted-foreground">France-Italie - Tunnel Ferroviaire</p>
-                </div>
-                <span className="px-3 py-1 bg-accent/10 text-accent rounded text-xs font-semibold">€12.5B</span>
-              </div>
-              <p className="text-muted-foreground text-sm mb-3">
-                Plus long tunnel d'Europe. TBM 9.58m, conditions géologiques extrêmes, équipes France-Italie coordonnées. Zéro retard.
-              </p>
-              <div className="flex gap-4 text-xs font-medium">
-                <span className="px-2 py-1 bg-muted rounded">Durée: 8 ans</span>
-                <span className="px-2 py-1 bg-muted rounded">Équipe: 450</span>
-                <span className="px-2 py-1 bg-muted rounded">Délai: Respecté</span>
-              </div>
-            </div>
-            <div className="border border-border/50 rounded-lg p-6 hover:border-accent/50 transition-colors">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold">Métro Bangkok : 5 tunnels entrelacés</h3>
-                  <p className="text-sm text-muted-foreground">Thaïlande - Métro urbain</p>
-                </div>
-                <span className="px-3 py-1 bg-accent/10 text-accent rounded text-xs font-semibold">€3.2B</span>
-              </div>
-              <p className="text-muted-foreground text-sm mb-3">
-                Excavation sous ville dense. TBM multi-usages, passages interstations critiques, protection bâtiments.
-              </p>
-              <div className="flex gap-4 text-xs font-medium">
-                <span className="px-2 py-1 bg-muted rounded">Longueur: 65km</span>
-                <span className="px-2 py-1 bg-muted rounded">Usage: Urbain</span>
-                <span className="px-2 py-1 bg-muted rounded">Défi: Densité</span>
-              </div>
-            </div>
-            <div className="border border-border/50 rounded-lg p-6 hover:border-accent/50 transition-colors">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold">Mine d'Or Souterraine - Afrique</h3>
-                  <p className="text-sm text-muted-foreground">Burkina Faso - Extraction minière</p>
-                </div>
-                <span className="px-3 py-1 bg-accent/10 text-accent rounded text-xs font-semibold">€1.8B</span>
-              </div>
-              <p className="text-muted-foreground text-sm mb-3">
-                Réseaux galeries 3.500m profondeur. 400k tonnes/an extrait. Sécurité maximale, ventilation contrôlée, système drainage.
-              </p>
-              <div className="flex gap-4 text-xs font-medium">
-                <span className="px-2 py-1 bg-muted rounded">Profondeur: 3.5km</span>
-                <span className="px-2 py-1 bg-muted rounded">Récupération: 91%</span>
-                <span className="px-2 py-1 bg-muted rounded">Production: 400kt/an</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Excellence */}
-      <section className="py-20 bg-muted/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-serif font-bold mb-12">Excellence Technique</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <Users className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Équipes Spécialisées</h3>
-              <p className="text-muted-foreground">
-                150+ ingénieurs tunnelage certifiés. Experts géologie, hydrogéologie, structures et séismique. Formation continue.
-              </p>
-            </div>
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <TrendingUp className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Monitoring Temps Réel</h3>
-              <p className="text-muted-foreground">
-                1000+ capteurs par tunnel. Surveillance déformation, pression eau, vibrations et stabilité continue.
-              </p>
-            </div>
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <Award className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Gestion des Risques</h3>
-              <p className="text-muted-foreground">
-                Plans d'urgence détaillés, simulation incidents, protocoles sécurité renforcés, assurance couverture maxi.
-              </p>
-            </div>
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <Shield className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Sécurité Absolue</h3>
-              <p className="text-muted-foreground">
-                28 ans sans accident mortel. Ventilation active, systèmes sauvetage, formations SSE renforcées continuelles.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-accent/5 border-y border-border/50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl font-serif font-bold mb-4">Percer, Explorer, Construire en Profondeur</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            156 tunnels. 850+ km. 28 ans de sécurité. Maîtrise absolue des défis souterrains.
-          </p>
-          <a href="/contact" className="inline-block px-8 py-3 bg-accent text-accent-foreground rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
-            Votre Projet Souterrain
-          </a>
+          <Link 
+            href="/contact"
+            className="inline-flex items-center gap-6 px-16 py-8 bg-[#C9826B] hover:bg-[#E89A7A] text-[#0a0906] rounded-3xl text-2xl font-medium transition-all hover:shadow-2xl"
+          >
+            Discuter de votre projet souterrain
+            <ArrowRight size={32} />
+          </Link>
         </div>
       </section>
     </>

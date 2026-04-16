@@ -1,165 +1,263 @@
 'use client'
 
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { ArrowRight, Train, Waypoints, Zap, TrendingUp, Award, Globe } from 'lucide-react'
 
-import { Train, Waypoints, Zap, TrendingUp, Award, Globe } from 'lucide-react'
+const fadeUp = {
+  hidden: { opacity: 0, y: 70 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: [0.23, 1, 0.32, 1], delay },
+  }),
+}
 
 export default function InfrastructuresLineairesPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-muted/30 to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">Infrastructures Linéaires</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mb-8">
-            Nous intervenons dans de grands chantiers au Cameroun et l'international. Infrastructures routières, ferroviaires, portuaires, aéroportuaires, ou industrielles pour relier, désenclaver et développer des territoires. Grâce aux avancés de l'IA, nous réalisons des études d'exécution et 
-            développons l'expertise de topographie de terrain.
+      {/* ==================== HERO SECTION ==================== */}
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-[#0a0906] text-white">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1492144534652-916f4b6c3b2e?q=80&w=2070')`, // Image moderne d'infrastructure linéaire (pont + route + rail)
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              variants={fadeUp}
+              custom={0}
+              className="inline-flex items-center gap-4 text-[#E89A7A] tracking-[4px] text-sm font-medium mb-6"
+            >
+              <div className="h-px w-16 bg-current" />
+              INFRASTRUCTURES LINÉAIRES
+              <div className="h-px w-16 bg-current" />
+            </motion.div>
+
+            <motion.h1 
+              variants={fadeUp}
+              custom={0.1}
+              className="font-serif text-[clamp(54px,8.5vw,92px)] leading-[1.02] font-light mb-8"
+            >
+              Relier les territoires.<br />
+              Transformer les vies.
+            </motion.h1>
+
+            <motion.p 
+              variants={fadeUp}
+              custom={0.3}
+              className="max-w-3xl text-2xl text-white/90 font-light leading-relaxed"
+            >
+              Routes, voies ferrées, réseaux énergétiques et infrastructures de transport : 
+              nous concevons et réalisons les grands corridors de mobilité et de développement territorial.
+            </motion.p>
+          </motion.div>
+        </div>
+
+        <motion.div 
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/70 flex flex-col items-center"
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity }}
+        >
+          <span className="text-xs tracking-widest">CONNECTER AUJOURD’HUI, DÉVELOPPER DEMAIN</span>
+          <div className="mt-3 w-px h-16 bg-gradient-to-b from-transparent via-white/60 to-transparent" />
+        </motion.div>
+      </section>
+
+      {/* ==================== STATS ==================== */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { value: "45k+", label: "Kilomètres construits", desc: "Routes, rails et réseaux énergétiques" },
+              { value: "2B+", label: "Personnes connectées", desc: "Accès amélioré à la mobilité" },
+              { value: "€78B", label: "Valeur des projets", desc: "Infrastructures linéaires réalisées" },
+              { value: "12", label: "Pays d’intervention", desc: "Présence internationale" },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i * 0.1}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="p-10 bg-white border border-gray-100 rounded-3xl hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+              >
+                <div className="text-6xl font-serif font-light text-[#C9826B] mb-6 group-hover:scale-110 transition-transform">
+                  {stat.value}
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-3">{stat.label}</h3>
+                <p className="text-gray-600">{stat.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== SPÉCIALITÉS ==================== */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-6xl font-light text-gray-950">Nos Spécialités</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {[
+              {
+                icon: Train,
+                title: "Réseaux Ferroviaires",
+                desc: "Lignes à grande vitesse, métros, tramways et réseaux régionaux. Plus de 15 000 km construits avec les technologies les plus avancées."
+              },
+              {
+                icon: Waypoints,
+                title: "Routes & Autoroutes",
+                desc: "Réseaux routiers modernes, corridors de mobilité douce, autoroutes intelligentes et infrastructures résilientes."
+              },
+              {
+                icon: Zap,
+                title: "Réseaux Énergétiques",
+                desc: "Lignes haute tension, pipelines, réseaux de distribution d’énergie renouvelable et infrastructures de transport d’énergie."
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i * 0.15}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="bg-white p-12 rounded-3xl border border-gray-100 hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+              >
+                <div className="w-20 h-20 rounded-2xl bg-[#C9826B]/10 flex items-center justify-center mb-10 group-hover:bg-[#C9826B] group-hover:text-white transition-all">
+                  <item.icon size={42} />
+                </div>
+                <h3 className="text-3xl font-semibold text-gray-900 mb-6">{item.title}</h3>
+                <p className="text-gray-700 text-[17px] leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== PROJETS EMBLÉMATIQUES ==================== */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="font-serif text-6xl font-light text-center mb-16">Projets de Connectivité Emblématiques</h2>
+
+          <div className="space-y-12 max-w-5xl mx-auto">
+            {[
+              {
+                title: "Corridor Ferroviaire Alpes-Méditerranée",
+                location: "France • Italie • Slovénie",
+                value: "€8.9B",
+                desc: "1 400 km de lignes à grande vitesse (300 km/h). Électrification complète, gares modernes et intermodalité avancée."
+              },
+              {
+                title: "Extensions du Métro du Caire",
+                location: "Égypte – Phases 3 & 4",
+                value: "€4.2B",
+                desc: "250 km supplémentaires. Capacité de 5 millions de passagers par jour. Signalisation CBTC et accessibilité PMR."
+              },
+              {
+                title: "Autoroute Transafricaine TAO",
+                location: "Sénégal jusqu’au Nigeria",
+                value: "€5.8B",
+                desc: "3 200 km de routes à 4 voies. Intégration régionale et développement économique des zones traversées."
+              },
+            ].map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-gray-50 rounded-3xl p-12 md:p-16 border border-gray-100 hover:border-[#C9826B]/30 transition-all"
+              >
+                <div className="flex flex-col md:flex-row justify-between gap-10">
+                  <div className="flex-1">
+                    <h3 className="text-3xl font-semibold text-gray-900 mb-2">{project.title}</h3>
+                    <p className="text-gray-600 mb-6">{project.location}</p>
+                    <p className="text-gray-700 text-[17.5px] leading-relaxed">{project.desc}</p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-[#C9826B] text-4xl font-light font-serif">{project.value}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== APPROCHE ==================== */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="font-serif text-6xl font-light text-center mb-16">Connecter Responsablement</h2>
+
+          <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+            {[
+              {
+                icon: Globe,
+                title: "Planification Stratégique",
+                desc: "Analyses coût-bénéfice, études d’impact socio-économique et engagement des communautés locales dès la phase de conception."
+              },
+              {
+                icon: TrendingUp,
+                title: "Construction Agile",
+                desc: "Méthodes de construction modernes, minimisation des perturbations de trafic et phasage intelligent des travaux."
+              },
+              {
+                icon: Award,
+                title: "Exploitation Durable",
+                desc: "Maintenance prédictive, gestion intelligente du trafic et adaptation continue aux besoins futurs de mobilité."
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i * 0.15}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="bg-white p-12 rounded-3xl border border-gray-100 hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+              >
+                <div className="w-20 h-20 rounded-2xl bg-[#C9826B]/10 flex items-center justify-center mb-10 group-hover:bg-[#C9826B] group-hover:text-white transition-all">
+                  <item.icon size={42} />
+                </div>
+                <h3 className="text-3xl font-semibold text-gray-900 mb-6">{item.title}</h3>
+                <p className="text-gray-700 text-[17px] leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== FINAL CTA ==================== */}
+      <section className="py-28 bg-[#0a0906] text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="font-serif text-6xl font-light leading-tight mb-8">
+            Relier les territoires.<br />
+            Développer les nations.
+          </h2>
+          <p className="text-2xl text-white/80 mb-12">
+            45 000+ km de réseaux construits. Plus de 2 milliards de personnes connectées.
           </p>
-        </div>
-      </section>
 
-      {/* Specializations */}
-      <section className="py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-serif font-bold mb-12">Nos Spécialités</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 border border-border/50 rounded-lg hover:border-accent/50 transition-colors">
-              <Train className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Réseaux Ferroviaires</h3>
-              <p className="text-muted-foreground text-sm">
-                Lignes à grande vitesse, métros, tramways et systèmes régionaux. 15,000+ km construits.
-              </p>
-            </div>
-            <div className="p-6 border border-border/50 rounded-lg hover:border-accent/50 transition-colors">
-              <Waypoints className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Routes et Autoroutes</h3>
-              <p className="text-muted-foreground text-sm">
-                Réseaux routiers modernes, couloirs de mobilité douce, et infrastructures intelligentes.
-              </p>
-            </div>
-            <div className="p-6 border border-border/50 rounded-lg hover:border-accent/50 transition-colors">
-              <Zap className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Réseaux Énergétiques</h3>
-              <p className="text-muted-foreground text-sm">
-                Lignes haute tension, pipelines et Distribution d'électricité renouvelable.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Stats */}
-      <section className="py-20 bg-muted/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">45k+</div>
-              <p className="font-semibold">Km de réseaux</p>
-              <p className="text-sm text-muted-foreground">Routes, rails, énergie</p>
-            </div>
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">2B+</div>
-              <p className="font-semibold">Personnes bénéficiaires</p>
-              <p className="text-sm text-muted-foreground">Accès transport amélioré</p>
-            </div>
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">€78B</div>
-              <p className="font-semibold">Valeur investie</p>
-              <p className="text-sm text-muted-foreground">Infrastructures de transport</p>
-            </div>
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">12</div>
-              <p className="font-semibold">Pays opérationnels</p>
-              <p className="text-sm text-muted-foreground">Présence globale</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Major Projects */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-serif font-bold mb-12">Projets de Connectivité</h2>
-          <div className="space-y-6">
-            <div className="border border-border/50 rounded-lg p-6 hover:border-accent/50 transition-colors">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold">Corridor Ferroviaire Alpes-Méditerranée</h3>
-                  <p className="text-sm text-muted-foreground">France-Italie-Slovénie</p>
-                </div>
-                <span className="px-3 py-1 bg-accent/10 text-accent rounded text-xs font-semibold">€8.9B</span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                1.400 km de lignes 300 km/h. Électrification complète, gares modernes, intermodalité intégrée.
-              </p>
-            </div>
-            <div className="border border-border/50 rounded-lg p-6 hover:border-accent/50 transition-colors">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold">Métro du Caire - Extensions</h3>
-                  <p className="text-sm text-muted-foreground">Égypte - Phase 3 &4</p>
-                </div>
-                <span className="px-3 py-1 bg-accent/10 text-accent rounded text-xs font-semibold">€4.2B</span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                250 km additionnels. 5 millions passagers quotidiens. Signalisation CBTC, stations accessibles PMR.
-              </p>
-            </div>
-            <div className="border border-border/50 rounded-lg p-6 hover:border-accent/50 transition-colors">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold">Autoroute Transafricaine TAO</h3>
-                  <p className="text-sm text-muted-foreground">Sénégal-Nigeria</p>
-                </div>
-                <span className="px-3 py-1 bg-accent/10 text-accent rounded text-xs font-semibold">€5.8B</span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                3.200 km. Routes 4 voies tolérantes. Intégration pays traversés, développement économique local.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Approach */}
-      <section className="py-20 bg-muted/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-serif font-bold mb-12">Connecter Responsablement</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <Globe className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Planification Stratégique</h3>
-              <p className="text-muted-foreground">
-                Analyses coût-bénéfice, études impact économique et social, engagement communautés locales.
-              </p>
-            </div>
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <TrendingUp className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Construction Agile</h3>
-              <p className="text-muted-foreground">
-                Planning adaptable, minimisation des interruptions trafic, phase de roulement intelligent.
-              </p>
-            </div>
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <Award className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Exploitation Durable</h3>
-              <p className="text-muted-foreground">
-                Maintenance intelligente, gestion trafic temps réel et capacité adaptation croissante trafic.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-accent/5 border-y border-border/50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl font-serif font-bold mb-4">Connecter Continents, Rapprocher Peuples</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            45,000+ km de réseaux. 2 milliards de bénéficiaires. Mobilité durable pour tous.
-          </p>
-          <a href="/contact" className="inline-block px-8 py-3 bg-accent text-accent-foreground rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
-            Votre Projet d'Infrastructure
-          </a>
+          <Link 
+            href="/contact"
+            className="inline-flex items-center gap-6 px-16 py-8 bg-[#C9826B] hover:bg-[#E89A7A] text-[#0a0906] rounded-3xl text-2xl font-medium transition-all hover:shadow-2xl"
+          >
+            Discuter de votre projet d’infrastructure
+            <ArrowRight size={32} />
+          </Link>
         </div>
       </section>
     </>

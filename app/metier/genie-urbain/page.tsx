@@ -1,171 +1,264 @@
 'use client'
 
-import { Building, MapPin, Users, Zap, Leaf, TrendingUp } from 'lucide-react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { ArrowRight, Building, MapPin, Users, Zap, Leaf, TrendingUp } from 'lucide-react'
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 70 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: [0.23, 1, 0.32, 1], delay },
+  }),
+}
 
 export default function GenieUrbainPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-muted/30 to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">Génie Urbain</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mb-8">
-            Nous accompagnons des communautés, des collectivités et des institutions dans le développement des territoires. Terrassements, VRD, Canalisations, ouvrages d'art, 
-            aménagements...Animés par la même passion pour l'excellence, nos collaborateurs œuvrent chaque jour pour construire et développer des infrastructures solides et durables afin de donner un visage unique à nos villes.
+      {/* ==================== HERO SECTION ==================== */}
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-[#0a0906] text-white">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=2070')`, // Image moderne de ville durable / aménagement urbain
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              variants={fadeUp}
+              custom={0}
+              className="inline-flex items-center gap-4 text-[#E89A7A] tracking-[4px] text-sm font-medium mb-6"
+            >
+              <div className="h-px w-16 bg-current" />
+              GÉNIE URBAIN
+              <div className="h-px w-16 bg-current" />
+            </motion.div>
+
+            <motion.h1 
+              variants={fadeUp}
+              custom={0.1}
+              className="font-serif text-[clamp(54px,8.5vw,92px)] leading-[1.02] font-light mb-8"
+            >
+              Donner un visage<br />
+              unique à nos <span className="text-[#E89A7A]">villes</span>.
+            </motion.h1>
+
+            <motion.p 
+              variants={fadeUp}
+              custom={0.3}
+              className="max-w-3xl text-2xl text-white/90 font-light leading-relaxed"
+            >
+              Nous accompagnons collectivités, institutions et promoteurs dans la création 
+              d’espaces urbains durables, intelligents et humains.
+            </motion.p>
+          </motion.div>
+        </div>
+
+        <motion.div 
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/70 flex flex-col items-center"
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity }}
+        >
+          <span className="text-xs tracking-widest">DÉCOUVRIR NOS RÉALISATIONS URBAINES</span>
+          <div className="mt-3 w-px h-16 bg-gradient-to-b from-transparent via-white/60 to-transparent" />
+        </motion.div>
+      </section>
+
+      {/* ==================== STATS ==================== */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { value: "156+", label: "Projets Urbains", desc: "Réalisés sur tous les continents" },
+              { value: "15M+", label: "Personnes Impactées", desc: "Cadre de vie amélioré" },
+              { value: "€32B", label: "Valeur Totale", desc: "Des projets développés" },
+              { value: "90%", label: "Certifications Vertes", desc: "Projets LEED / BREEAM" },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i * 0.1}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="p-10 bg-white border border-gray-100 rounded-3xl hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+              >
+                <div className="text-6xl font-serif font-light text-[#C9826B] mb-6 group-hover:scale-110 transition-transform">
+                  {stat.value}
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-3">{stat.label}</h3>
+                <p className="text-gray-600">{stat.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== DOMAINES D’EXPERTISE ==================== */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-6xl font-light text-gray-950">Nos Domaines d’Expertise</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {[
+              {
+                icon: Building,
+                title: "Projets Mixtes",
+                desc: "Conception et réalisation de quartiers mixtes intégrant logements, commerces, bureaux et espaces publics. Création de lieux de vie dynamiques et inclusifs."
+              },
+              {
+                icon: MapPin,
+                title: "Aménagements Urbains",
+                desc: "Rénovation de quartiers anciens, réaménagement d’espaces publics et valorisation du patrimoine historique tout en intégrant les besoins contemporains."
+              },
+              {
+                icon: Leaf,
+                title: "Villes Vertes & Durables",
+                desc: "Développement d’espaces verts, parcs urbains, corridors écologiques et solutions nature-based pour une ville plus respirable et résiliente."
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i * 0.15}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="bg-white p-12 rounded-3xl border border-gray-100 hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+              >
+                <div className="w-20 h-20 rounded-2xl bg-[#C9826B]/10 flex items-center justify-center mb-10 group-hover:bg-[#C9826B] group-hover:text-white transition-all">
+                  <item.icon size={42} />
+                </div>
+                <h3 className="text-3xl font-semibold text-gray-900 mb-6">{item.title}</h3>
+                <p className="text-gray-700 text-[17px] leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== TRANSFORMATIONS URBAINES ==================== */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="font-serif text-6xl font-light text-center mb-16">Transformations Urbaines Emblématiques</h2>
+
+          <div className="space-y-12 max-w-5xl mx-auto">
+            {[
+              {
+                title: "Métropole Durable – Singapour",
+                desc: "Réaménagement sur 700 hectares d’un quartier central avec 50 000 logements certifiés LEED Platinum, corridors verts continus et mobilité zéro carbone.",
+                value: "€2.8B"
+              },
+              {
+                title: "Revitalisation du Caire Historique",
+                desc: "Projet mêlant préservation du patrimoine UNESCO et infrastructures modernes. Amélioration du cadre de vie pour plus de 200 000 habitants.",
+                value: "€1.5B"
+              },
+              {
+                title: "Barcelona Green Belt",
+                desc: "Création de 85 km de parcs linéaires et forêts urbaines. Amélioration significative de la qualité de l’air et réduction de l’îlot de chaleur urbain.",
+                value: "€680M"
+              },
+            ].map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-gray-50 rounded-3xl p-12 md:p-16 border border-gray-100 hover:border-[#C9826B]/30 transition-all"
+              >
+                <div className="flex flex-col md:flex-row justify-between gap-10">
+                  <div className="flex-1">
+                    <h3 className="text-3xl font-semibold text-gray-900 mb-4">{project.title}</h3>
+                    <p className="text-gray-700 text-[17.5px] leading-relaxed">{project.desc}</p>
+                  </div>
+                  <div className="text-right self-start">
+                    <div className="text-[#C9826B] text-4xl font-light font-serif">{project.value}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== NOTRE APPROCHE ==================== */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="font-serif text-6xl font-light text-center mb-16">Notre Approche Participative</h2>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                icon: Users,
+                title: "Consultation Citoyenne",
+                desc: "Ateliers participatifs, sondages et implication directe des communautés à chaque phase du projet."
+              },
+              {
+                icon: Leaf,
+                title: "Durabilité Intégrée",
+                desc: "Objectifs Net-Zéro, biodiversité positive, économie circulaire et solutions nature-based."
+              },
+              {
+                icon: Zap,
+                title: "Smart City & Innovation",
+                desc: "Intégration de technologies IoT, éclairage intelligent, gestion du trafic et systèmes énergétiques distribués."
+              },
+              {
+                icon: TrendingUp,
+                title: "Valeur Économique & Sociale",
+                desc: "Création d’emplois locaux, augmentation de la valeur immobilière et renforcement de l’attractivité des territoires."
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i * 0.15}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="bg-white p-10 rounded-3xl border border-gray-100 hover:shadow-xl hover:border-[#C9826B]/30 transition-all group"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-[#C9826B]/10 flex items-center justify-center mb-8 group-hover:bg-[#C9826B] group-hover:text-white transition-all">
+                  <item.icon size={36} />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-5">{item.title}</h3>
+                <p className="text-gray-700 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== FINAL CTA ==================== */}
+      <section className="py-28 bg-[#0a0906] text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="font-serif text-6xl font-light leading-tight mb-8">
+            Construisons ensemble<br />
+            la ville de demain
+          </h2>
+          <p className="text-2xl text-white/80 mb-12">
+            156 projets urbains réalisés. 15 millions de personnes impactées. Des villes plus vertes, plus humaines et plus intelligentes.
           </p>
-        </div>
-      </section>
 
-      {/* Expertise Areas */}
-      <section className="py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-serif font-bold mb-12">Nos Domaines</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 border border-border/50 rounded-lg hover:border-accent/50 transition-colors">
-              <Building className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Projets Mixtes</h3>
-              <p className="text-muted-foreground text-sm">
-                Résidences, commerces, bureaux et espaces publics intégrés. Création de lieux de vie dynamiques et inclusifs.
-              </p>
-            </div>
-            <div className="p-6 border border-border/50 rounded-lg hover:border-accent/50 transition-colors">
-              <MapPin className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Aménagements Urbains</h3>
-              <p className="text-muted-foreground text-sm">
-                Rénovation quartiers, réaménagement espaces publics, préserver le patrimoine historique.
-              </p>
-            </div>
-            <div className="p-6 border border-border/50 rounded-lg hover:border-accent/50 transition-colors">
-              <Leaf className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Villes Vertes</h3>
-              <p className="text-muted-foreground text-sm">
-                Espaces verts, parcs publics, corridors écologiques et réseaux de biodiversité urbaine.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Stats */}
-      <section className="py-20 bg-muted/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">156+</div>
-              <p className="font-semibold">Projets urbains</p>
-              <p className="text-sm text-muted-foreground">Tous continents</p>
-            </div>
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">15M+</div>
-              <p className="font-semibold">Personnes impactées</p>
-              <p className="text-sm text-muted-foreground">Cadre de vie amélioré</p>
-            </div>
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">€32B</div>
-              <p className="font-semibold">Valeur projets</p>
-              <p className="text-sm text-muted-foreground">Investissements urbains</p>
-            </div>
-            <div className="text-center p-6 bg-background border border-border/50 rounded-lg">
-              <div className="text-4xl font-bold text-accent mb-2">90%</div>
-              <p className="font-semibold">Durabilité LEED</p>
-              <p className="text-sm text-muted-foreground">Certifications vertes</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-serif font-bold mb-12">Transformations Urbaines</h2>
-          <div className="space-y-6">
-            <div className="border border-border/50 rounded-lg p-6 hover:border-accent/50 transition-colors">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold">Métropole Sustainable - Singapour</h3>
-                  <p className="text-sm text-muted-foreground">Réaménagement zone centrale</p>
-                </div>
-                <span className="px-3 py-1 bg-accent/10 text-accent rounded text-xs font-semibold">€2.8B</span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                700 hectares. 50,000 logements LEED Platinum. Corridors verts continus, mobilité zéro-carbone, énergie 100% renouvelable.
-              </p>
-            </div>
-            <div className="border border-border/50 rounded-lg p-6 hover:border-accent/50 transition-colors">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold">Quartier du Caire - Revitalisation</h3>
-                  <p className="text-sm text-muted-foreground">Patrimoine + modernité</p>
-                </div>
-                <span className="px-3 py-1 bg-accent/10 text-accent rounded text-xs font-semibold">€1.5B</span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                Restauration architecte historique + infrastructures modernes. 200,000 habitants. Préservation patrimoine UNESCO.
-              </p>
-            </div>
-            <div className="border border-border/50 rounded-lg p-6 hover:border-accent/50 transition-colors">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold">Barcelona Green Belt</h3>
-                  <p className="text-sm text-muted-foreground">Espaces publics durables</p>
-                </div>
-                <span className="px-3 py-1 bg-accent/10 text-accent rounded text-xs font-semibold">€680M</span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                85km de parcs linéaires, forêts urbaines, espaces récréatifs. Impact : meilleure qualité de l'air, réduction île de chaleur.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Approach */}
-      <section className="py-20 bg-muted/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-serif font-bold mb-12">Notre Approche Participative</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <Users className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Consultation Citoyens</h3>
-              <p className="text-muted-foreground">
-                Ateliers participatifs, sondages locaux, implication des communautés dans chaque phase de design.
-              </p>
-            </div>
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <Leaf className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Durabilité Intégrée</h3>
-              <p className="text-muted-foreground">
-                Objectifs Net-Zéro, biodiversité positive, économie circulaire et mobilité décarbonée.
-              </p>
-            </div>
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <Zap className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Technologie Smart City</h3>
-              <p className="text-muted-foreground">
-                IoT, éclairage intelligent, gestion trafic, systèmes d'energie distribuée et données temps réel.
-              </p>
-            </div>
-            <div className="bg-background border border-border/50 rounded-lg p-8">
-              <TrendingUp className="text-accent mb-4" size={28} />
-              <h3 className="text-lg font-semibold mb-3">Valeur Économique</h3>
-              <p className="text-muted-foreground">
-                Augmentation valeur propriétés, création emplois, économies long terme et attractivité ville.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-accent/5 border-y border-border/50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl font-serif font-bold mb-4">Transformer Votre Ville</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            156+ projets urbains. 15 millions de personnes impactées. Villes plus vertes, plus intelligentes, plus humaines.
-          </p>
-          <a href="/contact" className="inline-block px-8 py-3 bg-accent text-accent-foreground rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
-            Parlons Développement Urbain
-          </a>
+          <Link 
+            href="/contact"
+            className="inline-flex items-center gap-6 px-16 py-8 bg-[#C9826B] hover:bg-[#E89A7A] text-[#0a0906] rounded-3xl text-2xl font-medium transition-all hover:shadow-2xl"
+          >
+            Parlons de votre projet urbain
+            <ArrowRight size={32} />
+          </Link>
         </div>
       </section>
     </>

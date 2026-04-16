@@ -1,365 +1,314 @@
 'use client'
 
-import { motion, useViewportScroll, useTransform } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, MapPin, Users, Clock, Award } from 'lucide-react'
-import { useRef, useEffect, useState } from 'react'
+import { ArrowRight } from 'lucide-react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import { caseStudies } from '@/lib/data'
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants = {
+// Variants
+const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: {
+  visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.23, 1, 0.32, 1],
-    },
-  },
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1], delay },
+  }),
 }
 
 interface ProjectCardProps {
   study: any
-  index: number
   isActive: boolean
 }
 
-function ProjectCard({ study, index, isActive }: ProjectCardProps) {
+function ProjectCard({ study, isActive }: ProjectCardProps) {
+  const stats = [
+    { label: 'Durée', value: study.duration },
+    { label: 'Équipe', value: `${study.team}+` },
+    { label: 'Budget', value: study.budget },
+  ]
+
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={isActive ? { opacity: 1, scale: 1 } : { opacity: 0.6, scale: 0.85 }}
-      transition={{ duration: 0.6 }}
-      className="relative h-full min-w-[90vw] sm:min-w-[85vw] md:min-w-[700px] flex-shrink-0 group cursor-pointer"
+      className="relative flex-shrink-0 w-[min(700px, 92vw)] h-[480px] group snap-center"
+      animate={{
+        scale: isActive ? 1.02 : 0.96,
+        opacity: isActive ? 1 : 0.82,
+      }}
+      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
     >
-      <Link href={`/case-study/${study.slug}`}>
-        {/* Card Wrapper */}
-        <div className="relative h-full rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl shadow-2xl hover:border-accent/30 transition-all duration-500">
-          {/* Background Image */}
+      <Link href={`/case-study/${study.slug}`} className="block h-full">
+        <div className="relative h-full rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group-hover:shadow-2xl transition-shadow duration-700">
+
+          {/* Image */}
           <motion.div
             className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${study.image})`,
-              backgroundPosition: 'center',
-            }}
-            initial={{ scale: 1.1, filter: 'blur(10px)' }}
-            animate={isActive ? { scale: 1.05, filter: 'blur(5px)' } : { scale: 1.1, filter: 'blur(10px)' }}
-            transition={{ duration: 0.8 }}
+            style={{ backgroundImage: `url(${study.image})` }}
+            animate={{ scale: isActive ? 1.04 : 1.08 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
           />
 
-          {/* Premium Overlay Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-transparent" />
 
-          {/* Top Glow Effect */}
+          {/* Accent line */}
           <motion.div
-            className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl"
-            initial={false}
+            className="absolute top-0 left-0 h-1 bg-gradient-to-r from-[#C9826B] to-[#E89A7A] z-10"
+            animate={{ width: isActive ? "100%" : "40%" }}
+            transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
           />
 
-          {/* Animated Border Glow */}
-          <motion.div
-            className="absolute inset-0 rounded-3xl border border-accent/0 group-hover:border-accent/40 transition-colors duration-700 pointer-events-none"
-            initial={false}
-          />
+          {/* Content */}
+          <div className="relative h-full flex flex-col justify-end p-10 z-20">
 
-          {/* Content Container */}
-          <div className="relative h-full flex flex-col justify-end p-6 sm:p-8 md:p-10 z-10">
-            {/* Top Accent Line */}
             <motion.div
-              className="absolute top-0 left-0 h-1 bg-gradient-to-r from-accent to-accent/0 rounded-full"
-              initial={{ width: '0%' }}
-              animate={isActive ? { width: '100%' } : { width: '0%' }}
-              transition={{ duration: 0.8 }}
-            />
-
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-              className="inline-flex w-fit items-center gap-2 mb-4 px-4 py-2 rounded-full bg-accent/20 border border-accent/40 backdrop-blur-sm"
+              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0.7, y: 15 }}
+              className="inline-flex items-center gap-3 mb-6"
             >
-              <Award size={16} className="text-accent" />
-              <span className="text-xs font-semibold text-accent uppercase tracking-wide">{study.client}</span>
+              <div className="w-2.5 h-2.5 rounded-full bg-[#C9826B]" />
+              <span className="text-xs font-semibold tracking-[2px] text-[#C9826B] uppercase">
+                {study.client}
+              </span>
             </motion.div>
 
-            {/* Title */}
             <motion.h3
-              className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-3 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0.7, y: 10 }}
-              transition={{ delay: 0.15, duration: 0.6 }}
+              className="font-serif text-[clamp(28px,4.2vw,44px)] leading-tight font-medium text-white mb-5"
+              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0.9, y: 10 }}
             >
               {study.title}
             </motion.h3>
 
-            {/* Subtitle */}
             <motion.p
-              className="text-lg text-white/90 font-light mb-6 max-w-xl leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0.6, y: 10 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-[17px] text-white/90 leading-relaxed max-w-md mb-8"
+              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0.75, y: 12 }}
             >
               {study.highlights}
             </motion.p>
 
-            {/* Stats Row */}
-            <motion.div
-              className="flex flex-wrap gap-4 md:gap-6 mb-6"
-              initial={{ opacity: 0 }}
-              animate={isActive ? { opacity: 1 } : { opacity: 0.5 }}
-              transition={{ delay: 0.25, duration: 0.6 }}
-            >
-              {[
-                { icon: Clock, label: 'Durée', value: study.duration },
-                { icon: Users, label: 'Équipe', value: `${study.team}+` },
-                { icon: Award, label: 'Budget', value: study.budget },
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  className="flex items-center gap-2"
-                  animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0.6, x: -5 }}
-                  transition={{ delay: 0.3 + i * 0.05, duration: 0.6 }}
-                >
-                  <stat.icon size={16} className="text-accent" />
-                  <span className="text-sm text-white/80">
-                    <span className="font-semibold text-white">{stat.value}</span> {stat.label}
-                  </span>
-                </motion.div>
+            {/* Stats */}
+            <div className="flex gap-10 mb-10">
+              {stats.map((stat, i) => (
+                <div key={i}>
+                  <div className="text-3xl font-medium text-white tracking-tighter">{stat.value}</div>
+                  <div className="text-xs uppercase tracking-widest text-white/60 mt-1.5">{stat.label}</div>
+                </div>
               ))}
-            </motion.div>
+            </div>
 
             {/* CTA */}
-            <motion.div
-              className="flex items-center gap-3 text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              initial={{ opacity: 0, x: -10 }}
-              animate={isActive ? { opacity: 0 } : { opacity: 0 }}
-              whileHover={{ gap: 12 }}
-            >
-              <span>Découvrir</span>
-              <motion.div animate={{ x: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-                <ArrowRight size={20} />
-              </motion.div>
-            </motion.div>
+            <div className="flex items-center gap-4 text-white group-hover:text-[#C9826B] transition-colors">
+              <span className="font-medium">Découvrir le projet</span>
+              <div className="w-10 h-10 rounded-2xl border border-white/70 flex items-center justify-center group-hover:bg-white group-hover:border-[#C9826B]">
+                <ArrowRight size={20} className="group-hover:text-[#C9826B]" />
+              </div>
+            </div>
           </div>
-
-          {/* Shimmer Effect */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl"
-            initial={false}
-            animate={{ x: ['100%', '-100%'] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-          />
         </div>
       </Link>
     </motion.div>
   )
 }
 
+// ====================== MAIN COMPONENT ======================
+
 export function ProjectsShowcase() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(true)
+  const [isHovered, setIsHovered] = useState(false)
+  const [canLeft, setCanLeft] = useState(false)
+  const [canRight, setCanRight] = useState(true)
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (containerRef.current) {
-      const scrollAmount = 400
-      const newScroll = containerRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount)
-      containerRef.current.scrollTo({ left: newScroll, behavior: 'smooth' })
-    }
+  const total = caseStudies.length
+  const autoScrollInterval = useRef<NodeJS.Timeout | null>(null)
+
+  // Auto-scroll continu très fluide
+  const startAutoScroll = useCallback(() => {
+    if (autoScrollInterval.current) clearInterval(autoScrollInterval.current)
+
+    autoScrollInterval.current = setInterval(() => {
+      if (isHovered || !trackRef.current) return
+
+      setActiveIndex((prev) => {
+        const next = (prev + 1) % total
+        scrollToIndex(next)
+        return next
+      })
+    }, 4200) // Toutes les 4.2 secondes (rythme professionnel)
+  }, [isHovered, total])
+
+  const scrollToIndex = (index: number) => {
+    if (!trackRef.current) return
+    const card = trackRef.current.children[index] as HTMLElement
+    if (!card) return
+
+    const scrollPosition = card.offsetLeft - (window.innerWidth - card.offsetWidth) / 2 + 20
+
+    trackRef.current.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    })
   }
 
+  const go = (direction: -1 | 1) => {
+    const next = (activeIndex + direction + total) % total
+    setActiveIndex(next)
+    scrollToIndex(next)
+  }
+
+  // Détection du scroll manuel + mise à jour activeIndex
   const handleScroll = () => {
-    if (containerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current
-      setCanScrollLeft(scrollLeft > 0)
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10)
+    if (!trackRef.current) return
+    const { scrollLeft, scrollWidth, clientWidth } = trackRef.current
 
-      // Update active index based on scroll position
-      const cardWidth = 400
-      const newIndex = Math.round(scrollLeft / cardWidth)
-      setActiveIndex(Math.min(newIndex, caseStudies.length - 1))
-    }
+    setCanLeft(scrollLeft > 50)
+    setCanRight(scrollLeft < scrollWidth - clientWidth - 50)
+
+    let closest = 0
+    let minDist = Infinity
+
+    Array.from(trackRef.current.children).forEach((child, i) => {
+      const el = child as HTMLElement
+      const dist = Math.abs(el.offsetLeft - scrollLeft)
+      if (dist < minDist) {
+        minDist = dist
+        closest = i
+      }
+    })
+    setActiveIndex(closest)
   }
 
+  // Gestion du hover (pause / reprise)
   useEffect(() => {
-    const container = containerRef.current
-    container?.addEventListener('scroll', handleScroll)
-    handleScroll()
-    return () => container?.removeEventListener('scroll', handleScroll)
-  }, [])
+    if (isHovered) {
+      if (autoScrollInterval.current) clearInterval(autoScrollInterval.current)
+    } else {
+      startAutoScroll()
+    }
+  }, [isHovered, startAutoScroll])
+
+  // Initialisation
+  useEffect(() => {
+    startAutoScroll()
+    const el = trackRef.current
+    el?.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      if (autoScrollInterval.current) clearInterval(autoScrollInterval.current)
+      el?.removeEventListener('scroll', handleScroll)
+    }
+  }, [startAutoScroll])
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden bg-background">
-      {/* Premium Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-1/2 -left-1/2 w-full h-full bg-accent/10 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 180, 270, 360] }}
-          transition={{ duration: 40, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-1/3 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
-          animate={{ x: [0, 50, 0], y: [0, -50, 0], scale: [1, 1.3, 1] }}
-          transition={{ duration: 25, repeat: Infinity, delay: 2 }}
-        />
-      </div>
+    <section className="relative py-28 px-6 bg-white overflow-hidden">
+      {/* Ambient light elements */}
+      <motion.div
+        className="absolute top-0 left-1/3 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(201,130,107,0.04) 0%, transparent 70%)' }}
+        animate={{ scale: [1, 1.15, 1] }}
+        transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut' }}
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Premium Header */}
+
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="text-center mb-20"
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-16"
         >
-          <motion.div
-            className="flex items-center gap-3 mb-6"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-            >
-              <Award className="w-5 h-5 text-accent" />
-            </motion.div>
-            <span className="text-xs font-semibold text-accent uppercase tracking-[0.15em]">PROJETS SÉLECTIONNÉS</span>
+          <motion.div variants={fadeUp} custom={0} className="mb-6">
+            <span className="inline-block px-6 py-2 rounded-full border border-[#C9826B]/20 text-[#C9826B] text-sm tracking-[3px] font-medium">
+              NOS RÉALISATIONS
+            </span>
           </motion.div>
 
           <motion.h2
-            className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            variants={fadeUp}
+            custom={0.1}
+            className="font-serif text-[clamp(52px,7.5vw,82px)] leading-none font-light text-gray-950 mb-6"
           >
-            Nos Réalisations <br />
-            <motion.span
-              className="bg-gradient-to-r from-accent via-accent/70 to-accent bg-clip-text text-transparent"
-              animate={{ backgroundPosition: '0% 50%' }}
-              transition={{ duration: 8, repeat: Infinity }}
-            >
-              Qui Parlent d'Elles
-            </motion.span>
+            Des projets <span className="text-[#C9826B]">d’exception</span>
           </motion.h2>
 
           <motion.p
-            className="text-lg text-muted-foreground font-light max-w-2xl leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            variants={fadeUp}
+            custom={0.2}
+            className="max-w-xl mx-auto text-xl text-gray-600"
           >
-            Explorez nos projets emblématiques : défis géologiques complexes relevés, délais respectés, sécurité garantie. Chaque projet raconte une histoire d'innovation et d'excellence.
+            Chaque réalisation reflète notre engagement pour l’excellence technique et esthétique.
           </motion.p>
         </motion.div>
 
-        {/* Horizontal Scroll Container */}
-        <div className="relative group">
-          {/* Scroll Container */}
+        {/* Scroll Container */}
+        <div
+          className="relative"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           <div
-            ref={containerRef}
-            className="flex gap-6 overflow-x-auto scroll-smooth pb-4 -mx-6 px-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-            style={{ scrollBehavior: 'smooth' }}
+            ref={trackRef}
+            className="flex gap-10 overflow-x-auto pb-16 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {caseStudies.map((study, index) => (
+            {caseStudies.map((study, i) => (
               <ProjectCard
                 key={study.id}
                 study={study}
-                index={index}
-                isActive={index === activeIndex}
+                isActive={i === activeIndex}
               />
             ))}
           </div>
 
-          {/* Navigation Buttons */}
-          <motion.button
-            onClick={() => scroll('left')}
-            disabled={!canScrollLeft}
-            className="absolute -left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-accent/40 to-accent/10 border border-accent/30 text-accent hover:border-accent/60 hover:from-accent/60 transition-all disabled:opacity-30 disabled:cursor-not-allowed z-20 flex items-center justify-center backdrop-blur-md"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </motion.button>
+          {/* Navigation Controls */}
+          <div className="flex justify-between items-center px-6 mt-4">
+            <div className="flex gap-3">
+              {caseStudies.map((_, i) => (
+                <motion.button
+                  key={i}
+                  onClick={() => {
+                    setActiveIndex(i)
+                    scrollToIndex(i)
+                  }}
+                  className="h-1 rounded-full bg-gray-200 transition-all"
+                  animate={{
+                    width: i === activeIndex ? 52 : 14,
+                    backgroundColor: i === activeIndex ? '#C9826B' : '#e5e7eb'
+                  }}
+                />
+              ))}
+            </div>
 
-          <motion.button
-            onClick={() => scroll('right')}
-            disabled={!canScrollRight}
-            className="absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-accent/40 to-accent/10 border border-accent/30 text-accent hover:border-accent/60 hover:from-accent/60 transition-all disabled:opacity-30 disabled:cursor-not-allowed z-20 flex items-center justify-center backdrop-blur-md"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </motion.button>
-
-          {/* Scroll Indicators */}
-          <motion.div
-            className="absolute -bottom-16 left-0 right-0 flex justify-center gap-2"
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-          >
-            {caseStudies.map((_, i) => (
+            <div className="flex gap-4">
               <motion.button
-                key={i}
-                onClick={() => {
-                  if (containerRef.current) {
-                    const scrollAmount = i * 400
-                    containerRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' })
-                  }
-                }}
-                className={`h-2 rounded-full transition-all ${
-                  i === activeIndex ? 'w-8 bg-accent' : 'w-2 bg-accent/30 hover:bg-accent/50'
-                }`}
-                whileHover={{ scale: 1.2 }}
-              />
-            ))}
-          </motion.div>
+                onClick={() => go(-1)}
+                className="w-14 h-14 flex items-center justify-center rounded-2xl border border-gray-200 hover:border-gray-400 text-2xl text-gray-400 hover:text-gray-800 transition-all"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                ←
+              </motion.button>
+              <motion.button
+                onClick={() => go(1)}
+                className="w-14 h-14 flex items-center justify-center rounded-2xl border border-gray-200 hover:border-gray-400 text-2xl text-gray-400 hover:text-gray-800 transition-all"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                →
+              </motion.button>
+            </div>
+          </div>
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="mt-32 text-center"
-        >
+        {/* CTA */}
+        <motion.div className="mt-20 flex justify-center">
           <Link href="/contact">
             <motion.button
-              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-accent to-accent/70 text-white rounded-xl font-semibold shadow-lg hover:shadow-accent/50 overflow-hidden"
-              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(201, 130, 107, 0.8)' }}
-              whileTap={{ scale: 0.95 }}
+              className="group px-14 py-7 bg-[#C9826B] text-white text-lg font-medium rounded-3xl flex items-center gap-5 hover:bg-[#b56f5a] transition-all shadow-xl"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
             >
-              {/* Shimmer */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                animate={{ x: ['0%', '100%'] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-              <span className="relative flex items-center gap-2">
-                Discuter de Votre Projet
-                <motion.div animate={{ x: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-                  <ArrowRight size={20} />
-                </motion.div>
-              </span>
+              Discuter de votre projet
+              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={24} />
             </motion.button>
           </Link>
         </motion.div>
