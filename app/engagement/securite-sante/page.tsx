@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, cubicBezier } from 'framer-motion'
 import { Shield, CheckCircle2, AlertCircle, Users, Target, Zap, Award, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
@@ -9,7 +9,7 @@ const fadeUp = {
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 1, ease: [0.23, 1, 0.32, 1], delay },
+    transition: { duration: 1, ease: cubicBezier(0.23, 1, 0.32, 1), delay },
   }),
 }
 
