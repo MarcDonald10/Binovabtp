@@ -2,195 +2,281 @@
 
 import { motion, cubicBezier } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Zap, Target, Shield, Users, Award, TrendingUp } from 'lucide-react'
+import { ArrowRight, Zap, Target, Shield, Users, TrendingUp, Award, ChevronRight } from 'lucide-react'
+
+// Add to layout.tsx <head>:
+// <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+const ease = cubicBezier(0.23, 1, 0.32, 1)
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 70 },
+  hidden: { opacity: 0, y: 60 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 1, ease: cubicBezier(0.23, 1, 0.32, 1), delay },
+    transition: { duration: 0.9, ease, delay },
   }),
 }
 
-export default function TravauxSouterrainMetierPage() {
-  return (
-    <>
-      {/* ==================== HERO SECTION ==================== */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-[#0a0906] text-white">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1581092160607-5d9c2d6c4b6e?q=80&w=2070')`, // Image tunnel / travaux souterrains
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
+// ── Brand tokens ──────────────────────────────────────────────
+const S   = '#2A2A2A'   // anthracite (primary)
+const SL  = '#707070'   // slate (accent)
+const GD  = '#C9A84C'   // gold highlight
+const BK  = '#0B0B0B'
+const LBG = '#F2F2F0'
+const TG  = '#6B6B6B'
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.div 
-              variants={fadeUp}
-              custom={0}
-              className="inline-flex items-center gap-4 text-[#E89A7A] tracking-[4px] text-sm font-medium mb-6"
-            >
-              <div className="h-px w-16 bg-current" />
-              TRAVAUX SOUTERRAINS
-              <div className="h-px w-16 bg-current" />
+export default function TravauxSouterrainPage() {
+  return (
+    <div style={{ fontFamily: "'Poppins', sans-serif" }}>
+
+      {/* ══════════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════════ */}
+      <section style={{
+        position: 'relative', minHeight: '92vh',
+        display: 'flex', alignItems: 'center',
+        background: BK, overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070')`,
+          backgroundSize: 'cover', backgroundPosition: 'center',
+          filter: 'brightness(0.28)',
+        }} />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: `linear-gradient(150deg, rgba(11,11,11,0.92) 40%, rgba(42,42,42,0.50) 100%)`,
+        }} />
+        <div style={{
+          position: 'absolute', left: 0, top: 0, bottom: 0,
+          width: 6,
+          background: `linear-gradient(to bottom, ${GD}, ${SL})`,
+        }} />
+
+        <div style={{ position: 'relative', zIndex: 10, maxWidth: 1200, margin: '0 auto', padding: '0 40px' }}>
+          <motion.div initial="hidden" animate="visible">
+
+            <motion.div variants={fadeUp} custom={0} style={{
+              display: 'inline-flex', alignItems: 'center', gap: 12,
+              color: GD, letterSpacing: 4, fontSize: 12, fontWeight: 600,
+              textTransform: 'uppercase', marginBottom: 28,
+            }}>
+              <div style={{ height: 2, width: 40, background: GD }} />
+              TRAVAUX SOUTERRAINS — BINOVA ROCK BUILDERS
+              <div style={{ height: 2, width: 40, background: GD }} />
             </motion.div>
 
-            <motion.h1 
-              variants={fadeUp}
-              custom={0.1}
-              className="font-serif text-[clamp(54px,8.5vw,92px)] leading-[1.02] font-light mb-8"
-            >
+            <motion.h1 variants={fadeUp} custom={0.1} style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: 'clamp(46px, 7.5vw, 88px)',
+              fontWeight: 700, lineHeight: 1.05,
+              color: '#fff', marginBottom: 28, maxWidth: 860,
+            }}>
               Maîtriser la profondeur.<br />
-              Construire l’avenir.
+              Construire l'<span style={{ color: GD }}>avenir</span>.
             </motion.h1>
 
-            <motion.p 
-              variants={fadeUp}
-              custom={0.3}
-              className="max-w-3xl text-2xl text-white/90 font-light leading-relaxed"
-            >
-              Grâce à nos équipes expérimentées et à notre maîtrise des techniques les plus avancées 
-              (tunneliers, minage de précision, soutènements complexes), nous intervenons sur tous types 
-              de terrains et dans les conditions les plus exigeantes.
+            <motion.p variants={fadeUp} custom={0.25} style={{
+              maxWidth: 620, fontSize: 20, color: 'rgba(255,255,255,0.82)',
+              fontWeight: 300, lineHeight: 1.7, marginBottom: 48,
+            }}>
+              Tunneliers, minage de précision, soutènements complexes : nous intervenons sur tous types
+              de terrains et dans les conditions géologiques les plus exigeantes.
             </motion.p>
+
+            <motion.div variants={fadeUp} custom={0.38} style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              <Link href="/contact" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                padding: '16px 36px', borderRadius: 8,
+                background: S, color: '#fff',
+                fontSize: 16, fontWeight: 600, textDecoration: 'none',
+                boxShadow: `0 4px 24px rgba(42,42,42,0.6)`,
+                transition: 'background 0.2s, transform 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = SL; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = S; e.currentTarget.style.transform = 'translateY(0)' }}
+              >
+                Parlons de votre projet souterrain <ArrowRight size={18} />
+              </Link>
+
+              <Link href="#realisations" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                padding: '16px 36px', borderRadius: 8,
+                background: GD, color: BK,
+                fontSize: 16, fontWeight: 600, textDecoration: 'none',
+                transition: 'opacity 0.2s, transform 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)' }}
+              >
+                Voir nos réalisations
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
 
-        <motion.div 
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/70 flex flex-col items-center"
-          animate={{ y: [0, 15, 0] }}
+        <motion.div
+          style={{
+            position: 'absolute', bottom: 48, left: '50%', transform: 'translateX(-50%)',
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            color: 'rgba(255,255,255,0.6)',
+          }}
+          animate={{ y: [0, 14, 0] }}
           transition={{ duration: 3.5, repeat: Infinity }}
         >
-          <span className="text-xs tracking-widest">EXPLORER EN PROFONDEUR</span>
-          <div className="mt-3 w-px h-16 bg-gradient-to-b from-transparent via-white/60 to-transparent" />
+          <span style={{ fontSize: 10, letterSpacing: 4, fontWeight: 600, textTransform: 'uppercase', marginBottom: 12 }}>
+            Explorer en profondeur
+          </span>
+          <div style={{ width: 1, height: 56, background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent)' }} />
         </motion.div>
+
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0,
+          background: `rgba(42,42,42,0.95)`, backdropFilter: 'blur(6px)',
+          padding: '14px 40px', display: 'flex', alignItems: 'center', gap: 48,
+          borderTop: `1px solid rgba(201,168,76,0.3)`,
+        }}>
+          {['156 tunnels complétés', '850+ km creusés', '28 ans sans accident mortel', '€45B de projets'].map((t, i) => (
+            <span key={i} style={{ color: 'rgba(255,255,255,0.85)', fontSize: 13, fontWeight: 500, whiteSpace: 'nowrap' }}>
+              <span style={{ color: GD, marginRight: 8 }}>◆</span>{t}
+            </span>
+          ))}
+        </div>
       </section>
 
-      {/* ==================== STATS ==================== */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* ══════════════════════════════════════════════════════
+          STATS
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: '100px 40px', background: '#fff' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+            style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 64 }}>
+            <div style={{ width: 4, height: 40, background: GD, borderRadius: 2 }} />
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 36, fontWeight: 700, color: BK }}>Nos Chiffres Clés</span>
+          </motion.div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
             {[
-              { value: "156", label: "Tunnels complétés", desc: "Tous types et géologies" },
-              { value: "850+", label: "Kilomètres creusés", desc: "Longueur totale réalisée" },
-              { value: "28 ans", label: "Sans accident mortel", desc: "Record de sécurité exemplaire" },
-              { value: "€45B", label: "Valeur des projets", desc: "Travaux souterrains" },
+              { value: '156',   label: 'Tunnels complétés',       desc: 'Tous types et toutes géologies',      accent: S  },
+              { value: '850+',  label: 'Kilomètres creusés',       desc: 'Longueur totale réalisée',            accent: SL },
+              { value: '28 ans',label: 'Sans accident mortel',     desc: 'Record de sécurité exemplaire',       accent: GD },
+              { value: '€45B',  label: 'Valeur des projets',       desc: 'Travaux souterrains réalisés',        accent: S  },
             ].map((stat, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                custom={i * 0.1}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="p-10 bg-white border border-gray-100 rounded-3xl hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+              <motion.div key={i} variants={fadeUp} custom={i * 0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                style={{
+                  padding: '40px 32px', borderRadius: 8,
+                  border: '1px solid #E8E8E8', background: '#fff',
+                  boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
+                  borderLeft: `4px solid ${stat.accent}`, cursor: 'default',
+                }}
+                whileHover={{ y: -6, boxShadow: '0 12px 40px rgba(0,0,0,0.12)' }}
               >
-                <div className="text-6xl font-serif font-light text-[#C9826B] mb-6 group-hover:scale-110 transition-transform">
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 52, fontWeight: 700, color: stat.accent, lineHeight: 1, marginBottom: 16 }}>
                   {stat.value}
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-3">{stat.label}</h3>
-                <p className="text-gray-600">{stat.desc}</p>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: BK, marginBottom: 8 }}>{stat.label}</h3>
+                <p style={{ fontSize: 14, color: TG, fontWeight: 300 }}>{stat.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ==================== DOMAINES DE MAÎTRISE ==================== */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-6xl font-light text-gray-950">Nos Domaines de Maîtrise</h2>
-          </div>
+      {/* ══════════════════════════════════════════════════════
+          DOMAINES DE MAÎTRISE
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: '100px 40px', background: LBG }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: 64 }}>
+            <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: 4, color: S, textTransform: 'uppercase', marginBottom: 16 }}>Ce que nous faisons</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 48, fontWeight: 700, color: BK, lineHeight: 1.15 }}>Nos Domaines de Maîtrise</h2>
+            <div style={{ width: 64, height: 4, background: GD, borderRadius: 2, margin: '24px auto 0' }} />
+          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
             {[
-              {
-                icon: Zap,
-                title: "Tunnelage par Tunnelier (TBM)",
-                desc: "Tunnel boring machines de 6 à 12 mètres de diamètre. Percement en géologies complexes avec gestion des pressions et consolidations adaptées."
-              },
-              {
-                icon: Target,
-                title: "Excavation Contrôlée & Minage",
-                desc: "Minage de précision, utilisation d’explosifs écologiques, contrôle strict des vibrations et protection des structures environnantes."
-              },
-              {
-                icon: Shield,
-                title: "Géotechnique & Soutènement Avancé",
-                desc: "Soutènements complexes, contrôle des tassements, consolidation sol-roche et prévention des effondrements en environnement urbain ou montagneux."
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                custom={i * 0.15}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-white p-12 rounded-3xl border border-gray-100 hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+              { Icon: Zap,    title: 'Tunnelage par Tunnelier (TBM)', desc: 'Tunnel boring machines de 6 à 12 mètres de diamètre. Percement en géologies complexes avec gestion des pressions et consolidations adaptées en temps réel.', color: S  },
+              { Icon: Target, title: 'Excavation Contrôlée & Minage', desc: 'Minage de précision, explosifs de nouvelle génération, contrôle strict des vibrations et protection rigoureuse des structures environnantes.', color: SL },
+              { Icon: Shield, title: 'Géotechnique & Soutènement',    desc: 'Soutènements complexes, contrôle des tassements, consolidation sol-roche et prévention des effondrements en environnement urbain ou montagneux.', color: GD },
+            ].map(({ Icon, title, desc, color }, i) => (
+              <motion.div key={i} variants={fadeUp} custom={i * 0.12} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                style={{
+                  background: '#fff', borderRadius: 8, padding: '48px 36px',
+                  border: '1px solid #E8E8E8', boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
+                  position: 'relative', overflow: 'hidden', cursor: 'default',
+                }}
+                whileHover={{ y: -6, boxShadow: '0 16px 48px rgba(0,0,0,0.12)' }}
               >
-                <div className="w-20 h-20 rounded-2xl bg-[#C9826B]/10 flex items-center justify-center mb-10 group-hover:bg-[#C9826B] group-hover:text-white transition-all">
-                  <item.icon size={42} />
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: color }} />
+                <div style={{ width: 64, height: 64, borderRadius: 8, background: `${color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 28, color: color }}>
+                  <Icon size={32} />
                 </div>
-                <h3 className="text-3xl font-semibold text-gray-900 mb-6">{item.title}</h3>
-                <p className="text-gray-700 text-[17px] leading-relaxed">{item.desc}</p>
+                <h3 style={{ fontSize: 22, fontWeight: 600, color: BK, marginBottom: 16 }}>{title}</h3>
+                <p style={{ fontSize: 15, color: TG, lineHeight: 1.75, fontWeight: 300 }}>{desc}</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: color, fontWeight: 600, fontSize: 14, marginTop: 28 }}>
+                  En savoir plus <ChevronRight size={16} />
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ==================== PROJETS EMBLÉMATIQUES ==================== */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="font-serif text-6xl font-light text-center mb-16">Projets Emblématiques</h2>
+      {/* ══════════════════════════════════════════════════════
+          RÉALISATIONS
+      ══════════════════════════════════════════════════════ */}
+      <section id="realisations" style={{ padding: '100px 40px', background: '#fff' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: 64 }}>
+            <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: 4, color: S, textTransform: 'uppercase', marginBottom: 16 }}>Portfolio sélectif</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 48, fontWeight: 700, color: BK, lineHeight: 1.15 }}>Projets Souterrains Emblématiques</h2>
+            <div style={{ width: 64, height: 4, background: GD, borderRadius: 2, marginTop: 24 }} />
+          </motion.div>
 
-          <div className="space-y-12 max-w-5xl mx-auto">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             {[
               {
-                title: "Lyon-Turin : Base Tunnel",
-                location: "France – Italie",
-                value: "€12.5B",
-                desc: "Plus long tunnel ferroviaire d’Europe (58 km). Conditions géologiques extrêmes, TBM de 9,58 m et coordination binationale exemplaire."
+                num: '01', title: 'Lyon-Turin : Base Tunnel', value: '€12.5B',
+                desc: 'Plus long tunnel ferroviaire d\'Europe à 58 km. Conditions géologiques extrêmes, TBM de 9,58 m de diamètre et coordination binationale exemplaire sur toute la durée du chantier.',
+                tags: ['58 km', 'TBM 9.58 m', 'Europe'], accent: S,
               },
               {
-                title: "Extensions du Métro de Bangkok",
-                location: "Thaïlande",
-                value: "€3.2B",
-                desc: "5 tunnels entrelacés sous une ville ultra-dense. Excavation avec TBM multi-usages et protection rigoureuse des bâtiments environnants."
+                num: '02', title: 'Extensions du Métro de Bangkok', value: '€3.2B',
+                desc: '5 tunnels entrelacés sous une ville ultra-dense. Excavation multi-usages avec TBM et protection rigoureuse de 2 500 bâtiments environnants par monitoring continu.',
+                tags: ['5 tunnels', 'Milieu urbain dense', 'SCADA'], accent: SL,
               },
               {
-                title: "Mine d’Or Souterraine – Afrique",
-                location: "Burkina Faso",
-                value: "€1.8B",
-                desc: "Réseau de galeries à plus de 3 500 m de profondeur. 400 000 tonnes/an extraites avec un taux de récupération de 91 % et sécurité maximale."
+                num: '03', title: 'Mine d\'Or Souterraine – Burkina Faso', value: '€1.8B',
+                desc: 'Réseau de galeries à plus de 3 500 m de profondeur. 400 000 tonnes extraites par an avec un taux de récupération de 91% et des standards de sécurité internationaux.',
+                tags: ['3 500 m', '91% récupération', '400k t/an'], accent: GD,
               },
             ].map((project, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-gray-50 rounded-3xl p-12 md:p-16 border border-gray-100 hover:border-[#C9826B]/30 transition-all"
+              <motion.div key={i}
+                initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.7, ease }}
+                style={{
+                  background: '#fff', borderRadius: 8, padding: '40px 48px',
+                  border: '1px solid #E8E8E8', boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
+                  display: 'flex', alignItems: 'center', gap: 48,
+                  borderLeft: `6px solid ${project.accent}`,
+                }}
               >
-                <div className="flex flex-col md:flex-row justify-between gap-10">
-                  <div className="flex-1">
-                    <h3 className="text-3xl font-semibold text-gray-900 mb-2">{project.title}</h3>
-                    <p className="text-gray-600 mb-6">{project.location}</p>
-                    <p className="text-gray-700 text-[17.5px] leading-relaxed">{project.desc}</p>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 64, fontWeight: 700, color: `${project.accent}22`, lineHeight: 1, minWidth: 80, textAlign: 'center', userSelect: 'none' }}>
+                  {project.num}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ fontSize: 22, fontWeight: 600, color: BK, marginBottom: 12 }}>{project.title}</h3>
+                  <p style={{ fontSize: 15, color: TG, lineHeight: 1.7, fontWeight: 300, marginBottom: 16 }}>{project.desc}</p>
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    {project.tags.map(t => (
+                      <span key={t} style={{ padding: '4px 12px', borderRadius: 4, background: `${project.accent}15`, color: project.accent, fontSize: 12, fontWeight: 600, letterSpacing: 1 }}>{t}</span>
+                    ))}
                   </div>
-                  <div className="text-right self-start">
-                    <div className="text-[#C9826B] text-4xl font-light font-serif">{project.value}</div>
-                  </div>
+                </div>
+                <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 40, fontWeight: 700, color: project.accent, lineHeight: 1 }}>{project.value}</div>
+                  <div style={{ fontSize: 12, color: TG, fontWeight: 500, marginTop: 6, textTransform: 'uppercase', letterSpacing: 2 }}>Valeur du projet</div>
                 </div>
               </motion.div>
             ))}
@@ -198,74 +284,94 @@ export default function TravauxSouterrainMetierPage() {
         </div>
       </section>
 
-      {/* ==================== EXCELLENCE TECHNIQUE ==================== */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="font-serif text-6xl font-light text-center mb-16">Excellence Technique</h2>
+      {/* ══════════════════════════════════════════════════════
+          EXCELLENCE TECHNIQUE
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: '100px 40px', background: LBG }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: 64 }}>
+            <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: 4, color: S, textTransform: 'uppercase', marginBottom: 16 }}>Méthodologie</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 48, fontWeight: 700, color: BK, lineHeight: 1.15 }}>Excellence Technique</h2>
+            <div style={{ width: 64, height: 4, background: GD, borderRadius: 2, margin: '24px auto 0' }} />
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24, maxWidth: 1100, margin: '0 auto' }}>
             {[
-              {
-                icon: Users,
-                title: "Équipes Hautement Spécialisées",
-                desc: "Plus de 150 ingénieurs et techniciens certifiés en tunnelage. Experts en géologie, hydrogéologie, structures et sismique."
-              },
-              {
-                icon: TrendingUp,
-                title: "Monitoring en Temps Réel",
-                desc: "Plus de 1 000 capteurs par tunnel. Surveillance continue des déformations, pressions d’eau, vibrations et stabilité."
-              },
-              {
-                icon: Award,
-                title: "Gestion des Risques",
-                desc: "Plans d’urgence détaillés, simulations d’incidents et protocoles de sécurité renforcés."
-              },
-              {
-                icon: Shield,
-                title: "Sécurité Absolue",
-                desc: "28 ans sans accident mortel. Ventilation active, systèmes de sauvetage et formations SSE continues."
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                custom={i * 0.15}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-white p-10 rounded-3xl border border-gray-100 hover:shadow-xl hover:border-[#C9826B]/30 transition-all group"
+              { Icon: Users,     title: 'Équipes Hautement Spécialisées', desc: 'Plus de 150 ingénieurs certifiés en tunnelage. Experts en géologie, hydrogéologie, structures et sismique pour chaque projet.', color: S  },
+              { Icon: TrendingUp, title: 'Monitoring en Temps Réel',      desc: 'Plus de 1 000 capteurs par tunnel. Surveillance continue des déformations, pressions, vibrations et stabilité structurelle.', color: SL },
+              { Icon: Award,     title: 'Gestion des Risques',            desc: 'Plans d\'urgence détaillés, simulations d\'incidents régulières et protocoles de sécurité conformes aux normes internationales.', color: GD },
+              { Icon: Shield,    title: 'Sécurité Absolue',               desc: '28 ans sans accident mortel. Ventilation active, systèmes de sauvetage de pointe et formations SSE continues pour toutes les équipes.', color: S  },
+            ].map(({ Icon, title, desc, color }, i) => (
+              <motion.div key={i} variants={fadeUp} custom={i * 0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                style={{
+                  background: '#fff', borderRadius: 8, padding: '40px 32px',
+                  border: '1px solid #E8E8E8', boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
+                  position: 'relative', overflow: 'hidden', cursor: 'default',
+                }}
+                whileHover={{ y: -6, boxShadow: '0 16px 48px rgba(0,0,0,0.12)' }}
               >
-                <div className="w-16 h-16 rounded-2xl bg-[#C9826B]/10 flex items-center justify-center mb-8 group-hover:bg-[#C9826B] group-hover:text-white transition-all">
-                  <item.icon size={36} />
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: color }} />
+                <div style={{ width: 56, height: 56, borderRadius: 8, background: `${color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24, color: color }}>
+                  <Icon size={28} />
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-5">{item.title}</h3>
-                <p className="text-gray-700 leading-relaxed">{item.desc}</p>
+                <h3 style={{ fontSize: 20, fontWeight: 600, color: BK, marginBottom: 12 }}>{title}</h3>
+                <p style={{ fontSize: 14, color: TG, lineHeight: 1.75, fontWeight: 300 }}>{desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ==================== FINAL CTA ==================== */}
-      <section className="py-28 bg-[#0a0906] text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-6xl font-light leading-tight mb-8">
-            Percer en profondeur.<br />
-            Construire avec maîtrise.
-          </h2>
-          <p className="text-2xl text-white/80 mb-12">
-            156 tunnels réalisés • 850+ km creusés • 28 ans de sécurité exemplaire
-          </p>
+      {/* ══════════════════════════════════════════════════════
+          CTA
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: '120px 40px', background: BK, position: 'relative', overflow: 'hidden' }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070')`,
+          backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.12)',
+        }} />
+        <div style={{ position: 'absolute', top: -80, right: -80, width: 400, height: 400, borderRadius: '50%', border: `80px solid rgba(112,112,112,0.08)`, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: -100, left: -60, width: 320, height: 320, borderRadius: '50%', border: `60px solid rgba(201,168,76,0.08)`, pointerEvents: 'none' }} />
 
-          <Link 
-            href="/contact"
-            className="inline-flex items-center gap-6 px-16 py-8 bg-[#C9826B] hover:bg-[#E89A7A] text-[#0a0906] rounded-3xl text-2xl font-medium transition-all hover:shadow-2xl"
-          >
-            Discuter de votre projet souterrain
-            <ArrowRight size={32} />
-          </Link>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <div style={{ display: 'inline-block', padding: '6px 20px', borderRadius: 4, background: GD, color: BK, fontSize: 12, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 32 }}>
+              Binova Rock Builders
+            </div>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 5.5vw, 64px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 24 }}>
+              Percer en profondeur.<br />Construire avec <span style={{ color: GD }}>maîtrise</span>.
+            </h2>
+            <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, fontWeight: 300, marginBottom: 56 }}>
+              156 tunnels réalisés. 850+ km creusés.<br />28 ans de sécurité exemplaire sans accident mortel.
+            </p>
+            <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/contact" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 12,
+                padding: '18px 44px', borderRadius: 8,
+                background: S, color: '#fff', fontSize: 17, fontWeight: 600, textDecoration: 'none',
+                boxShadow: `0 4px 32px rgba(42,42,42,0.6)`, transition: 'background 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = SL }}
+              onMouseLeave={e => { e.currentTarget.style.background = S }}
+              >
+                Discuter de votre projet souterrain <ArrowRight size={20} />
+              </Link>
+              <Link href="/about" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 12,
+                padding: '18px 44px', borderRadius: 8,
+                border: `2px solid rgba(255,255,255,0.25)`, color: '#fff',
+                fontSize: 17, fontWeight: 500, textDecoration: 'none', transition: 'border-color 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = GD }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)' }}
+              >
+                En savoir plus
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
