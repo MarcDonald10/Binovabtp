@@ -28,11 +28,11 @@ export function MajorClientsSection() {
             return (
               <div
                 key={idx}
-                className="p-6 border border-border/50 rounded-sm hover:border-accent/50 hover:bg-muted/30 transition-all group animate-fade-in-up flex flex-col items-center justify-center text-center cursor-pointer"
+                className="p-6 border border-border/50 rounded-sm hover:border-[#1E5D3B]/50 hover:bg-muted/30 transition-all group animate-fade-in-up flex flex-col items-center justify-center text-center cursor-pointer"
                 style={{ animationDelay: `${idx * 0.06}s` }}
               >
                 <div className="mb-3 group-hover:scale-110 transition-transform">
-                  <IconComponent size={40} className="text-accent mx-auto" />
+                  <IconComponent size={40} className="text-[#1E5D3B] mx-auto" />
                 </div>
                 <p className="font-semibold text-foreground text-sm">{client.name}</p>
                 <p className="text-xs text-muted-foreground font-light mt-1">{client.sector}</p>

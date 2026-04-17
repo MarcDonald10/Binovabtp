@@ -2,76 +2,171 @@
 
 import { motion, cubicBezier } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Landmark, Cog, Award, Users, Zap, Building2 } from 'lucide-react'
+import { ArrowRight, Landmark, Cog, Award, Users, Zap, Building2, ChevronRight } from 'lucide-react'
+
+// Google Fonts loaded via style tag — in Next.js, add to layout.tsx <head>
+// <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+const ease = cubicBezier(0.23, 1, 0.32, 1)
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 70 },
+  hidden: { opacity: 0, y: 60 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 1, ease: cubicBezier(0.23, 1, 0.32, 1), delay },
+    transition: { duration: 0.9, ease, delay },
   }),
 }
 
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    transition: { duration: 0.7, ease, delay },
+  }),
+}
+
+// ── Brand tokens ──────────────────────────────────────────────
+const G   = '#1E5D3B'   // Primary green
+const GL  = '#6BCB3D'   // Secondary green
+const Y   = '#F4B400'   // Accent yellow
+const R   = '#E53935'   // Accent red
+const BK  = '#0B0B0B'   // Black
+const LBG = '#F5F5F5'   // Light background
+const TG  = '#6B6B6B'   // Text gray
+
 export default function GenieCivilPage() {
   return (
-    <>
-      {/* ==================== HERO SECTION ==================== */}
-      <section className="relative min-h-[90vh] flex items-center bg-[#0a0906] text-white overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a392ad40?q=80&w=2070')`, // Pont iconique / ouvrage d'art
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" />
+    <div style={{ fontFamily: "'Poppins', sans-serif" }}>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.div 
-              variants={fadeUp}
-              custom={0}
-              className="inline-flex items-center gap-4 text-[#E89A7A] tracking-[4px] text-sm font-medium mb-6"
-            >
-              <div className="h-px w-16 bg-current" />
-              GÉNIE CIVIL & OUVRAGES D’ART
-              <div className="h-px w-16 bg-current" />
+      {/* ══════════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ position: 'relative', minHeight: '92vh', display: 'flex', alignItems: 'center', background: BK, overflow: 'hidden' }}>
+
+        {/* Background image */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a392ad40?q=80&w=2070')`,
+          backgroundSize: 'cover', backgroundPosition: 'center',
+          filter: 'brightness(0.38)',
+        }} />
+
+        {/* Green gradient overlay — bottom edge branding strip */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: `linear-gradient(160deg, rgba(11,11,11,0.85) 40%, rgba(30,93,59,0.55) 100%)`,
+        }} />
+
+        {/* Decorative accent bar */}
+        <div style={{
+          position: 'absolute', left: 0, top: 0, bottom: 0,
+          width: 6, background: `linear-gradient(to bottom, ${Y}, ${GL})`,
+        }} />
+
+        <div style={{ position: 'relative', zIndex: 10, maxWidth: 1200, margin: '0 auto', padding: '0 40px' }}>
+          <motion.div initial="hidden" animate="visible">
+
+            {/* Eyebrow */}
+            <motion.div variants={fadeUp} custom={0} style={{
+              display: 'inline-flex', alignItems: 'center', gap: 12,
+              color: Y, letterSpacing: 4, fontSize: 12, fontWeight: 600,
+              textTransform: 'uppercase', marginBottom: 28,
+            }}>
+              <div style={{ height: 2, width: 40, background: Y }} />
+              GÉNIE CIVIL & OUVRAGES D'ART — BINOVA ROCK BUILDERS
+              <div style={{ height: 2, width: 40, background: Y }} />
             </motion.div>
 
-            <motion.h1 
-              variants={fadeUp}
-              custom={0.1}
-              className="font-serif text-[clamp(54px,8.5vw,92px)] leading-[1.02] font-light mb-8"
-            >
-              Bâtir l’avenir<br />
-              avec <span className="text-[#E89A7A]">excellence structurelle</span>.
+            {/* Headline */}
+            <motion.h1 variants={fadeUp} custom={0.1} style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: 'clamp(46px, 7.5vw, 88px)',
+              fontWeight: 700, lineHeight: 1.05,
+              color: '#fff', marginBottom: 28, maxWidth: 900,
+            }}>
+              Bâtir l'avenir<br />
+              avec <span style={{ color: GL }}>excellence</span>{' '}
+              <span style={{ color: Y }}>structurelle</span>.
             </motion.h1>
 
-            <motion.p 
-              variants={fadeUp}
-              custom={0.3}
-              className="max-w-3xl text-2xl text-white/90 font-light leading-relaxed"
-            >
-              Nous concevons et réalisons des ouvrages d’art et infrastructures complexes 
+            {/* Sub */}
+            <motion.p variants={fadeUp} custom={0.25} style={{
+              maxWidth: 640, fontSize: 20, color: 'rgba(255,255,255,0.82)',
+              fontWeight: 300, lineHeight: 1.7, marginBottom: 48,
+            }}>
+              Nous concevons et réalisons des ouvrages d'art et infrastructures complexes
               qui allient performance technique, durabilité et élégance architecturale.
             </motion.p>
+
+            {/* CTAs */}
+            <motion.div variants={fadeUp} custom={0.38} style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              <Link href="/contact" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                padding: '16px 36px', borderRadius: 8,
+                background: G, color: '#fff',
+                fontSize: 16, fontWeight: 600, textDecoration: 'none',
+                transition: 'background 0.2s, transform 0.2s',
+                boxShadow: `0 4px 24px rgba(30,93,59,0.4)`,
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = GL; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = G; e.currentTarget.style.transform = 'translateY(0)' }}
+              >
+                Discuter de votre projet <ArrowRight size={18} />
+              </Link>
+
+              <Link href="#projets" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                padding: '16px 36px', borderRadius: 8,
+                background: Y, color: BK,
+                fontSize: 16, fontWeight: 600, textDecoration: 'none',
+                transition: 'opacity 0.2s, transform 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)' }}
+              >
+                Voir nos réalisations
+              </Link>
+            </motion.div>
           </motion.div>
+        </div>
+
+        {/* Bottom ticker band */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0,
+          background: `rgba(30,93,59,0.92)`, backdropFilter: 'blur(6px)',
+          padding: '14px 40px', display: 'flex', alignItems: 'center', gap: 48,
+          borderTop: `1px solid rgba(107,203,61,0.3)`,
+        }}>
+          {['Fondée en 1996', '28 ans d\'expertise', 'Certifiée ISO 9001', 'Présence internationale'].map((t, i) => (
+            <span key={i} style={{ color: 'rgba(255,255,255,0.85)', fontSize: 13, fontWeight: 500, whiteSpace: 'nowrap' }}>
+              <span style={{ color: Y, marginRight: 8 }}>◆</span>{t}
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* ==================== STATS ==================== */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* ══════════════════════════════════════════════════════
+          STATS
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: '100px 40px', background: '#fff' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+
+          {/* Section label */}
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+            style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 64 }}>
+            <div style={{ width: 4, height: 40, background: Y, borderRadius: 2 }} />
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 36, fontWeight: 700, color: BK }}>
+              Nos Chiffres Clés
+            </span>
+          </motion.div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
             {[
-              { value: "847", label: "Projets Livrés", desc: "En 28 ans d’expertise" },
-              { value: "€8.5B", label: "Valeur Totale", desc: "D’ouvrages réalisés" },
-              { value: "99.2%", label: "Taux de Succès", desc: "En délai et budget" },
-              { value: "250+", label: "Experts Permanents", desc: "Spécialisés par discipline" },
+              { value: "847", label: "Projets Livrés", desc: "En 28 ans d'expertise", accent: G },
+              { value: "€8.5B", label: "Valeur Totale", desc: "D'ouvrages réalisés", accent: GL },
+              { value: "99.2%", label: "Taux de Succès", desc: "En délai et budget", accent: Y },
+              { value: "250+", label: "Experts Permanents", desc: "Spécialisés par discipline", accent: G },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -80,125 +175,249 @@ export default function GenieCivilPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="p-10 border border-gray-100 rounded-3xl hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+                style={{
+                  padding: '40px 32px',
+                  borderRadius: 8,
+                  border: `1px solid #E8E8E8`,
+                  background: '#fff',
+                  boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  cursor: 'default',
+                  borderLeft: `4px solid ${stat.accent}`,
+                }}
+                whileHover={{ y: -6, boxShadow: '0 12px 40px rgba(0,0,0,0.12)' }}
               >
-                <div className="text-6xl font-serif font-light text-[#C9826B] mb-6 group-hover:scale-110 transition-transform">
+                <div style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: 56, fontWeight: 700,
+                  color: stat.accent, lineHeight: 1, marginBottom: 16,
+                }}>
                   {stat.value}
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-3">{stat.label}</h3>
-                <p className="text-gray-600">{stat.desc}</p>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: BK, marginBottom: 8 }}>{stat.label}</h3>
+                <p style={{ fontSize: 14, color: TG, fontWeight: 300 }}>{stat.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ==================== VISION & EXCELLENCE ==================== */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <h2 className="font-serif text-5xl font-light text-gray-950 mb-8">Notre Vision</h2>
-              <p className="text-2xl text-gray-700 leading-relaxed">
-                Développer des infrastructures solides et durables à travers les continents. 
-                Nous mobilisons les compétences les plus pointues et les outils les plus efficaces 
-                pour concevoir et réaliser les ouvrages les plus complexes.
-              </p>
-            </motion.div>
+      {/* ══════════════════════════════════════════════════════
+          VISION & EXCELLENCE (2-col editorial)
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: '100px 40px', background: LBG }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80 }}>
 
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <h2 className="font-serif text-5xl font-light text-gray-950 mb-8">L’Excellence</h2>
-              <p className="text-2xl text-gray-700 leading-relaxed">
-                L’excellence en génie civil signifie mobiliser les meilleures compétences, 
-                les matériaux les plus performants et des méthodes constructives innovantes 
-                pour garantir durabilité, sécurité et élégance structurelle.
-              </p>
+          {[
+            {
+              label: 'Notre Vision',
+              icon: '🔭',
+              text: `Développer des infrastructures solides et durables à travers les continents. Nous mobilisons les compétences les plus pointues et les outils les plus efficaces pour concevoir et réaliser les ouvrages les plus complexes.`,
+              accent: G,
+            },
+            {
+              label: "L'Excellence",
+              icon: '🏅',
+              text: `L'excellence en génie civil signifie mobiliser les meilleures compétences, les matériaux les plus performants et des méthodes constructives innovantes pour garantir durabilité, sécurité et élégance structurelle.`,
+              accent: GL,
+            },
+          ].map((block, i) => (
+            <motion.div key={i} variants={fadeUp} custom={i * 0.15} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+                <div style={{
+                  width: 48, height: 48, borderRadius: 8,
+                  background: block.accent, display: 'flex', alignItems: 'center',
+                  justifyContent: 'center', fontSize: 22,
+                }}>
+                  {block.icon}
+                </div>
+                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 34, fontWeight: 700, color: BK }}>
+                  {block.label}
+                </h2>
+              </div>
+              <div style={{ width: 48, height: 3, background: block.accent, borderRadius: 2, marginBottom: 24 }} />
+              <p style={{ fontSize: 17, color: '#444', lineHeight: 1.8, fontWeight: 300 }}>{block.text}</p>
             </motion.div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* ==================== DOMAINES D’EXPERTISE ==================== */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="font-serif text-6xl font-light text-center mb-16">Nos Domaines d’Expertise</h2>
+      {/* ══════════════════════════════════════════════════════
+          DOMAINES D'EXPERTISE
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: '100px 40px', background: '#fff' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: 64 }}>
+            <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: 4, color: G, textTransform: 'uppercase', marginBottom: 16 }}>Ce que nous faisons</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 48, fontWeight: 700, color: BK, lineHeight: 1.15 }}>
+              Nos Domaines d'Expertise
+            </h2>
+            <div style={{ width: 64, height: 4, background: Y, borderRadius: 2, margin: '24px auto 0' }} />
+          </motion.div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
             {[
               {
-                icon: Landmark,
+                Icon: Landmark,
                 title: "Ponts & Viaducs",
-                desc: "Conception et construction de ponts à longues travées, viaducs urbains et structures complexes en acier, béton précontraint et matériaux innovants."
+                desc: "Conception et construction de ponts à longues travées, viaducs urbains et structures complexes en acier, béton précontraint et matériaux innovants.",
+                color: G,
               },
               {
-                icon: Cog,
+                Icon: Cog,
                 title: "Infrastructures Énergétiques",
-                desc: "Postes électriques haute tension, fondations d’éoliennes, centrales hydroélectriques et ouvrages techniques liés à la transition énergétique."
+                desc: "Postes électriques haute tension, fondations d'éoliennes, centrales hydroélectriques et ouvrages techniques liés à la transition énergétique.",
+                color: GL,
               },
               {
-                icon: Award,
+                Icon: Award,
                 title: "Ouvrages Spécialisés",
-                desc: "Structures iconiques, monuments historiques, stades et ouvrages exigeant une précision millimétrée et des techniques constructives avancées."
+                desc: "Structures iconiques, monuments historiques, stades et ouvrages exigeant une précision millimétrée et des techniques constructives avancées.",
+                color: Y,
               },
-            ].map((item, i) => (
+            ].map(({ Icon, title, desc, color }, i) => (
               <motion.div
                 key={i}
                 variants={fadeUp}
-                custom={i * 0.15}
+                custom={i * 0.12}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="bg-white p-12 rounded-3xl border border-gray-100 hover:border-[#C9826B]/30 hover:shadow-2xl transition-all group"
+                style={{
+                  background: '#fff',
+                  borderRadius: 8,
+                  padding: '48px 36px',
+                  border: '1px solid #E8E8E8',
+                  boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  cursor: 'default',
+                  position: 'relative', overflow: 'hidden',
+                }}
+                whileHover={{ y: -6, boxShadow: '0 16px 48px rgba(0,0,0,0.12)' }}
               >
-                <div className="w-20 h-20 rounded-2xl bg-[#C9826B]/10 flex items-center justify-center mb-10 group-hover:bg-[#C9826B] group-hover:text-white transition-all">
-                  <item.icon size={42} />
+                {/* Top color bar */}
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: color }} />
+
+                <div style={{
+                  width: 64, height: 64, borderRadius: 8,
+                  background: `${color}18`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  marginBottom: 28, color: color,
+                }}>
+                  <Icon size={32} />
                 </div>
-                <h3 className="text-3xl font-semibold text-gray-900 mb-6">{item.title}</h3>
-                <p className="text-gray-700 text-[17px] leading-relaxed">{item.desc}</p>
+
+                <h3 style={{ fontSize: 22, fontWeight: 600, color: BK, marginBottom: 16 }}>{title}</h3>
+                <p style={{ fontSize: 15, color: TG, lineHeight: 1.75, fontWeight: 300 }}>{desc}</p>
+
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  color: color, fontWeight: 600, fontSize: 14, marginTop: 28,
+                }}>
+                  En savoir plus <ChevronRight size={16} />
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ==================== PROJETS EMBLÉMATIQUES ==================== */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="font-serif text-6xl font-light text-center mb-16">Projets Emblématiques</h2>
+      {/* ══════════════════════════════════════════════════════
+          PROJETS EMBLÉMATIQUES
+      ══════════════════════════════════════════════════════ */}
+      <section id="projets" style={{ padding: '100px 40px', background: LBG }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
 
-          <div className="space-y-16">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: 64 }}>
+            <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: 4, color: G, textTransform: 'uppercase', marginBottom: 16 }}>Portfolio sélectif</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 48, fontWeight: 700, color: BK, lineHeight: 1.15 }}>
+              Projets Emblématiques
+            </h2>
+            <div style={{ width: 64, height: 4, background: Y, borderRadius: 2, marginTop: 24 }} />
+          </motion.div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             {[
               {
+                num: '01',
                 title: "Pont Longue Portée – Europe",
-                desc: "Structure suspendue de 2,8 km franchissant un détroit. Mise en œuvre d’une technique innovante de vérinage hydraulique pour maintenir la navigation maritime.",
-                value: "€1.2B"
+                desc: "Structure suspendue de 2,8 km franchissant un détroit. Mise en œuvre d'une technique innovante de vérinage hydraulique pour maintenir la navigation maritime.",
+                value: "€1.2B",
+                tags: ['Acier', 'Suspendu', 'Maritime'],
+                accent: G,
               },
               {
+                num: '02',
                 title: "Terminal Aéroportuaire Premium",
                 desc: "Architecture spectaculaire avec 450 m de portée libre. Défis structuraux résolus grâce à des colonnes multiples et une distribution de charge révolutionnaire.",
-                value: "€890M"
+                value: "€890M",
+                tags: ['Béton', 'Grande portée', 'Aviation'],
+                accent: GL,
               },
               {
+                num: '03',
                 title: "Viaduc Montagneux",
                 desc: "Ouvrage de 12 km en zone montagneuse avec 156 piles de hauteurs variables. Adaptation complète au terrain et aux contraintes sismiques.",
-                value: "€650M"
+                value: "€650M",
+                tags: ['Montagne', 'Sismique', '12 km'],
+                accent: Y,
               },
             ].map((project, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-3xl p-12 border border-gray-100 hover:shadow-2xl transition-all"
+                transition={{ delay: i * 0.1, duration: 0.7, ease }}
+                style={{
+                  background: '#fff',
+                  borderRadius: 8,
+                  padding: '40px 48px',
+                  border: '1px solid #E8E8E8',
+                  boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
+                  display: 'flex', alignItems: 'center', gap: 48,
+                  transition: 'box-shadow 0.2s',
+                  borderLeft: `6px solid ${project.accent}`,
+                }}
               >
-                <div className="flex flex-col md:flex-row justify-between gap-10">
-                  <div className="flex-1">
-                    <h3 className="text-3xl font-semibold text-gray-900 mb-4">{project.title}</h3>
-                    <p className="text-gray-700 text-[17.5px] leading-relaxed">{project.desc}</p>
+                {/* Big number */}
+                <div style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: 64, fontWeight: 700,
+                  color: `${project.accent}22`,
+                  lineHeight: 1, minWidth: 80, textAlign: 'center',
+                  userSelect: 'none',
+                }}>
+                  {project.num}
+                </div>
+
+                {/* Content */}
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ fontSize: 22, fontWeight: 600, color: BK, marginBottom: 12 }}>{project.title}</h3>
+                  <p style={{ fontSize: 15, color: TG, lineHeight: 1.7, fontWeight: 300, marginBottom: 16 }}>{project.desc}</p>
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    {project.tags.map(t => (
+                      <span key={t} style={{
+                        padding: '4px 12px', borderRadius: 4,
+                        background: `${project.accent}15`, color: project.accent,
+                        fontSize: 12, fontWeight: 600, letterSpacing: 1,
+                      }}>{t}</span>
+                    ))}
                   </div>
-                  <div className="text-right">
-                    <div className="text-[#C9826B] text-4xl font-light font-serif">{project.value}</div>
+                </div>
+
+                {/* Value */}
+                <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                  <div style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: 40, fontWeight: 700, color: project.accent,
+                    lineHeight: 1,
+                  }}>
+                    {project.value}
+                  </div>
+                  <div style={{ fontSize: 12, color: TG, fontWeight: 500, marginTop: 6, textTransform: 'uppercase', letterSpacing: 2 }}>
+                    Valeur du projet
                   </div>
                 </div>
               </motion.div>
@@ -207,38 +426,136 @@ export default function GenieCivilPage() {
         </div>
       </section>
 
-      {/* ==================== APPROCHE ==================== */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-6xl font-light mb-10">Notre Approche</h2>
-          <p className="text-2xl text-gray-700 leading-relaxed">
-            Chaque projet bénéficie d’une approche intégrée : études préalables approfondies, 
-            conception paramétrique, simulation 3D avancée, méthodes constructives innovantes 
-            et un suivi qualité exemplaire tout au long du cycle de vie de l’ouvrage.
-          </p>
+      {/* ══════════════════════════════════════════════════════
+          APPROCHE
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: '100px 40px', background: G, position: 'relative', overflow: 'hidden' }}>
+
+        {/* Decorative pattern */}
+        <div style={{
+          position: 'absolute', top: -80, right: -80, width: 400, height: 400,
+          borderRadius: '50%', border: `80px solid rgba(107,203,61,0.12)`, pointerEvents: 'none',
+        }} />
+        <div style={{
+          position: 'absolute', bottom: -120, left: -60, width: 300, height: 300,
+          borderRadius: '50%', border: `60px solid rgba(244,180,0,0.10)`, pointerEvents: 'none',
+        }} />
+
+        <div style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 2 }}>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: 4, color: GL, textTransform: 'uppercase', marginBottom: 20 }}>Méthodologie</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 32 }}>
+              Notre Approche
+            </h2>
+            <div style={{ width: 64, height: 4, background: Y, borderRadius: 2, margin: '0 auto 40px' }} />
+            <p style={{ fontSize: 19, color: 'rgba(255,255,255,0.82)', lineHeight: 1.8, fontWeight: 300 }}>
+              Chaque projet bénéficie d'une approche intégrée : études préalables approfondies,
+              conception paramétrique, simulation 3D avancée, méthodes constructives innovantes
+              et un suivi qualité exemplaire tout au long du cycle de vie de l'ouvrage.
+            </p>
+          </motion.div>
+
+          {/* Process steps */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 0, marginTop: 64, flexWrap: 'wrap' }}>
+            {['Études & Diagnostic', 'Conception BIM', 'Construction', 'Réception & Suivi'].map((step, i, arr) => (
+              <motion.div key={i} variants={fadeIn} custom={i * 0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                style={{ display: 'flex', alignItems: 'center' }}>
+                <div style={{ textAlign: 'center', padding: '0 20px' }}>
+                  <div style={{
+                    width: 56, height: 56, borderRadius: '50%',
+                    background: i === 0 ? Y : 'rgba(255,255,255,0.15)',
+                    border: `2px solid ${i === 0 ? Y : 'rgba(255,255,255,0.3)'}`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: 20, fontWeight: 700,
+                    color: i === 0 ? BK : '#fff',
+                    margin: '0 auto 12px',
+                  }}>
+                    {i + 1}
+                  </div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', fontWeight: 500, maxWidth: 90 }}>{step}</div>
+                </div>
+                {i < arr.length - 1 && (
+                  <div style={{ width: 40, height: 2, background: 'rgba(255,255,255,0.2)', flexShrink: 0 }} />
+                )}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ==================== FINAL CTA ==================== */}
-      <section className="py-28 bg-[#0a0906] text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-6xl font-light leading-tight mb-8">
-            Votre ouvrage d’art<br />
-            mérite l’excellence
-          </h2>
-          <p className="text-2xl text-white/80 mb-12">
-            Confiez-nous vos projets les plus ambitieux en génie civil et ouvrages d’art.
-          </p>
+      {/* ══════════════════════════════════════════════════════
+          FINAL CTA
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: '120px 40px', background: BK, position: 'relative', overflow: 'hidden' }}>
 
-          <Link 
-            href="/contact"
-            className="inline-flex items-center gap-6 px-16 py-8 bg-[#C9826B] hover:bg-[#E89A7A] text-[#0a0906] rounded-3xl text-2xl font-medium transition-all hover:shadow-2xl"
-          >
-            Discuter de votre projet
-            <ArrowRight size={32} />
-          </Link>
+        {/* BG texture */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070')`,
+          backgroundSize: 'cover', backgroundPosition: 'center',
+          filter: 'brightness(0.15)',
+        }} />
+
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+
+            {/* Yellow tag */}
+            <div style={{
+              display: 'inline-block', padding: '6px 20px', borderRadius: 4,
+              background: Y, color: BK,
+              fontSize: 12, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase',
+              marginBottom: 32,
+            }}>
+              Binova Rock Builders
+            </div>
+
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: 'clamp(40px, 5.5vw, 64px)', fontWeight: 700,
+              color: '#fff', lineHeight: 1.15, marginBottom: 24,
+            }}>
+              Votre ouvrage d'art<br />
+              mérite <span style={{ color: GL }}>l'excellence</span>
+            </h2>
+
+            <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, fontWeight: 300, marginBottom: 56 }}>
+              Confiez-nous vos projets les plus ambitieux en génie civil et ouvrages d'art.
+              Nos équipes sont prêtes à relever le défi.
+            </p>
+
+            <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/contact" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 12,
+                padding: '18px 44px', borderRadius: 8,
+                background: G, color: '#fff',
+                fontSize: 17, fontWeight: 600, textDecoration: 'none',
+                boxShadow: `0 4px 32px rgba(30,93,59,0.5)`,
+                transition: 'background 0.2s, transform 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = GL }}
+              onMouseLeave={e => { e.currentTarget.style.background = G }}
+              >
+                Démarrer un projet <ArrowRight size={20} />
+              </Link>
+
+              <Link href="/about" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 12,
+                padding: '18px 44px', borderRadius: 8,
+                border: `2px solid rgba(255,255,255,0.25)`,
+                color: '#fff',
+                fontSize: 17, fontWeight: 500, textDecoration: 'none',
+                transition: 'border-color 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = Y }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)' }}
+              >
+                En savoir plus
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
-    </>
+    </div>
   )
 }

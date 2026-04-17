@@ -2,23 +2,50 @@
 
 import { motion, cubicBezier } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Train, Waypoints, Zap, TrendingUp, Award, Globe } from 'lucide-react'
+import { ArrowRight, Zap, TrendingUp, Leaf, Users, ChevronRight, Road, AlertCircle, Train, Waypoints, Globe, Award } from 'lucide-react'
+
+const ease = cubicBezier(0.23, 1, 0.32, 1)
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 70 },
+  hidden: { opacity: 0, y: 60 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 1, ease: cubicBezier(0.23, 1, 0.32, 1), delay },
+    transition: { duration: 0.9, ease, delay },
   }),
 }
 
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    transition: { duration: 0.7, ease, delay },
+  }),
+}
+
+// ── Brand tokens ──────────────────────────────────────────────
+const G   = '#1E5D3B'
+const GL  = '#6BCB3D'
+const Y   = '#F4B400'
+const BK  = '#0B0B0B'
+const LBG = '#F5F5F5'
+const TG  = '#6B6B6B'
+
+
+
 export default function InfrastructuresLineairesPage() {
   return (
-    <>
-      {/* ==================== HERO SECTION ==================== */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-[#0a0906] text-white">
-        <div 
+    <div>
+
+      {/* ══════════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════════ */}
+      <section style={{
+        position: 'relative', minHeight: '92vh',
+        display: 'flex', alignItems: 'center',
+        background: BK, overflow: 'hidden',
+      }}>
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1492144534652-916f4b6c3b2e?q=80&w=2070')`, // Image moderne d'infrastructure linéaire (pont + route + rail)
@@ -32,7 +59,7 @@ export default function InfrastructuresLineairesPage() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.div 
+            <motion.div
               variants={fadeUp}
               custom={0}
               className="inline-flex items-center gap-4 text-[#E89A7A] tracking-[4px] text-sm font-medium mb-6"
@@ -42,7 +69,7 @@ export default function InfrastructuresLineairesPage() {
               <div className="h-px w-16 bg-current" />
             </motion.div>
 
-            <motion.h1 
+            <motion.h1
               variants={fadeUp}
               custom={0.1}
               className="font-serif text-[clamp(54px,8.5vw,92px)] leading-[1.02] font-light mb-8"
@@ -51,18 +78,18 @@ export default function InfrastructuresLineairesPage() {
               Transformer les vies.
             </motion.h1>
 
-            <motion.p 
+            <motion.p
               variants={fadeUp}
               custom={0.3}
               className="max-w-3xl text-2xl text-white/90 font-light leading-relaxed"
             >
-              Routes, voies ferrées, réseaux énergétiques et infrastructures de transport : 
+              Routes, voies ferrées, réseaux énergétiques et infrastructures de transport :
               nous concevons et réalisons les grands corridors de mobilité et de développement territorial.
             </motion.p>
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/70 flex flex-col items-center"
           animate={{ y: [0, 15, 0] }}
           transition={{ duration: 3.5, repeat: Infinity }}
@@ -251,7 +278,7 @@ export default function InfrastructuresLineairesPage() {
             45 000+ km de réseaux construits. Plus de 2 milliards de personnes connectées.
           </p>
 
-          <Link 
+          <Link
             href="/contact"
             className="inline-flex items-center gap-6 px-16 py-8 bg-[#C9826B] hover:bg-[#E89A7A] text-[#0a0906] rounded-3xl text-2xl font-medium transition-all hover:shadow-2xl"
           >
@@ -260,6 +287,6 @@ export default function InfrastructuresLineairesPage() {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   )
 }

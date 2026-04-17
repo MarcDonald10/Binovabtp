@@ -11,8 +11,8 @@
   /* PRIMARY BRAND COLORS */
   --color-black: #000000;
   --color-white: #FFFFFF;
-  --color-green-dark: #1E6B3A;
-  --color-green-light: #8CC63F;
+  --color-green-dark: #1E5D3B;
+  --color-green-light: #6BCB3D;
   --color-red-accent: #E53935;
   --color-yellow: #F4B400;
   --color-yellow-light: #FFD54F;
@@ -26,7 +26,7 @@
   --green-300: #7cccad;
   --green-400: #50bb93;
   --green-500: #2da578;
-  --green-600: #1E6B3A;
+  --green-600: #1E5D3B;
   --green-700: #185230;
   --green-800: #123a22;
   --green-900: #0c2216;
@@ -82,9 +82,9 @@
   --card-foreground: #1c1f26;
   --popover: #FFFFFF;
   --popover-foreground: #1c1f26;
-  --primary: #1E6B3A;
+  --primary: #1E5D3B;
   --primary-foreground: #FFFFFF;
-  --secondary: #8CC63F;
+  --secondary: #6BCB3D;
   --secondary-foreground: #000000;
   --muted: #f0f2f5;
   --muted-foreground: #57606a;
@@ -94,9 +94,9 @@
   --destructive-foreground: #FFFFFF;
   --border: #e1e4e8;
   --input: #f8f9fa;
-  --ring: #1E6B3A;
-  --chart-1: #1E6B3A;
-  --chart-2: #8CC63F;
+  --ring: #1E5D3B;
+  --chart-1: #1E5D3B;
+  --chart-2: #6BCB3D;
   --chart-3: #F4B400;
   --chart-4: #E53935;
   --chart-5: #FFD54F;
@@ -111,7 +111,7 @@
   --sidebar-ring: #1E6B3A;
   
   /* HEADER/FOOTER - Premium Styling */
-  --header-bg: #000000;
+  --header-bg: #0B0B0B;
   --header-fg: #FFFFFF;
   --section-bg: #2F2F2F;
   --section-bg-light: #f8f9fa;
@@ -122,7 +122,7 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-  --shadow-green: 0 10px 30px -5px rgba(30, 107, 58, 0.2);
+  --shadow-green: 0 10px 30px -5px rgba(30, 93, 59, 0.2);
   --shadow-yellow: 0 10px 30px -5px rgba(244, 180, 0, 0.15);
 }
 
@@ -134,32 +134,32 @@
   --card-foreground: #E8E8E8;
   --popover: #1A1F26;
   --popover-foreground: #E8E8E8;
-  --primary: #8CC63F;
-  --primary-foreground: #1A1F26;
-  --secondary: #1E6B3A;
-  --secondary-foreground: #E8E8E8;
+  --primary: #1E5D3B;
+  --primary-foreground: #E8E8E8;
+  --secondary: #6BCB3D;
+  --secondary-foreground: #1A1F26;
   --muted: #2D3139;
   --muted-foreground: #9CA3AF;
-  --accent: #8CC63F;
+  --accent: #F4B400;
   --accent-foreground: #1A1F26;
   --destructive: #FF6B5B;
   --destructive-foreground: #1A1F26;
   --border: #2D3139;
   --input: #2D3139;
-  --ring: #8CC63F;
-  --chart-1: #8CC63F;
-  --chart-2: #1E6B3A;
+  --ring: #1E5D3B;
+  --chart-1: #1E5D3B;
+  --chart-2: #6BCB3D;
   --chart-3: #FFD54F;
   --chart-4: #FF6B5B;
   --chart-5: #F4B400;
   --sidebar: #1A1F26;
   --sidebar-foreground: #E8E8E8;
-  --sidebar-primary: #8CC63F;
-  --sidebar-primary-foreground: #1A1F26;
-  --sidebar-accent: #1E6B3A;
-  --sidebar-accent-foreground: #E8E8E8;
+  --sidebar-primary: #1E5D3B;
+  --sidebar-primary-foreground: #E8E8E8;
+  --sidebar-accent: #F4B400;
+  --sidebar-accent-foreground: #1A1F26;
   --sidebar-border: #2D3139;
-  --sidebar-ring: #8CC63F;
+  --sidebar-ring: #1E5D3B;
 }
 
 @theme inline {
@@ -212,12 +212,68 @@
     @apply bg-background text-foreground;
   }
   
+  /* Typography System */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif font-bold;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl leading-snug;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl leading-snug;
+  }
+  
+  h5 {
+    @apply text-lg font-semibold;
+  }
+  
+  h6 {
+    @apply text-base font-semibold;
   }
   
   p, a, button, span {
     @apply font-sans;
+  }
+  
+  p {
+    @apply text-base leading-relaxed;
+  }
+  
+  /* Utility Classes for Design System */
+  .spacing-xs { @apply p-2; }
+  .spacing-sm { @apply p-4; }
+  .spacing-md { @apply p-6; }
+  .spacing-lg { @apply p-8; }
+  .spacing-xl { @apply p-12; }
+  
+  .shadow-soft { @apply shadow-md; }
+  .shadow-elevated { @apply shadow-lg; }
+  .shadow-hero { @apply shadow-2xl; }
+  
+  .rounded-card { @apply rounded-lg; }
+  .rounded-button { @apply rounded-lg; }
+  
+  /* Premium Gradients */
+  .gradient-primary {
+    @apply bg-gradient-to-br from-green-600 to-green-700;
+  }
+  
+  .gradient-accent {
+    @apply bg-gradient-to-r from-yellow-400 to-yellow-500;
+  }
+  
+  .gradient-overlay-dark {
+    background: linear-gradient(to right, rgba(11, 11, 11, 0.7), rgba(11, 11, 11, 0.3));
   }
 }
 

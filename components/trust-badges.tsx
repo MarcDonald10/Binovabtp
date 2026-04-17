@@ -46,7 +46,7 @@ function StatItem({ target, suffix = '', label, delay }: {
                  animate-fade-in-up"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <p className="text-[38px] font-semibold leading-none text-[#d4a853] mb-2 tabular-nums">
+      <p className="text-[38px] font-semibold leading-none text-[#F4B400] mb-2 tabular-nums">
         <span ref={ref}>0</span>{suffix}
       </p>
       <p className="text-xs uppercase tracking-wide text-muted-foreground">{label}</p>
@@ -69,7 +69,7 @@ export function TrustBadges() {
 
         {/* Séparateur */}
         <div className="flex justify-center mb-8">
-          <div className="w-10 h-px bg-[#d4a853]/40" />
+          <div className="w-10 h-px bg-[#F4B400]/40" />
         </div>
 
         {/* Trust badges — grille unifiée avec séparateurs */}
