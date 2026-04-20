@@ -43,28 +43,28 @@ export function FinalCTASection() {
           {[...Array(8)].map((_, i) => (
             <div
               key={i}
-              className="absolute top-0 bottom-0 w-px bg-[#C9826B]"
+              className="absolute top-0 bottom-0 w-px bg-[#1E6B3A]"
               style={{ left: `${(i + 1) * 11.1}%` }}
             />
           ))}
           {[...Array(5)].map((_, i) => (
             <div
               key={i}
-              className="absolute left-0 right-0 h-px bg-[#C9826B]"
+              className="absolute left-0 right-0 h-px bg-[#1E6B3A]"
               style={{ top: `${(i + 1) * 16.6}%` }}
             />
           ))}
         </motion.div>
 
         {/* Corner ornaments */}
-        <div className="absolute top-8 left-8 w-16 h-16 border-l border-t border-[#C9826B]/20 rounded-tl-lg" />
-        <div className="absolute top-8 right-8 w-16 h-16 border-r border-t border-[#C9826B]/20 rounded-tr-lg" />
-        <div className="absolute bottom-8 left-8 w-16 h-16 border-l border-b border-[#C9826B]/20 rounded-bl-lg" />
-        <div className="absolute bottom-8 right-8 w-16 h-16 border-r border-b border-[#C9826B]/20 rounded-br-lg" />
+        <div className="absolute top-8 left-8 w-16 h-16 border-l border-t border-[#1E6B3A]/20 rounded-tl-lg" />
+        <div className="absolute top-8 right-8 w-16 h-16 border-r border-t border-[#1E6B3A]/20 rounded-tr-lg" />
+        <div className="absolute bottom-8 left-8 w-16 h-16 border-l border-b border-[#1E6B3A]/20 rounded-bl-lg" />
+        <div className="absolute bottom-8 right-8 w-16 h-16 border-r border-b border-[#1E6B3A]/20 rounded-br-lg" />
 
         {/* Horizontal separator lines */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9826B]/25 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9826B]/15 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1E6B3A]/25 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1E6B3A]/15 to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto">
@@ -81,8 +81,8 @@ export function FinalCTASection() {
           >
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-7">
-              <div className="h-px w-8 bg-[#C9826B]" />
-              <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#C9826B]">
+              <div className="h-px w-8 bg-[#1E6B3A]" />
+              <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#1E6B3A]">
                 Commencez maintenant
               </span>
             </div>
@@ -94,10 +94,10 @@ export function FinalCTASection() {
               Une équipe.
               <br />
               <span className="relative inline-block">
-                <em className="not-italic text-[#C9826B]">Zéro compromis.</em>
+                <em className="not-italic text-[#1E6B3A]">Zéro compromis.</em>
                 {/* Underline decoration */}
                 <motion.div
-                  className="absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-[#C9826B] to-[#C9826B]/0"
+                  className="absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-[#1E6B3A] to-[#1E6B3A]/0"
                   initial={{ scaleX: 0, originX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
@@ -122,8 +122,8 @@ export function FinalCTASection() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 + i * 0.1 }}
                 >
-                  <div className="w-5 h-5 rounded-full bg-[#C9826B]/15 flex items-center justify-center flex-shrink-0">
-                    <item.icon size={11} className="text-[#C9826B]" strokeWidth={2} />
+                  <div className="w-5 h-5 rounded-full bg-[#1E6B3A]/15 flex items-center justify-center flex-shrink-0">
+                    <item.icon size={11} className="text-[#1E6B3A]" strokeWidth={2} />
                   </div>
                   <span>{item.label}</span>
                 </motion.div>
@@ -141,21 +141,21 @@ export function FinalCTASection() {
           >
             <div className="relative p-8 rounded-2xl border border-white/[0.07] bg-white/[0.02] overflow-hidden">
               {/* Inner ambient glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#C9826B]/8 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#1E6B3A]/8 via-transparent to-transparent pointer-events-none" />
 
               {/* Top accent bar */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C9826B]/70 to-transparent rounded-t-2xl" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#1E6B3A]/70 to-transparent rounded-t-2xl" />
 
               <div className="relative z-10 space-y-4">
                 {/* Label */}
-                <p className="text-[11px] uppercase tracking-[0.2em] text-[#C9826B] font-semibold mb-6">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-[#1E6B3A] font-semibold mb-6">
                   Démarrer le projet
                 </p>
 
                 {/* Primary CTA */}
                 <Link href="/devis" className="group block">
                   <motion.div
-                    className="relative flex items-center justify-between w-full px-6 py-4 rounded-xl bg-[#C9826B] text-white font-semibold text-[15px] overflow-hidden"
+                    className="relative flex items-center justify-between w-full px-6 py-4 rounded-xl bg-[#1E6B3A] text-white font-semibold text-[15px] overflow-hidden"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
@@ -180,7 +180,7 @@ export function FinalCTASection() {
                 {/* Secondary CTA */}
                 <Link href="/contact" className="group block">
                   <motion.div
-                    className="relative flex items-center justify-between w-full px-6 py-4 rounded-xl border border-[#C9826B]/30 text-[#C9826B] font-semibold text-[15px] hover:bg-[#C9826B]/8 transition-colors duration-300"
+                    className="relative flex items-center justify-between w-full px-6 py-4 rounded-xl border border-[#1E6B3A]/30 text-[#1E6B3A] font-semibold text-[15px] hover:bg-[#1E6B3A]/8 transition-colors duration-300"
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}

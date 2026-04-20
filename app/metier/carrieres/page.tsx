@@ -20,7 +20,7 @@ const fadeUp = {
 
 // ── Brand tokens ──────────────────────────────────────────────
 const R   = '#7A3B1E'   // deep rust (primary)
-const RL  = '#C9826B'   // light rust (accent)
+const RL  = '#1E6B3A'   // light rust (accent)
 const AM  = '#E89A7A'   // amber highlight
 const BK  = '#0B0B0B'
 const LBG = '#F7F3F0'

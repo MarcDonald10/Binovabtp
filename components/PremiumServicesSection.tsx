@@ -17,7 +17,7 @@ const services = [
     icon: Drill,
     link: '/tunnelage',
     image: '/tunnelage-hero.jpg',
-    accent: '#C9826B',
+    accent: '#1E6B3A',
   },
   {
     index: '02',
@@ -30,7 +30,7 @@ const services = [
     icon: Pickaxe,
     link: '/minage',
     image: '/minage-hero.jpg',
-    accent: '#C9826B',
+    accent: '#1E6B3A',
   },
   {
     index: '03',
@@ -43,7 +43,7 @@ const services = [
     icon: Hammer,
     link: '/terrassement',
     image: '/terrassement-hero.jpg',
-    accent: '#C9826B',
+    accent: '#1E6B3A',
   },
   {
     index: '04',
@@ -56,7 +56,7 @@ const services = [
     icon: Building2,
     link: '/metier',
     image: '/hero-background.jpg',
-    accent: '#C9826B',
+    accent: '#1E6B3A',
   },
 ]
 
@@ -68,12 +68,12 @@ export function PremiumServicesSection() {
     <section className="relative py-28 bg-background overflow-hidden">
       {/* ── Structural lines ── */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9826B]/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9826B]/15 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1E6B3A]/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1E6B3A]/15 to-transparent" />
         {/* Ambient glow behind image area */}
         <motion.div
           className="absolute left-0 top-1/2 -translate-y-1/2 w-[45%] h-[70%] rounded-r-3xl"
-          style={{ background: 'radial-gradient(ellipse at 30% 50%, rgba(201,130,107,0.07) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse at 30% 50%, rgba(30,107,58,0.07) 0%, transparent 70%)' }}
           animate={{ opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -91,15 +91,15 @@ export function PremiumServicesSection() {
         >
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="h-px w-8 bg-[#C9826B]" />
-              <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#C9826B]">
+              <div className="h-px w-8 bg-[#1E6B3A]" />
+              <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#1E6B3A]">
                 Expertise mondiale
               </span>
             </div>
             <h2 className="text-[clamp(2.4rem,4.5vw,3.8rem)] font-serif font-bold text-foreground leading-[1.05]">
               Trois piliers.
               <br />
-              <em className="not-italic text-[#C9826B]">Un standard d'excellence.</em>
+              <em className="not-italic text-[#1E6B3A]">Un standard d'excellence.</em>
             </h2>
           </div>
 
@@ -148,7 +148,7 @@ export function PremiumServicesSection() {
                   transition={{ duration: 0.4 }}
                   className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10"
                 >
-                  <span className="text-[11px] font-mono text-[#C9826B] font-semibold">{active.index}</span>
+                  <span className="text-[11px] font-mono text-[#1E6B3A] font-semibold">{active.index}</span>
                   <span className="text-[11px] text-white/70 uppercase tracking-wider">{active.subtitle}</span>
                 </motion.div>
               </AnimatePresence>
@@ -188,7 +188,7 @@ export function PremiumServicesSection() {
 
                   <Link href={active.link}>
                     <motion.div
-                      className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-[#C9826B] text-white text-[13px] font-semibold"
+                      className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-[#1E6B3A] text-white text-[13px] font-semibold"
                       whileHover={{ scale: 1.04, gap: 14 }}
                       whileTap={{ scale: 0.97 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 20 }}
@@ -207,8 +207,8 @@ export function PremiumServicesSection() {
                 <motion.button
                   key={i}
                   onClick={() => setActiveIndex(i)}
-                  className="w-1 rounded-full bg-white/30 hover:bg-[#C9826B] transition-colors duration-300 cursor-pointer"
-                  animate={{ height: i === activeIndex ? 24 : 8, backgroundColor: i === activeIndex ? '#C9826B' : 'rgba(255,255,255,0.3)' }}
+                  className="w-1 rounded-full bg-white/30 hover:bg-[#1E6B3A] transition-colors duration-300 cursor-pointer"
+                  animate={{ height: i === activeIndex ? 24 : 8, backgroundColor: i === activeIndex ? '#1E6B3A' : 'rgba(255,255,255,0.3)' }}
                   transition={{ duration: 0.3 }}
                 />
               ))}
@@ -231,7 +231,7 @@ export function PremiumServicesSection() {
                   onClick={() => setActiveIndex(i)}
                   className={`group relative text-left w-full rounded-xl border transition-all duration-400 overflow-hidden cursor-pointer ${
                     isActive
-                      ? 'border-[#C9826B]/40 bg-[#C9826B]/5'
+                      ? 'border-[#1E6B3A]/40 bg-[#1E6B3A]/5'
                       : 'border-white/[0.06] bg-white/[0.02] hover:border-white/10 hover:bg-white/[0.04]'
                   }`}
                   whileHover={{ x: isActive ? 0 : 4 }}
@@ -239,7 +239,7 @@ export function PremiumServicesSection() {
                 >
                   {/* Active left bar */}
                   <motion.div
-                    className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-xl bg-[#C9826B]"
+                    className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-xl bg-[#1E6B3A]"
                     animate={{ scaleY: isActive ? 1 : 0, opacity: isActive ? 1 : 0 }}
                     transition={{ duration: 0.3 }}
                   />
@@ -247,14 +247,14 @@ export function PremiumServicesSection() {
                   <div className="px-6 py-5">
                     <div className="flex items-center gap-4">
                       {/* Index */}
-                      <span className={`text-[11px] font-mono font-bold transition-colors duration-300 ${isActive ? 'text-[#C9826B]' : 'text-muted-foreground/40'}`}>
+                      <span className={`text-[11px] font-mono font-bold transition-colors duration-300 ${isActive ? 'text-[#1E6B3A]' : 'text-muted-foreground/40'}`}>
                         {s.index}
                       </span>
 
                       {/* Icon circle */}
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                         isActive
-                          ? 'bg-[#C9826B]/20 text-[#C9826B]'
+                          ? 'bg-[#1E6B3A]/20 text-[#1E6B3A]'
                           : 'bg-white/[0.04] text-muted-foreground group-hover:bg-white/[0.06]'
                       }`}>
                         <s.icon size={18} strokeWidth={1.5} />
@@ -263,12 +263,12 @@ export function PremiumServicesSection() {
                       {/* Title + tag */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className={`text-[15px] font-semibold transition-colors duration-300 ${isActive ? 'text-[#C9826B]' : 'text-foreground'}`}>
+                          <h3 className={`text-[15px] font-semibold transition-colors duration-300 ${isActive ? 'text-[#1E6B3A]' : 'text-foreground'}`}>
                             {s.title}
                           </h3>
                           <span className={`text-[10px] px-2 py-0.5 rounded-full border transition-all duration-300 ${
                             isActive
-                              ? 'border-[#C9826B]/40 text-[#C9826B] bg-[#C9826B]/10'
+                              ? 'border-[#1E6B3A]/40 text-[#1E6B3A] bg-[#1E6B3A]/10'
                               : 'border-white/[0.08] text-muted-foreground/50'
                           }`}>
                             {s.tag}
@@ -283,7 +283,7 @@ export function PremiumServicesSection() {
                       <motion.div
                         animate={{ x: isActive ? 0 : -4, opacity: isActive ? 1 : 0 }}
                         transition={{ duration: 0.3 }}
-                        className="text-[#C9826B] flex-shrink-0"
+                        className="text-[#1E6B3A] flex-shrink-0"
                       >
                         <MoveRight size={16} />
                       </motion.div>
@@ -299,7 +299,7 @@ export function PremiumServicesSection() {
                           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="mt-4 pt-4 border-t border-[#C9826B]/15 ml-14">
+                          <div className="mt-4 pt-4 border-t border-[#1E6B3A]/15 ml-14">
                             <div className="flex items-center justify-between">
                               <div>
                                 <p className="text-3xl font-serif font-bold text-foreground">{s.stat.value}</p>
@@ -307,7 +307,7 @@ export function PremiumServicesSection() {
                               </div>
                               <Link
                                 href={s.link}
-                                className="inline-flex items-center gap-1.5 text-[12px] text-[#C9826B] font-semibold hover:gap-2.5 transition-all duration-200"
+                                className="inline-flex items-center gap-1.5 text-[12px] text-[#1E6B3A] font-semibold hover:gap-2.5 transition-all duration-200"
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 En savoir plus
@@ -331,7 +331,7 @@ export function PremiumServicesSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#C9826B]/5 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1E6B3A]/5 to-transparent" />
               <p className="relative text-[12px] text-muted-foreground font-light text-center leading-relaxed">
                 <span className="text-foreground font-semibold">847 projets infrastructure</span>
                 {' · '}

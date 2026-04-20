@@ -234,7 +234,7 @@ function Step1({ data, update }: { data: FormData; update: (d: Partial<FormData>
               onClick={() => update({ projectType: p.id })}
               className={`group text-left p-5 rounded-xl border transition-all duration-300 ${
                 isActive
-                  ? 'border-[#C9826B]/50 bg-[#C9826B]/8'
+                  ? 'border-[#1E6B3A]/50 bg-[#1E6B3A]/8'
                   : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.04]'
               }`}
               whileHover={{ y: isActive ? 0 : -2 }}
@@ -313,7 +313,7 @@ function Step2({ data, update }: { data: FormData; update: (d: Partial<FormData>
                 placeholder="ex: 2500"
                 value={data.length}
                 onChange={(e) => update({ length: e.target.value })}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300"
               />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-gray-500">ml</span>
             </div>
@@ -332,7 +332,7 @@ function Step2({ data, update }: { data: FormData; update: (d: Partial<FormData>
                 placeholder={isUnit ? 'ex: 5' : 'ex: 50000'}
                 value={data.volume}
                 onChange={(e) => update({ volume: e.target.value })}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300"
               />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-gray-500">
                 {isUnit ? 'unités' : 'm³'}
@@ -353,7 +353,7 @@ function Step2({ data, update }: { data: FormData; update: (d: Partial<FormData>
                 placeholder="ex: 15"
                 value={data.depth}
                 onChange={(e) => update({ depth: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300"
               />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-gray-500">m</span>
             </div>
@@ -372,7 +372,7 @@ function Step2({ data, update }: { data: FormData; update: (d: Partial<FormData>
                   onClick={() => update({ soilType: s.id })}
                   className={`text-left px-4 py-3 rounded-xl border transition-all duration-200 ${
                     isActive
-                      ? 'border-[#C9826B] bg-[#C9826B]/10'
+                      ? 'border-[#1E6B3A] bg-[#1E6B3A]/10'
                       : 'border-gray-300 bg-gray-50 hover:border-gray-400'
                   }`}
                 >
@@ -398,7 +398,7 @@ function Step2({ data, update }: { data: FormData; update: (d: Partial<FormData>
           <select
             value={data.region}
             onChange={(e) => update({ region: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300 appearance-none"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300 appearance-none"
             style={{ colorScheme: 'light' }}
           >
             <option value="">Sélectionner une région…</option>
@@ -445,7 +445,7 @@ function Step3({ data, update }: { data: FormData; update: (d: Partial<FormData>
                   onClick={() => update({ urgency: u.id })}
                   className={`text-left px-4 py-3 rounded-xl border transition-all duration-200 ${
                     isActive
-                      ? 'border-[#C9826B] bg-[#C9826B]/10'
+                      ? 'border-[#1E6B3A] bg-[#1E6B3A]/10'
                       : 'border-gray-300 bg-gray-50 hover:border-gray-400'
                   }`}
                 >
@@ -470,7 +470,7 @@ function Step3({ data, update }: { data: FormData; update: (d: Partial<FormData>
             type="date"
             value={data.startDate}
             onChange={(e) => update({ startDate: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300"
             style={{ colorScheme: 'light' }}
           />
         </div>
@@ -490,7 +490,7 @@ function Step3({ data, update }: { data: FormData; update: (d: Partial<FormData>
                   onClick={() => toggleCert(c)}
                   className={`px-3 py-1.5 rounded-lg border text-[12px] font-medium transition-all duration-200 ${
                     isActive
-                      ? 'border-[#C9826B] bg-[#C9826B]/12 text-[#C9826B]'
+                      ? 'border-[#1E6B3A] bg-[#1E6B3A]/12 text-[#1E6B3A]'
                       : 'border-gray-300 bg-gray-50 text-gray-600 hover:border-gray-400 hover:text-gray-900'
                   }`}
                 >
@@ -524,7 +524,7 @@ function Step4({ data, update }: { data: FormData; update: (d: Partial<FormData>
               placeholder="Nom de l'entreprise"
               value={data.company}
               onChange={(e) => update({ company: e.target.value })}
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300"
             />
           </div>
         </div>
@@ -539,7 +539,7 @@ function Step4({ data, update }: { data: FormData; update: (d: Partial<FormData>
                 placeholder="Jean"
                 value={data.firstName}
                 onChange={(e) => update({ firstName: e.target.value })}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300"
               />
             </div>
           </div>
@@ -550,7 +550,7 @@ function Step4({ data, update }: { data: FormData; update: (d: Partial<FormData>
               placeholder="Dupont"
               value={data.lastName}
               onChange={(e) => update({ lastName: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300"
+              className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300"
             />
           </div>
         </div>
@@ -564,7 +564,7 @@ function Step4({ data, update }: { data: FormData; update: (d: Partial<FormData>
               placeholder="jean.dupont@entreprise.fr"
               value={data.email}
               onChange={(e) => update({ email: e.target.value })}
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300"
             />
           </div>
         </div>
@@ -578,7 +578,7 @@ function Step4({ data, update }: { data: FormData; update: (d: Partial<FormData>
               placeholder="+33 6 00 00 00 00"
               value={data.phone}
               onChange={(e) => update({ phone: e.target.value })}
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300"
             />
           </div>
         </div>
@@ -590,7 +590,7 @@ function Step4({ data, update }: { data: FormData; update: (d: Partial<FormData>
             value={data.message}
             onChange={(e) => update({ message: e.target.value })}
             rows={3}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#C9826B] focus:ring-1 focus:ring-[#C9826B]/20 transition-all duration-300 resize-none"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300 resize-none"
           />
         </div>
       </div>
@@ -612,7 +612,7 @@ function Step5({ estimate, data, onReset }: { estimate: Estimate; data: FormData
       </p>
 
       {/* Main estimate range */}
-      <div className="relative p-6 rounded-2xl border border-[#C9826B]/30 bg-[#C9826B]/5 mb-5 overflow-hidden">
+          <div className="relative p-6 rounded-2xl border border-[#1E6B3A]/30 bg-[#1E6B3A]/5 mb-5 overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
           style={{ background: `linear-gradient(to right, transparent, ${ACCENT}70, transparent)` }} />
 
@@ -628,7 +628,7 @@ function Step5({ estimate, data, onReset }: { estimate: Estimate; data: FormData
             <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Minimum</p>
             <p className="text-lg font-serif font-bold text-gray-700">{formatEur(estimate.low)}</p>
           </div>
-          <div className="text-center p-4 rounded-xl bg-[#C9826B]/10 border border-[#C9826B]/30">
+          <div className="text-center p-4 rounded-xl bg-[#1E6B3A]/10 border border-[#1E6B3A]/30">
             <p className="text-[10px] uppercase tracking-wider mb-1" style={{ color: ACCENT }}>Estimation centrale</p>
             <p className="text-2xl font-serif font-bold text-gray-900">{formatEur(estimate.mid)}</p>
           </div>

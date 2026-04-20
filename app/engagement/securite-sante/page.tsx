@@ -4,7 +4,7 @@ import { EngagementTemplate } from '@/components/engagement-template'
 import { Shield, AlertCircle, Users, Target, Zap, CheckCircle2, Award } from 'lucide-react'
 
 export default function SecuriteSantePage() {
-  const accentColor = '#C9826B'
+  const accentColor = '#1E6B3A'
 
   const stats = [
     { label: 'Sans accident mortel', value: '28 ans' },

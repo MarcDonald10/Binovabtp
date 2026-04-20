@@ -2,174 +2,260 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowUpRight, MoveRight, Linkedin, Twitter, Facebook } from 'lucide-react'
+import { motion } from 'framer-motion'
+
+// ─── Constants ────────────────────────────────────────────────────────────────
+
+const ACCENT = '#1E6B3A'
+
+const LINKS = {
+  solutions: [
+    { label: 'Tunnelage', href: '/tunnelage' },
+    { label: 'Minage', href: '/minage' },
+    { label: 'Terrassement', href: '/terrassement' },
+    { label: 'Infrastructure', href: '/metier' },
+  ],
+  engagement: [
+    { label: 'RSE', href: '/engagement/rse' },
+    { label: 'Sécurité & Santé', href: '/engagement/securite-sante' },
+    { label: 'Environnement', href: '/engagement/environnement' },
+    { label: 'Éthique', href: '/engagement/ethique' },
+  ],
+  legal: [
+    { label: 'Mentions légales', href: '/mentions-legales' },
+    { label: 'Confidentialité', href: '/politique-confidentialite' },
+    { label: 'Conditions d\'utilisation', href: '/conditions-utilisation' },
+    { label: 'Devis IA', href: '/devis' },
+  ],
+}
+
+const STATS = [
+  { value: '847', unit: '+', label: 'Projets réalisés' },
+  { value: '28', unit: ' ans', label: "d'excellence" },
+  { value: '250', unit: '+', label: 'Experts terrain' },
+  { value: '99.2', unit: '%', label: 'Taux de réussite' },
+]
+
+const SOCIALS = [
+  { label: 'LinkedIn', href: 'https://linkedin.com', Icon: Linkedin },
+  { label: 'Twitter', href: 'https://twitter.com', Icon: Twitter },
+  { label: 'Facebook', href: 'https://facebook.com', Icon: Facebook },
+]
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function FooterLinkList({ items }: { items: { label: string; href: string }[] }) {
+  return (
+    <ul className="space-y-2.5">
+      {items.map((item) => (
+        <li key={item.href}>
+          <Link
+            href={item.href}
+            className="group flex items-center gap-2 text-[13px] text-white/35 hover:text-white/80 transition-colors duration-200"
+          >
+            <span
+              className="w-1 h-1 rounded-full flex-shrink-0 transition-all duration-300 group-hover:w-2.5"
+              style={{ background: `${ACCENT}60` }}
+            />
+            <span className="group-hover:translate-x-0.5 transition-transform duration-200">
+              {item.label}
+            </span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function FooterColumnTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-2.5 mb-5">
+      <div className="h-px w-4" style={{ background: ACCENT }} />
+      <h4 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
+        {children}
+      </h4>
+    </div>
+  )
+}
+
+// ─── Main Footer ──────────────────────────────────────────────────────────────
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const stats = [
-    { label: 'Projets', value: '847+' },
-    { label: 'Années', value: '28' },
-    { label: 'Experts', value: '250+' }
-  ]
-
   return (
-    <footer className="bg-black text-white relative overflow-hidden border-t border-white/10">
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
-        
-        {/* Statistics Section */}
-        <div className="grid grid-cols-3 gap-0 mb-20 border border-white/20">
-          {stats.map((stat, i) => (
-            <div key={i} className={`py-10 px-4 text-center ${i < stats.length - 1 ? 'border-r border-white/20' : ''}`}>
-              <div className="text-3xl sm:text-4xl font-serif font-bold text-white mb-2">{stat.value}</div>
-              <div className="text-xs sm:text-sm text-white/50 uppercase tracking-widest font-medium">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+    <footer className="relative bg-[#0a0906] overflow-hidden">
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
-          
-          {/* Brand Section */}
-          <div className="md:col-span-2 space-y-8">
-            <div className="flex items-end gap-4">
-              <div className="relative w-16 h-16 flex-shrink-0">
-                <Image 
-                  src="/logo.png" 
-                  alt="Binova Rock Builders" 
-                  fill
-                  className="object-contain"
+      {/* ── Top separator ── */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: `linear-gradient(to right, transparent, ${ACCENT}30, transparent)` }}
+      />
+
+      {/* ── Ambient glow ── */}
+      <div
+        className="absolute bottom-0 right-0 w-[700px] h-[400px] rounded-full pointer-events-none"
+        style={{ background: `radial-gradient(ellipse, ${ACCENT}06 0%, transparent 70%)` }}
+      />
+
+      {/* ══════════════════════════════════════════
+          STATS BAND
+      ══════════════════════════════════════════ */}
+      <div className="relative border-b border-white/[0.05]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4">
+            {STATS.map((s, i) => (
+              <motion.div
+                key={i}
+                className={`group py-8 px-6 text-center border-r border-white/[0.05] last:border-r-0 md:border-r hover:bg-white/[0.02] transition-colors duration-300 ${
+                  i === 1 ? 'border-r border-white/[0.05]' : ''
+                } ${i >= 2 ? 'border-t border-white/[0.05] md:border-t-0' : ''}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.6 }}
+              >
+                <p className="text-[clamp(1.8rem,3vw,2.5rem)] font-serif font-bold text-white leading-none mb-1.5 group-hover:text-[#1E6B3A] transition-colors duration-300">
+                  {s.value}
+                  <span style={{ color: ACCENT }}>{s.unit}</span>
+                </p>
+                <p className="text-[11px] text-white/25 uppercase tracking-[0.15em]">{s.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════
+          MAIN CONTENT
+      ══════════════════════════════════════════ */}
+      <div className="max-w-7xl mx-auto px-6 pt-20 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-[1.8fr_1fr_1fr_1fr] gap-12 xl:gap-16">
+
+          {/* ── Brand column ── */}
+          <div>
+            {/* Logo */}
+            <Link href="/" className="group inline-flex items-center gap-3 mb-7">
+              <div className="w-40 h-40 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:opacity-80">
+                <Image
+                  src="/logo.png"
+                  alt="Binova Logo"
+                  width={70}
+                  height={70}
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <div>
-                <h3 className="font-serif text-3xl font-bold tracking-tight">BINOVA</h3>
-                <p className="text-xs text-white/60 font-medium uppercase tracking-widest mt-1">Rock Builders</p>
-              </div>
-            </div>
+            </Link>
 
-            <p className="text-white/70 text-sm font-light leading-relaxed max-w-sm">
-              Spécialistes en infrastructures souterraines complexes. Solutions premium depuis 1998.
+            <p className="text-[13px] text-white/35 font-light leading-relaxed mb-8 max-w-xs">
+              Spécialistes en infrastructures souterraines complexes depuis 1998. 847 projets, 28 ans d'expertise, zéro compromis.
             </p>
 
-            {/* Contact Information */}
-            <div className="space-y-3 pt-4">
-              <div className="flex items-center gap-3 group">
-                <div className="w-8 h-8 border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
-                  <Phone size={16} className="text-white/50 group-hover:text-white transition-colors" />
-                </div>
-                <span className="text-sm text-white/60 group-hover:text-white transition-colors font-light"></span>
-              </div>
-              <div className="flex items-center gap-3 group">
-                <div className="w-8 h-8 border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
-                  <Mail size={16} className="text-white/50 group-hover:text-white transition-colors" />
-                </div>
-                <span className="text-sm text-white/60 group-hover:text-white transition-colors font-light"></span>
-              </div>
-              <div className="flex items-center gap-3 group">
-                <div className="w-8 h-8 border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
-                  <MapPin size={16} className="text-white/50 group-hover:text-white transition-colors" />
-                </div>
-                <span className="text-sm text-white/60 group-hover:text-white transition-colors font-light"></span>
-              </div>
+            {/* Contact */}
+            <div className="space-y-3">
+              {[
+                { Icon: Phone, text: '+................', href: 'tel:+............' },
+                { Icon: Mail, text: '.......@.....', href: 'mailto:.........' },
+                { Icon: MapPin, text: '......, .....', href: '#' },
+              ].map(({ Icon, text, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  className="group flex items-center gap-3"
+                >
+                  <div
+                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 border border-white/[0.06] bg-white/[0.02] group-hover:border-[#1E6B3A]/30 group-hover:bg-[#1E6B3A]/8 transition-all duration-300"
+                  >
+                    <Icon size={13} className="text-white/30 group-hover:text-[#1E6B3A] transition-colors duration-300" />
+                  </div>
+                  <span className="text-[12px] text-white/30 group-hover:text-white/65 transition-colors duration-200 font-light">
+                    {text}
+                  </span>
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Solutions */}
-          <div className="space-y-8 md:border-l border-white/20 md:pl-8">
-            <h4 className="font-serif text-xs font-bold uppercase tracking-widest text-white">Solutions</h4>
-            <ul className="space-y-3">
-              {[
-                { name: 'Tunnelage', href: '/tunnelage' },
-                { name: 'Minage', href: '/minage' },
-                { name: 'Terrassement', href: '/terrassement' }
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="text-sm text-white/60 hover:text-white transition-colors font-light inline-flex items-center gap-2 group">
-                    <span className="w-1 h-1 bg-white/40 group-hover:bg-white transition-colors"></span>
-                    <span className="group-hover:translate-x-0.5 transition-transform">{item.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* ── Solutions ── */}
+          <div>
+            <FooterColumnTitle>Solutions</FooterColumnTitle>
+            <FooterLinkList items={LINKS.solutions} />
           </div>
 
-          {/* Services */}
-          <div className="space-y-8 md:border-l border-white/20 md:pl-8">
-            <h4 className="font-serif text-xs font-bold uppercase tracking-widest text-white">Services</h4>
-            <ul className="space-y-3">
-              {[
-                { name: 'Engagement Client', href: '/engagement-clients' },
-                { name: 'Travaux Souterrains', href: '/travaux-souterrains' },
-                { name: 'Devis IA', href: '/devis' }
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="text-sm text-white/60 hover:text-white transition-colors font-light inline-flex items-center gap-2 group">
-                    <span className="w-1 h-1 bg-white/40 group-hover:bg-white transition-colors"></span>
-                    <span className="group-hover:translate-x-0.5 transition-transform">{item.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* ── Engagement ── */}
+          <div>
+            <FooterColumnTitle>Engagement</FooterColumnTitle>
+            <FooterLinkList items={LINKS.engagement} />
           </div>
 
-          {/* Legal */}
-          <div className="space-y-8 md:border-l border-white/20 md:pl-8">
-            <h4 className="font-serif text-xs font-bold uppercase tracking-widest text-white">Légal</h4>
-            <ul className="space-y-3">
-              {[
-                { name: 'Mentions Légales', href: '/mentions-legales' },
-                { name: 'Confidentialité', href: '/politique-confidentialite' },
-                { name: 'Conditions', href: '/conditions-utilisation' }
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="text-sm text-white/60 hover:text-white transition-colors font-light inline-flex items-center gap-2 group">
-                    <span className="w-1 h-1 bg-white/40 group-hover:bg-white transition-colors"></span>
-                    <span className="group-hover:translate-x-0.5 transition-transform">{item.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* ── Legal ── */}
+          <div>
+            <FooterColumnTitle>Légal</FooterColumnTitle>
+            <FooterLinkList items={LINKS.legal} />
           </div>
         </div>
+      </div>
 
-        {/* CTA Section */}
-        <div className="border-t border-white/20 pt-16 mb-16">
-          <div className="max-w-2xl">
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold mb-4 text-white">Transformez Votre Vision</h2>
-            <p className="text-white/70 mb-8 text-sm font-light leading-relaxed">
-              Experts en génie civil complexe. Disponibles pour discuter de votre projet et proposer une solution adaptée.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact" className="flex items-center justify-center gap-2 px-8 py-3 bg-white text-black font-semibold hover:bg-white/90 transition-colors">
-                Nous Contacter <ArrowRight size={18} />
+      {/* ══════════════════════════════════════════
+          CTA BAND
+      ══════════════════════════════════════════ */}
+      <div className="border-t border-white/[0.05]">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+
+            <div className="max-w-lg">
+              <h2 className="text-[clamp(1.5rem,2.5vw,2rem)] font-serif font-bold text-white leading-tight mb-2">
+                Prêt à démarrer votre projet ?
+              </h2>
+              <p className="text-[13px] text-white/35 font-light">
+                Premier contact sous 48h — sans engagement.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <Link
+                href="/contact"
+                className="group flex items-center gap-2.5 px-6 py-3 rounded-xl text-white text-[13px] font-semibold transition-all duration-200 hover:opacity-90"
+                style={{ background: ACCENT }}
+              >
+                Nous contacter
+                <MoveRight size={15} className="group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
-              <Link href="/devis" className="flex items-center justify-center gap-2 px-8 py-3 border-2 border-white text-white font-semibold hover:bg-white hover:text-black transition-colors">
-                Devis Gratuit
+              <Link
+                href="/devis"
+                className="group flex items-center gap-2.5 px-6 py-3 rounded-xl text-[13px] font-medium border border-white/[0.08] text-white/55 hover:text-white/90 hover:border-white/[0.15] hover:bg-white/[0.03] transition-all duration-200"
+              >
+                Devis IA gratuit
+                <ArrowUpRight size={13} className="opacity-50 group-hover:opacity-100 transition-opacity" />
               </Link>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/20 pt-8 flex flex-col sm:flex-row justify-between items-center gap-6">
-          <p className="text-xs text-white/50 font-light">
+      {/* ══════════════════════════════════════════
+          BOTTOM BAR
+      ══════════════════════════════════════════ */}
+      <div className="border-t border-white/[0.04]">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+          <p className="text-[11px] text-white/20 font-light">
             © {currentYear} BINOVA ROCKBUILDERS — Tous droits réservés
           </p>
-          <div className="flex items-center gap-10">
-            {[
-              { name: 'LinkedIn', href: 'https://linkedin.com' },
-              { name: 'Twitter', href: 'https://twitter.com' },
-              { name: 'Facebook', href: 'https://facebook.com' }
-            ].map((social) => (
+
+          {/* Socials */}
+          <div className="flex items-center gap-1">
+            {SOCIALS.map(({ label, href, Icon }) => (
               <a
-                key={social.name}
-                href={social.href}
+                key={label}
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-white/50 hover:text-white transition-colors font-semibold uppercase tracking-wider"
+                className="group w-8 h-8 flex items-center justify-center rounded-lg border border-white/[0.05] bg-white/[0.02] hover:border-[#1E6B3A]/30 hover:bg-[#1E6B3A]/8 transition-all duration-200"
+                aria-label={label}
               >
-                {social.name}
+                <Icon size={13} className="text-white/25 group-hover:text-[#1E6B3A] transition-colors duration-200" />
               </a>
             ))}
           </div>

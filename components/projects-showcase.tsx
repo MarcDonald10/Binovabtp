@@ -53,7 +53,7 @@ function ProjectCard({ study, isActive }: ProjectCardProps) {
 
           {/* Accent line */}
           <motion.div
-            className="absolute top-0 left-0 h-1 bg-gradient-to-r from-[#C9826B] to-[#E89A7A] z-10"
+            className="absolute top-0 left-0 h-1 bg-gradient-to-r from-[#1E6B3A] to-[#2E8B57] z-10"
             animate={{ width: isActive ? "100%" : "40%" }}
             transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
           />
@@ -65,8 +65,8 @@ function ProjectCard({ study, isActive }: ProjectCardProps) {
               animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0.7, y: 15 }}
               className="inline-flex items-center gap-3 mb-6"
             >
-              <div className="w-2.5 h-2.5 rounded-full bg-[#C9826B]" />
-              <span className="text-xs font-semibold tracking-[2px] text-[#C9826B] uppercase">
+              <div className="w-2.5 h-2.5 rounded-full bg-[#1E6B3A]" />
+              <span className="text-xs font-semibold tracking-[2px] text-[#1E6B3A] uppercase">
                 {study.client}
               </span>
             </motion.div>
@@ -96,10 +96,10 @@ function ProjectCard({ study, isActive }: ProjectCardProps) {
             </div>
 
             {/* CTA */}
-            <div className="flex items-center gap-4 text-white group-hover:text-[#C9826B] transition-colors">
+            <div className="flex items-center gap-4 text-white group-hover:text-[#1E6B3A] transition-colors">
               <span className="font-medium">Découvrir le projet</span>
-              <div className="w-10 h-10 rounded-2xl border border-white/70 flex items-center justify-center group-hover:bg-white group-hover:border-[#C9826B]">
-                <ArrowRight size={20} className="group-hover:text-[#C9826B]" />
+              <div className="w-10 h-10 rounded-2xl border border-white/70 flex items-center justify-center group-hover:bg-white group-hover:border-[#1E6B3A]">
+                <ArrowRight size={20} className="group-hover:text-[#1E6B3A]" />
               </div>
             </div>
           </div>
@@ -218,7 +218,7 @@ export function ProjectsShowcase() {
           viewport={{ once: true }}
         >
           <motion.div variants={fadeUp} custom={0} className="mb-6">
-            <span className="inline-block px-6 py-2 rounded-full border border-[#C9826B]/20 text-[#C9826B] text-sm tracking-[3px] font-medium">
+            <span className="inline-block px-6 py-2 rounded-full border border-[#1E6B3A]/20 text-[#1E6B3A] text-sm tracking-[3px] font-medium">
               NOS RÉALISATIONS
             </span>
           </motion.div>
@@ -228,7 +228,7 @@ export function ProjectsShowcase() {
             custom={0.1}
             className="font-serif text-[clamp(52px,7.5vw,82px)] leading-none font-light text-gray-950 mb-6"
           >
-            Des projets <span className="text-[#C9826B]">d’exception</span>
+            Des projets <span className="text-[#1E6B3A]">d'exception</span>
           </motion.h2>
 
           <motion.p
@@ -272,7 +272,7 @@ export function ProjectsShowcase() {
                   className="h-1 rounded-full bg-gray-200 transition-all"
                   animate={{
                     width: i === activeIndex ? 52 : 14,
-                    backgroundColor: i === activeIndex ? '#C9826B' : '#e5e7eb'
+                    backgroundColor: i === activeIndex ? '#1E6B3A' : '#e5e7eb'
                   }}
                 />
               ))}
@@ -303,7 +303,7 @@ export function ProjectsShowcase() {
         <motion.div className="mt-20 flex justify-center">
           <Link href="/contact">
             <motion.button
-              className="group px-14 py-7 bg-[#C9826B] text-white text-lg font-medium rounded-3xl flex items-center gap-5 hover:bg-[#b56f5a] transition-all shadow-xl"
+              className="group px-14 py-7 bg-[#1E6B3A] text-white text-lg font-medium rounded-3xl flex items-center gap-5 hover:bg-[#155a2f] transition-all shadow-xl"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >

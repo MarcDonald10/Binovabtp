@@ -20,7 +20,7 @@ const fadeUp = {
 
 // ── Brand tokens ──────────────────────────────────────────────
 const T   = '#5C3B1A'   // deep terracotta (primary)
-const TL  = '#C9826B'   // light terracotta (accent)
+const TL  = '#1E6B3A'   // light terracotta (accent)
 const AM  = '#E89A7A'   // amber highlight
 const BK  = '#0B0B0B'
 const LBG = '#F7F4F1'
