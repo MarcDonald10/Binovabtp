@@ -31,10 +31,10 @@ const LINKS = {
 }
 
 const STATS = [
-  { value: '847', unit: '+', label: 'Projets réalisés' },
-  { value: '28', unit: ' ans', label: "d'excellence" },
-  { value: '250', unit: '+', label: 'Experts terrain' },
-  { value: '99.2', unit: '%', label: 'Taux de réussite' },
+  { value: 'Excellence', unit: '', label: 'dans chaque projet livré' },
+  { value: 'Expertise', unit: '', label: 'technique pluridisciplinaire' },
+  { value: 'Maîtrise', unit: '', label: 'des environnements complexes' },
+  { value: 'Fiabilité', unit: '', label: 'dans l’exécution terrain' },
 ]
 
 const SOCIALS = [
@@ -108,9 +108,8 @@ export function Footer() {
             {STATS.map((s, i) => (
               <motion.div
                 key={i}
-                className={`group py-8 px-6 text-center border-r border-white/[0.05] last:border-r-0 md:border-r hover:bg-white/[0.02] transition-colors duration-300 ${
-                  i === 1 ? 'border-r border-white/[0.05]' : ''
-                } ${i >= 2 ? 'border-t border-white/[0.05] md:border-t-0' : ''}`}
+                className={`group py-8 px-6 text-center border-r border-white/[0.05] last:border-r-0 md:border-r hover:bg-white/[0.02] transition-colors duration-300 ${i === 1 ? 'border-r border-white/[0.05]' : ''
+                  } ${i >= 2 ? 'border-t border-white/[0.05] md:border-t-0' : ''}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -149,7 +148,7 @@ export function Footer() {
             </Link>
 
             <p className="text-[13px] text-white/35 font-light leading-relaxed mb-8 max-w-xs">
-              Spécialistes en infrastructures souterraines complexes depuis 1998. 847 projets, 28 ans d'expertise, zéro compromis.
+              Conception et réalisation d’infrastructures souterraines complexes, avec un haut niveau d’exigence en matière de qualité, sécurité et performance.
             </p>
 
             {/* Contact */}

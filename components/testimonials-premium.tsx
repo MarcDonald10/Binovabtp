@@ -52,7 +52,7 @@ export function TestimonialsPremium() {
             custom={0.2}
             className="text-xl text-gray-600 max-w-2xl mx-auto font-light"
           >
-            Ce que nos clients disent de notre expertise géologique et de notre engagement sans compromis.
+            Retour d’expérience de partenaires ayant fait le choix de l’exigence, de la rigueur et de la performance durable.
           </motion.p>
         </motion.div>
 
@@ -70,18 +70,18 @@ export function TestimonialsPremium() {
               className="group relative p-10 bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col"
             >
               {/* Quote Icon */}
-              <Quote 
-                size={42} 
-                className="text-[#1E6B3A]/10 group-hover:text-[#1E6B3A]/20 transition-colors mb-8" 
+              <Quote
+                size={42}
+                className="text-[#1E6B3A]/10 group-hover:text-[#1E6B3A]/20 transition-colors mb-8"
               />
 
               {/* Rating */}
               <div className="flex gap-1 mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    size={20} 
-                    className="fill-[#1E6B3A] text-[#1E6B3A]" 
+                  <Star
+                    key={i}
+                    size={20}
+                    className="fill-[#1E6B3A] text-[#1E6B3A]"
                   />
                 ))}
               </div>
@@ -113,31 +113,33 @@ export function TestimonialsPremium() {
         </div>
 
         {/* Social Proof Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-24 grid grid-cols-1 sm:grid-cols-3 gap-10 border-t border-gray-100 pt-16"
-        >
+        <div className="mt-24 grid grid-cols-1 sm:grid-cols-3 gap-10 border-t border-gray-100 pt-16">
+
           <div className="text-center">
-            <div className="text-6xl font-serif font-light text-[#1E6B3A] mb-3">4.9</div>
-            <p className="text-gray-600">Note moyenne sur 5</p>
+            <div className="text-3xl font-serif font-light text-[#1E6B3A] mb-3">
+              Excellente réputation
+            </div>
+            <p className="text-gray-600">Retours clients très positifs</p>
             <div className="h-px w-12 mx-auto bg-[#1E6B3A]/30 mt-6" />
           </div>
 
           <div className="text-center">
-            <div className="text-6xl font-serif font-light text-[#1E6B3A] mb-3">98%</div>
-            <p className="text-gray-600">Taux de satisfaction</p>
+            <div className="text-3xl font-serif font-light text-[#1E6B3A] mb-3">
+              Satisfaction élevée
+            </div>
+            <p className="text-gray-600">Relations durables avec nos partenaires</p>
             <div className="h-px w-12 mx-auto bg-[#1E6B3A]/30 mt-6" />
           </div>
 
           <div className="text-center">
-            <div className="text-6xl font-serif font-light text-[#1E6B3A] mb-3">847</div>
-            <p className="text-gray-600">Projets recommandés</p>
+            <div className="text-3xl font-serif font-light text-[#1E6B3A] mb-3">
+              Projets recommandés
+            </div>
+            <p className="text-gray-600">Clients qui renouvellent leur confiance</p>
             <div className="h-px w-12 mx-auto bg-[#1E6B3A]/30 mt-6" />
           </div>
-        </motion.div>
+
+        </div>
       </div>
     </section>
   )

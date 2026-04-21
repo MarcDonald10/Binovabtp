@@ -7,48 +7,47 @@ import { useRef, useState } from 'react'
 const pillars = [
   {
     icon: Award,
-    number: '28',
-    unit: 'ans',
-    title: "Héritage d'Excellence",
-    description: 'Deux décennies de réalisations monumentales. Chaque projet gravé dans la pierre de notre réputation.',
+    number: '',
+    unit: '',
+    title: "Expertise éprouvée",
+    description: "Une maîtrise technique construite sur des projets complexes et exigeants, avec un haut niveau de rigueur et de précision.",
     accent: 'from-[#1E6B3A]/30 via-[#1E6B3A]/10 to-transparent',
   },
   {
     icon: Lock,
-    number: '0',
-    unit: 'incident',
-    title: 'Sécurité Absolue',
-    description: 'Zéro compromis. Zéro accident depuis 2015. Notre culture sécurité est ADN, pas protocole.',
+    number: '',
+    unit: '',
+    title: 'Sécurité maîtrisée',
+    description: "Une culture de la sécurité intégrée à chaque étape, garantissant des interventions fiables et conformes aux normes les plus strictes.",
     accent: 'from-[#1E6B3A]/20 via-[#1E6B3A]/8 to-transparent',
   },
   {
     icon: Lightbulb,
-    number: '100',
-    unit: '%',
-    title: 'Innovation Continue',
-    description: 'R&D intégrée, technologies de pointe, ingénieurs de haut vol. Toujours une longueur d\'avance.',
+    number: '',
+    unit: '',
+    title: 'Innovation continue',
+    description: "Des solutions modernes et adaptées, basées sur une veille technologique constante et une ingénierie de pointe.",
     accent: 'from-[#1E6B3A]/25 via-[#1E6B3A]/5 to-transparent',
   },
   {
     icon: CheckCircle,
-    number: '99.2',
-    unit: '%',
-    title: 'Taux de Réussite',
-    description: 'Dans les délais. Dans le budget. À la perfection. 847 projets en attestent.',
+    number: '',
+    unit: '',
+    title: 'Exécution fiable',
+    description: "Des projets menés avec rigueur, respect des engagements et maîtrise des contraintes techniques.",
     accent: 'from-[#1E6B3A]/20 via-[#1E6B3A]/8 to-transparent',
   },
 ]
-
 const testimonials = [
   {
-    text: "BINOVA a transformé notre vision en réalité avec une précision que nous n'avions jamais expérimentée auparavant. Expertise absolument inégalée sur le Lyon-Turin.",
+    text: "BINOVA a su transformer notre vision en une réalisation concrète avec une précision remarquable. Leur approche technique inspire une véritable confiance.",
     author: 'Jean-Marie Dubois',
     role: 'Directeur Infrastructure',
     company: 'SNCF Infra',
     initials: 'JD',
   },
   {
-    text: "250 experts qui résolvent les défis géotechniques les plus complexes en temps record. Leur rigueur est une force tranquille qui inspire confiance à chaque étape.",
+    text: "Une équipe capable de relever les défis géotechniques les plus complexes avec rigueur et efficacité. Un partenaire fiable sur lequel nous pouvons compter.",
     author: 'Sophie Laurent',
     role: 'VP Construction',
     company: 'Vinci Construction',
@@ -161,7 +160,16 @@ export function WhyTrustUsSection() {
                   {/* Number */}
                   <div className="mb-3 flex items-baseline gap-1">
                     <span className="text-5xl font-serif font-bold text-foreground tabular-nums">
-                      <CountUp target={parseFloat(p.number)} suffix="" />
+                      {p.number && (
+                        <div className="mb-3 flex items-baseline gap-1">
+                          <span className="text-5xl font-serif font-bold text-foreground">
+                            {p.number}
+                          </span>
+                          <span className="text-lg text-[#1E6B3A] font-semibold">
+                            {p.unit}
+                          </span>
+                        </div>
+                      )}
                     </span>
                     <span className="text-lg text-[#1E6B3A] font-semibold">{p.unit}</span>
                   </div>
@@ -223,7 +231,7 @@ export function WhyTrustUsSection() {
               </motion.div>
             ))}
 
-            {/* CTA link */}
+            {/* CTA link
             <motion.a
               href="/references"
               className="group inline-flex items-center gap-2 text-sm text-[#1E6B3A] font-medium mt-2 self-start hover:gap-3 transition-all duration-300"
@@ -234,7 +242,7 @@ export function WhyTrustUsSection() {
             >
               Voir tous nos projets de référence
               <ArrowUpRight size={15} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
-            </motion.a>
+            </motion.a> */}
           </div>
         </div>
       </div>

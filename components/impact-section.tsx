@@ -88,11 +88,8 @@ export function ImpactSection() {
           </motion.h2>
           <motion.p
             className="text-lg text-primary-foreground/80 font-light max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Les chiffres qui racontent nos succès : expertise mesurable et résultats vérifiés
+            Des réalisations concrètes, une approche rigoureuse et des résultats qui parlent d’eux-mêmes.
           </motion.p>
         </motion.div>
 
@@ -105,9 +102,9 @@ export function ImpactSection() {
           className="grid md:grid-cols-3 gap-8 mb-12"
         >
           {[
-            { value: companyStats.yearsInBusiness, suffix: '+', label: 'Ans d\'Expertise', desc: 'Leader européen du BTP' },
-            { value: companyStats.totalProjects, suffix: '+', label: 'Projets Réussis', desc: 'Moyenne 30 projets/an' },
-            { value: companyStats.successRate, suffix: '%', label: 'Taux de Succès', desc: 'À temps, à budget, sécurité' }
+            { value: '✔', suffix: '', label: 'Expertise Confirmée', desc: 'Approche maîtrisée et éprouvée' },
+            { value: '✔', suffix: '', label: 'Projets Maîtrisés', desc: 'Exécution rigoureuse et structurée' },
+            { value: '✔', suffix: '', label: 'Résultats Fiables', desc: 'Qualité, délais et sécurité assurés' }
           ].map((stat, i) => (
             <motion.div
               key={i}
@@ -163,10 +160,10 @@ export function ImpactSection() {
           className="grid md:grid-cols-2 gap-6 pt-12 border-t border-primary-foreground/20"
         >
           {[
-            { value: companyStats.teamMembers, suffix: '+', label: 'Experts Permanents', desc: 'Ingénieurs certifiés & formés' },
-            { value: companyStats.countriesOperating, suffix: '', label: 'Pays Opérationnels', desc: 'Standards globaux' },
-            { value: companyStats.rocksExcavated, suffix: '', label: 'Millions Tonnes', desc: 'Travaux souterrains & minage' },
-            { value: companyStats.totalRevenue, suffix: '', label: 'Chiffre d\'Affaires', desc: 'Croissance annuelle prouvée' }
+            { value: '✔', suffix: '', label: 'Équipe Qualifiée', desc: 'Professionnels expérimentés et engagés' },
+            { value: '✔', suffix: '', label: 'Présence Internationale', desc: 'Interventions sur divers territoires' },
+            { value: '✔', suffix: '', label: 'Maîtrise Technique', desc: 'Expertise en travaux complexes' },
+            { value: '✔', suffix: '', label: 'Performance Durable', desc: 'Résultats solides et continus' }
           ].map((stat, i) => (
             <motion.div
               key={i}
@@ -215,24 +212,16 @@ export function ImpactSection() {
             className="inline-block relative"
             whileHover={{ scale: 1.05 }}
           >
-            <motion.p
-              className="text-4xl sm:text-5xl font-serif font-bold text-accent mb-3"
-              animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            >
-              0
+            <motion.p className="text-4xl sm:text-5xl font-serif font-bold text-accent mb-3">
+              Sécurité
             </motion.p>
-            <motion.p
-              className="text-lg text-primary-foreground/90 font-light"
-              initial={false}
-            >
-              Accidents Mortels depuis 2015
+
+            <motion.p className="text-lg text-primary-foreground/90 font-light">
+              Tolérance zéro face aux risques critiques
             </motion.p>
-            <motion.p
-              className="text-sm text-primary-foreground/60 font-light mt-2"
-              initial={false}
-            >
-              Standards sécurité les plus élevés du secteur
+
+            <motion.p className="text-sm text-primary-foreground/60 font-light mt-2">
+              Protocoles stricts et culture sécurité intégrée
             </motion.p>
           </motion.div>
         </motion.div>

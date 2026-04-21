@@ -83,7 +83,7 @@ export function UrgencySection() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                Calendriers Serrés pour 2024-2025
+                Forte demande sur nos équipes
               </motion.h3>
               <motion.p
                 className="text-primary-foreground/80 font-light text-lg leading-relaxed"
@@ -91,21 +91,21 @@ export function UrgencySection() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
               >
-                Les équipes BINOVA sont réservées jusqu'à{' '}
+                Nos équipes sont fortement sollicitées sur {' '}
                 <motion.span
                   className="text-accent font-semibold"
                   animate={{ scale: [0.95, 1.05, 0.95], opacity: [0.8, 1, 0.8] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  18 mois à l'avance
+                  des projets stratégiques.
                 </motion.span>
-                . Seuls <motion.span
+                Les disponibilités sont limitées afin de garantir  <motion.span
                   className="text-accent font-semibold inline-flex items-center gap-1"
                   animate={{ scale: [1, 1.15, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <Zap size={16} className="inline" /> 3 créneaux
-                </motion.span> restent disponibles cette année.
+                  <Zap size={16} className="inline" /> un niveau d’exigence
+                </motion.span> constant sur chaque mission.
               </motion.p>
             </div>
           </div>
@@ -192,7 +192,7 @@ export function UrgencySection() {
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
               <span className="relative flex items-center gap-2">
-                Réserver une Consultation
+                Demander une étude de projet
                 <motion.div animate={{ x: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity }}>
                   <ArrowRight size={16} />
                 </motion.div>
@@ -212,7 +212,7 @@ export function UrgencySection() {
                 animate={{ boxShadow: ['0 0 0 0 rgba(201, 130, 107, 0.7)', '0 0 0 10px rgba(201, 130, 107, 0)'] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              <span className="relative">Contacter Directement</span>
+              <span className="relative">Échanger avec un expert</span>
             </motion.button>
           </Link>
         </motion.div>
@@ -226,7 +226,7 @@ export function UrgencySection() {
           animate={{ opacity: [0.6, 1, 0.6] }}
           transitionOpacity={{ duration: 3, repeat: Infinity }}
         >
-          ✓ Réponse garantie dans les 24 heures
+          ✓ Réponse rapide et accompagnement personnalisé
         </motion.p>
       </div>
     </section>

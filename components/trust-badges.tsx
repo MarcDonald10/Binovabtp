@@ -32,24 +32,19 @@ function useCountUp(target: number, duration = 1800) {
   return ref
 }
 
-function StatItem({ target, suffix = '', label, delay }: {
-  target: number
-  suffix?: string
-  label: string
-  delay: number
-}) {
-  const ref = useCountUp(target)
-
+function StatItem({ value, label, delay }) {
   return (
     <div
       className="flex-1 px-8 py-7 text-center border-r border-border last:border-r-0
                  animate-fade-in-up"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <p className="text-[38px] font-semibold leading-none text-[#F4B400] mb-2 tabular-nums">
-        <span ref={ref}>0</span>{suffix}
+      <p className="text-[28px] font-semibold leading-none text-[#F4B400] mb-2">
+        {value}
       </p>
-      <p className="text-xs uppercase tracking-wide text-muted-foreground">{label}</p>
+      <p className="text-xs uppercase tracking-wide text-muted-foreground">
+        {label}
+      </p>
     </div>
   )
 }
@@ -61,10 +56,10 @@ export function TrustBadges() {
 
         {/* Stats row — une seule carte unifiée */}
         <div className="flex rounded-xl border border-border bg-background overflow-hidden mb-10">
-          <StatItem target={companyStats.yearsInBusiness}   suffix="+" label="Ans d'expertise"     delay={0}   />
-          <StatItem target={companyStats.totalProjects}     suffix="+" label="Projets complétés"    delay={80}  />
-          <StatItem target={companyStats.teamMembers}       suffix="+" label="Experts en équipe"    delay={160} />
-          <StatItem target={companyStats.countriesOperating}          label="Pays opérationnels"   delay={240} />
+          <StatItem value="Expertise" label="Solutions techniques avancées" delay={0} />
+          <StatItem value="Précision" label="Ingénierie maîtrisée" delay={80} />
+          <StatItem value="Fiabilité" label="Exécution rigoureuse" delay={160} />
+          <StatItem value="Excellence" label="Standards élevés" delay={240} />
         </div>
 
         {/* Séparateur */}

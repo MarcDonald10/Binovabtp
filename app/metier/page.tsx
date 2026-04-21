@@ -590,25 +590,26 @@ export default function MetierPage() {
           <em>Métiers</em>
         </h1>
         <p className="hero-description">
-          De la géotechnique aux ouvrages d'art, du tunnelage à l'urbain.
-          28 ans d'expertise, 847 projets réussis. Elle est notre maîtrise.
+          De la géotechnique aux ouvrages d'art, du tunnelage aux aménagements urbains,
+          nous concevons des solutions durables et maîtrisées, adaptées aux environnements les plus exigeants.
         </p>
+
         <div className="hero-stats-row">
           <div className="hero-stat-item">
-            <div className="hero-stat-value">847</div>
-            <div className="hero-stat-label">Projets livrés</div>
+            <div className="hero-stat-value">Expertise</div>
+            <div className="hero-stat-label">Solutions sur mesure</div>
           </div>
           <div className="hero-stat-item">
-            <div className="hero-stat-value">28</div>
-            <div className="hero-stat-label">Années d'expertise</div>
+            <div className="hero-stat-value">Précision</div>
+            <div className="hero-stat-label">Ingénierie maîtrisée</div>
           </div>
           <div className="hero-stat-item">
-            <div className="hero-stat-value">12</div>
-            <div className="hero-stat-label">Pays opérationnels</div>
+            <div className="hero-stat-value">Fiabilité</div>
+            <div className="hero-stat-label">Exécution rigoureuse</div>
           </div>
           <div className="hero-stat-item">
-            <div className="hero-stat-value">99.2%</div>
-            <div className="hero-stat-label">Taux de réussite</div>
+            <div className="hero-stat-value">Excellence</div>
+            <div className="hero-stat-label">Standards élevés</div>
           </div>
         </div>
       </section>

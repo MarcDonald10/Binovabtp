@@ -83,7 +83,7 @@ export function FinalCTASection() {
             <div className="flex items-center gap-3 mb-7">
               <div className="h-px w-8 bg-[#1E6B3A]" />
               <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#1E6B3A]">
-                Commencez maintenant
+                Initier un échange
               </span>
             </div>
 
@@ -108,7 +108,8 @@ export function FinalCTASection() {
 
             {/* Body */}
             <p className="text-[17px] text-muted-foreground font-light leading-relaxed max-w-lg mb-10">
-              28 ans d'expertise à votre service. Discutons de votre projet lors d'un premier échange confidentiel et sans engagement — et voyons ensemble comment BINOVA peut transformer votre vision en réalité.
+              Chaque projet commence par une compréhension précise de vos besoins et des contraintes du terrain.
+              Un premier échange permet d’évaluer la faisabilité, d’identifier les solutions adaptées et de poser les bases d’une collaboration fiable et structurée.
             </p>
 
             {/* Trust badges */}
@@ -205,13 +206,20 @@ export function FinalCTASection() {
                 {/* Micro stats */}
                 <div className="grid grid-cols-3 gap-3 pt-1">
                   {[
-                    { value: '847', label: 'projets' },
-                    { value: '28', label: 'années' },
-                    { value: '99%', label: 'succès' },
+                    { value: 'Expertise', label: 'approche projet' },
+                    { value: 'Structuré', label: 'méthode de travail' },
+                    { value: 'Fiable', label: 'engagement qualité' },
                   ].map((s, i) => (
-                    <div key={i} className="text-center py-3 rounded-lg bg-white/[0.02] border border-white/[0.04]">
-                      <p className="text-lg font-serif font-bold text-foreground">{s.value}</p>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">{s.label}</p>
+                    <div
+                      key={i}
+                      className="text-center py-3 rounded-lg bg-white/[0.02] border border-white/[0.04]"
+                    >
+                      <p className="text-sm font-serif font-semibold text-foreground">
+                        {s.value}
+                      </p>
+                      <p className="text-[10px] text-muted-foreground mt-0.5">
+                        {s.label}
+                      </p>
                     </div>
                   ))}
                 </div>

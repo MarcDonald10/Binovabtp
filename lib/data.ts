@@ -1,14 +1,10 @@
 // Données principales pour BINOVA ROCKBUILDERS - Convaincre & Convertir
 
 export const companyStats = {
-  yearsInBusiness: 28,
-  totalProjects: 847,
-  teamMembers: 250,
-  countriesOperating: 12,
-  successRate: 99.2,
-  totalRevenue: "€450M+",
-  rocksExcavated: "15M+ tonnes",
-  tunnelsCompleted: 156,
+  expertise: "Expertise reconnue",
+  projects: "Projets complexes maîtrisés",
+  team: "Équipe qualifiée",
+  presence: "Présence internationale",
 };
 
 export const certifications = [
@@ -22,38 +18,38 @@ export const certifications = [
 
 export const testimonials = [
   {
-    name: "Jean-Marie Dubois",
-    role: "Directeur Général, Groupe SNCF Infra",
-    company: "SNCF",
-    text: "BINOVA a dépassé nos attentes sur le projet Lyon-Turin. Leur expertise technique et leur engagement envers la sécurité sont sans pareils. Une vraie partenaire de confiance.",
+    name: "Jean M.",
+    role: "Directeur des Infrastructures",
+    company: "Groupe Ferroviaire",
+    text: "Une collaboration marquée par une maîtrise technique remarquable et une exigence constante en matière de sécurité. Un partenaire fiable sur des projets critiques.",
     rating: 5,
     image: "/testimonials/dubois.svg",
   },
   {
-    name: "Sophie Laurent",
-    role: "Responsable Projets Souterrains, Vinci Construction",
-    company: "Vinci",
-    text: "Les 150+ experts de BINOVA ont résolu des défis géotechniques complexes en temps record. Leur innovation et réactivité font la différence.",
+    name: "Sophie L.",
+    role: "Responsable Projets Souterrains",
+    company: "Entreprise de Construction",
+    text: "Une capacité impressionnante à résoudre des défis géotechniques complexes avec méthode et précision. Leur réactivité fait toute la différence.",
     rating: 5,
     image: "/testimonials/laurent.svg",
   },
   {
-    name: "Marco Rossi",
-    role: "Project Manager, Eiffage Tunnels",
-    company: "Eiffage",
-    text: "Avec BINOVA, les délais sont respectés. Les coûts maîtrisés. Les risques minimisés. C'est du professionnalisme de haut niveau.",
+    name: "Marco R.",
+    role: "Chef de Projet Tunnel",
+    company: "Groupe BTP",
+    text: "Des délais respectés, des coûts maîtrisés et une exécution sans faille. Une approche professionnelle à chaque étape du projet.",
     rating: 5,
     image: "/testimonials/rossi.svg",
   },
   {
-    name: "Anna Müller",
-    role: "Chief Engineering Officer, Hochtief",
-    company: "Hochtief",
-    text: "28 ans d'expertise visible dans chaque projet. BINOVA est notre partenaire préféré pour les travaux souterrains critiques en Europe.",
+    name: "Anna M.",
+    role: "Directrice Ingénierie",
+    company: "Entreprise Internationale",
+    text: "Une expertise visible dans chaque réalisation. Une référence incontournable pour les projets souterrains exigeants.",
     rating: 5,
     image: "/testimonials/muller.svg",
   },
-];
+]
 
 export const caseStudies = [
   {
@@ -171,53 +167,53 @@ export const serviceHighlights = [
 ];
 
 export const trustIndicators = [
-  { icon: "Trophy", text: "28 ans d'expertise" },
-  { icon: "Users", text: "250+ experts permanents" },
-  { icon: "Globe", text: "12 pays opérationnels" },
-  { icon: "Check", text: "99.2% taux de succès" },
-  { icon: "BarChart3", text: "€450M+ CA annuel" },
-  { icon: "Lock", text: "0 accident mortel depuis 2015" },
+  { icon: "Trophy", text: "Expertise technique reconnue" },
+  { icon: "Users", text: "Équipe qualifiée et engagée" },
+  { icon: "Globe", text: "Interventions sur divers territoires" },
+  { icon: "Check", text: "Projets réalisés avec rigueur" },
+  { icon: "BarChart3", text: "Performance et optimisation" },
+  { icon: "Lock", text: "Engagement sécurité et conformité" },
 ];
 
 export const conversionElements = {
   urgency: [
-    "Disponibilité limitée: Nos équipes sont réservées 18 mois à l'avance",
-    "Contrats 2024-2025 en cours de signature",
-    "Seuls 3 créneaux disponibles cette année pour new clients",
+    "Disponibilités limitées pour garantir une exécution optimale",
+    "Sélection rigoureuse des projets selon leur complexité",
+    "Engagement total sur chaque mission confiée",
   ],
   trustIndicators: trustIndicators,
   socialProof: [
-    "SNCF, Vinci, Eiffage, Hochtief, Statkraft, Endeavour Mining confiants",
-    "847 projets livrés avec succès",
-    "15M+ tonnes de roches excavées",
-    "156 tunnels majeurs",
+    "Partenaires publics et privés de référence",
+    "Projets complexes livrés avec rigueur",
+    "Maîtrise des environnements techniques exigeants",
+    "Expertise reconnue en travaux souterrains",
   ],
 };
 
 export const faqItems = [
   {
-    question: "Quel est le délai typique pour un devis détaillé?",
-    answer: "24-48h après présentation du projet. Nos ingénieurs analyseront vos spécifications géotechniques, conditions de site, et contraintes calendaires pour proposer une solution sur-mesure.",
+    question: "Quel est le délai pour obtenir une proposition détaillée ?",
+    answer: "Une première réponse est généralement fournie sous 24 à 48 heures après analyse de votre projet. Nos équipes évaluent précisément les contraintes techniques, le terrain et vos objectifs pour proposer une solution adaptée.",
   },
   {
-    question: "Travaillez-vous à l'international?",
-    answer: "Oui, nous opérons dans 12 pays européens et africains. Nos équipes s'adaptent à chaque contexte réglementaire local tout en maintenant nos standards de sécurité mondiaux.",
+    question: "Intervenez-vous sur des projets internationaux ?",
+    answer: "Oui. Nos équipes interviennent sur différents territoires en s’adaptant aux exigences locales tout en maintenant des standards élevés en matière de qualité et de sécurité.",
   },
   {
-    question: "Comment garantissez-vous la sécurité?",
-    answer: "Certifications OHSAS 18001 & ISO 45001, protocoles zéro-accident depuis 2015, monitoring 24/7 sur site, formations continues des 250+ experts, assurances complémentaires complètes.",
+    question: "Comment garantissez-vous la sécurité sur vos chantiers ?",
+    answer: "La sécurité est intégrée à chaque étape du projet : procédures strictes, suivi en continu et formation permanente des équipes. Chaque intervention est pensée pour minimiser les risques et assurer un environnement de travail maîtrisé.",
   },
   {
-    question: "Pouvez-vous gérer des projets d'urgence?",
-    answer: "Oui, mobilisation d'équipes experts en 48-72h. Nous avons une réserve d'équipements préposés et équipes prêtes pour interventions critiques.",
+    question: "Pouvez-vous gérer des projets urgents ?",
+    answer: "Selon la nature du besoin, des équipes peuvent être mobilisées rapidement. Une évaluation préalable permet de définir la meilleure approche pour intervenir efficacement.",
   },
   {
-    question: "Quel est votre processus de sélection client?",
-    answer: "Chaque projet est étudié: faisabilité technique, alignement avec nos standards de sécurité, impact environnemental acceptable. Nous refusons 1 projet sur 5 si conditions non optimales.",
+    question: "Quels types de projets acceptez-vous ?",
+    answer: "Nous sélectionnons les projets en fonction de leur faisabilité technique, de leur cohérence avec nos standards et de leur impact global. Cette exigence garantit des résultats fiables et durables.",
   },
   {
-    question: "Quelles sont vos garanties contractuelles?",
-    answer: "Garantie performance 10 ans, assurance décennale complète, délais avec pénalités réciproques, budgets fixes sauf variations géologiques certifiées.",
+    question: "Quelles garanties proposez-vous ?",
+    answer: "Nos engagements reposent sur la transparence, la maîtrise des délais et le respect des exigences contractuelles. Chaque projet bénéficie d’un cadre clair et sécurisé.",
   },
 ];
 
