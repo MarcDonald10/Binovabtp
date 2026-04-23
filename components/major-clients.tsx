@@ -4,12 +4,12 @@ import { Star, Train, Wrench, Building2, Landmark, Zap, Pickaxe } from 'lucide-r
 
 export function MajorClientsSection() {
   const clients = [
-    { name: 'SNCF', icon: Train, sector: 'Rail' },
-    { name: 'Vinci', icon: Wrench, sector: 'Génie Civil' },
-    { name: 'Eiffage', icon: Building2, sector: 'BTP' },
-    { name: 'Hochtief', icon: Landmark, sector: 'Infrastructure' },
-    { name: 'Statkraft', icon: Zap, sector: 'Énergie' },
-    { name: 'Endeavour Mining', icon: Pickaxe, sector: 'Mines' },
+    { name: 'BMC', icon: Train, sector: 'Mines' },
+    { name: 'MLITZ', icon: Wrench, sector: 'Automobile' },
+    { name: 'LGF', icon: Building2, sector: 'Agriculture' },
+    { name: 'HOLYFRAME', icon: Landmark, sector: 'Infrastructure' },
+    { name: 'FLEURON', icon: Landmark, sector: 'Infrastructure' },
+    { name: 'THE PLURAL STORE', icon: Landmark, sector: 'Infrastructure' },
   ]
 
   return (
@@ -18,7 +18,7 @@ export function MajorClientsSection() {
         <div className="text-center mb-12 animate-fade-in-up">
           <h2 className="text-2xl sm:text-3xl font-serif font-bold mb-3">Nos Grands Clients</h2>
           <p className="text-muted-foreground font-light">
-            Reconnus et de confiance par les leaders mondiaux du BTP
+            Reconnus et de confiance pour leur leadership.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export function MajorClientsSection() {
             <div className="text-center sm:text-left flex-1">
               <h3 className="font-semibold text-foreground mb-2">Reconnus Comme Partenaires Fiables</h3>
               <p className="text-muted-foreground font-light text-sm">
-                Les plus grandes entreprises de construction d&apos;Europe nous font confiance pour leurs projets les plus critiques.
+                Les plus grandes entreprises qui  nous font confiance pour leurs projets les plus critiques.
               </p>
             </div>
             <div className="flex gap-1">

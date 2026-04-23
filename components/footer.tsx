@@ -148,7 +148,7 @@ export function Footer() {
             </Link>
 
             <p className="text-[13px] text-white/35 font-light leading-relaxed mb-8 max-w-xs">
-              Conception et réalisation d’infrastructures souterraines complexes, avec un haut niveau d’exigence en matière de qualité, sécurité et performance.
+              Conception et réalisation d’infrastructures variées, avec un haut niveau d’exigence en matière de qualité, sécurité et performance.
             </p>
 
             {/* Contact */}

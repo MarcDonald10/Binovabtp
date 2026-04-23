@@ -47,7 +47,7 @@ const services = [
     tag: 'Ingénierie terrain',
     icon: Hammer,
     link: '/terrassement',
-    image: '/slides/civil.jpg',
+    image: '/terrassement-hero.jpg',
     accent: '#1E6B3A',
   },
   {
@@ -90,7 +90,7 @@ export function PremiumServicesSection() {
             </div>
 
             <h2 className="text-[clamp(2.4rem,4.5vw,3.8rem)] font-serif font-bold leading-[1.05]">
-              Trois piliers.
+              Quatre piliers.
               <br />
               <em className="not-italic text-[#1E6B3A]">
                 Un standard d'excellence.
@@ -99,7 +99,7 @@ export function PremiumServicesSection() {
           </div>
 
           <p className="text-[15px] text-muted-foreground font-light max-w-sm">
-            847 projets d'infrastructure. 28 ans d'engagement. Zéro compromis sur la qualité.
+            Des projets infrastructuraux simples aux plus complexes, notre engagement: Zéro compromis sur la qualité.
           </p>
         </div>
 

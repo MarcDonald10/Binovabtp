@@ -121,7 +121,7 @@ export function WhyTrustUsSection() {
             <em className="not-italic text-[#1E6B3A]">sur des preuves.</em>
           </h2>
           <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-xl">
-            Quatre décennies de projets critiques ont forgé une méthode rigoureuse et une culture d'excellence sans équivalent dans le secteur.
+            Nos expériences cumulées sur des projets infiniment variés ont forgé une méthode rigoureuse et une culture d'excellence sans équivalent dans le secteur.
           </p>
         </motion.div>
 

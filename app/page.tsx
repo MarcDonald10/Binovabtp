@@ -150,8 +150,8 @@ export default function Home() {
       {/* Testimonials Section */}
       <TestimonialsPremium />
 
-      {/* Certifications */}
-      <CertificationsSection />
+      {/* Certifications 
+      <CertificationsSection />*/}
 
       {/* Urgency/FOMO Section */}
       <UrgencySection />
