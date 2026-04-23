@@ -5,7 +5,7 @@ import { Star, Train, Wrench, Building2, Landmark, Zap, Pickaxe } from 'lucide-r
 export function MajorClientsSection() {
   const clients = [
     { name: 'BMC', icon: Train, sector: 'Mines' },
-    { name: 'MLITZ', icon: Wrench, sector: 'Automobile' },
+    { name: 'BLITZ', icon: Wrench, sector: 'Automobile' },
     { name: 'LGF', icon: Building2, sector: 'Agriculture' },
     { name: 'HOLYFRAME', icon: Landmark, sector: 'Infrastructure' },
     { name: 'FLEURON', icon: Landmark, sector: 'Infrastructure' },
