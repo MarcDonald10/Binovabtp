@@ -58,7 +58,7 @@ const slides = [
     cta: "Consulter",
     ctaSecondary: "En savoir plus",
     link: "/metier/carrieres",
-    image: "/slides/quarries.jpg",
+    image: "/minage-hero.jpg",
     stats: [
       { label: "Gestion responsable des ressources" },
       { label: "Réhabilitation des sites" },
