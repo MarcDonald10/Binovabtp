@@ -1,16 +1,17 @@
 'use client'
 
-import { Star, Train, Wrench, Building2, Landmark, Zap, Pickaxe } from 'lucide-react'
+import { Star, Train, Wrench, Building2, Landmark, Zap, Pickaxe, CarFront, Wheat } from 'lucide-react'
 
 export function MajorClientsSection() {
   const clients = [
-    { name: 'BMC', icon: Train, sector: 'Mines' },
-    { name: 'BLITZ', icon: Wrench, sector: 'Automobile' },
-    { name: 'LGF', icon: Building2, sector: 'Agriculture' },
+    { name: 'BMC', icon: Pickaxe, sector: 'Mines' },
+    { name: 'BLITZ', icon: CarFront, sector: 'Automobile' },
+    { name: 'LGF', icon: Wheat, sector: 'Agriculture' },
     { name: 'HOLYFRAME', icon: Landmark, sector: 'Infrastructure' },
     { name: 'FLEURON', icon: Landmark, sector: 'Infrastructure' },
-    { name: 'THE PLURAL STORE', icon: Landmark, sector: 'Infrastructure' },
+    { name: 'THE PLURAL', icon: Landmark, sector: 'Infrastructure' },
   ]
+
 
   return (
     <section className="py-16 bg-background">
