@@ -68,7 +68,7 @@ export const caseStudies = [
     id: 2,
     title: "Centrale Solaire de 80MW",
     subtitle: "80MW d'énergie propre",
-    image: "/projets/cite-personnel.jpeg",
+    image: "/projets/central-solaire.jpeg",
     
     challenge: "Un projet d'énergie renouvelable sur environ 100ha pour autoalimenter une cité industrielle au Cameroun. Durée 2ans - Equipe 100+ Budget 60M euro - Client, Binova Energies",
     solution: "Installation de panneaux solaires à haut rendement, optimisation de l'orientation pour maximiser la production, intégration d'un système de stockage d'énergie pour assurer une alimentation continue, et gestion intelligente de la consommation énergétique.",
@@ -76,50 +76,7 @@ export const caseStudies = [
     highlights: "Un projet d'énergie renouvelable d'envergure pour une entreprise de référence. Production d'énergie propre et durable pour une cité industrielle.",
     slug: "centrale-solaire-80mw",
   },
-  {
-    id: 3,
-    title: "Métro Copenhague: Tunnelage Urbain",
-    subtitle: "17 km sous la capitale danoise",
-    image: "/case-studies/copenhagen-metro.jpg",
-    client: "Metroselskabet (CPH Metro)",
-    year: 2021,
-    budget: "€3.2 Milliards",
-    duration: "7 ans",
-    team: 280,
-    challenge: "Creuser sous une ville occupée sans interruption des services. Vibrations minimales. Impacts zéro sur bâtiments. Trafic urbain congestionné.",
-    solution: "TBM silencieuses, monitoring vibratoire real-time, coordination 24/7 avec services urbains, innovations en amortissement des chocs.",
-    results: [
-      "Zéro dommage structurel",
-      "Vibrations <5mm partout",
-      "28M passagers/an prévus",
-      "Réduction congestion de 12%",
-      "CO2: -8,000 t/an"
-    ],
-    highlights: "Le tunnelage urbain le plus propre jamais réalisé. Aucun impact environnemental. Technologie de pointe.",
-    slug: "copenhagen-metro",
-  },
-  {
-    id: 4,
-    title: "Barrage Hydroélectrique Norvège: Terrassement Géant",
-    subtitle: "30M m³ de roche excavée",
-    image: "/case-studies/norway-dam.jpg",
-    client: "Statkraft AS",
-    year: 2020,
-    budget: "€980M",
-    duration: "4 ans",
-    team: 210,
-    challenge: "Excaver 30 millions de m³ dans un relief montagneux hostile. Conditions météo extrêmes. Calendrier serré pour production hivernale.",
-    solution: "Flotte d'excavateurs géants, dynamitage sismiquement sûr, transport logistique sur 80km, système de stabilisation des pentes.",
-    results: [
-      "30M m³ excavés",
-      "Calendrier: -3 mois d'avance",
-      "Coût unitaire: -18%",
-      "550 GWh/an produits",
-      "Approv énergétique: +12% région"
-    ],
-    highlights: "Le plus grand projet de terrassement scandinave. Livré plus tôt. Moins cher. Plus productif.",
-    slug: "norway-hydrodam",
-  },
+  
 ];
 
 export const serviceHighlights = [
