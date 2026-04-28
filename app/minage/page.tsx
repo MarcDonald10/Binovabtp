@@ -59,7 +59,7 @@ export default function Minage() {
               </div>
               
               <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-lg h-96 flex items-center justify-center">
-                <p className="text-center text-muted-foreground">Image Minage</p>
+                 <img src="/minage.webp" alt="Minage" className="object-cover rounded-lg shadow-lg" />
               </div>
             </div>
           </div>

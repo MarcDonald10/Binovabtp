@@ -14,7 +14,7 @@ const LINKS = {
     { label: 'Tunnelage', href: '/tunnelage' },
     { label: 'Minage', href: '/minage' },
     { label: 'Terrassement', href: '/terrassement' },
-    { label: 'Infrastructure', href: '/metier' },
+    { label: 'Infrastructure', href: '/infrastructure' },
   ],
   engagement: [
     { label: 'RSE', href: '/engagement/rse' },
@@ -154,9 +154,9 @@ export function Footer() {
             {/* Contact */}
             <div className="space-y-3">
               {[
-                { Icon: Phone, text: '+................', href: 'tel:+............' },
-                { Icon: Mail, text: '.......@.....', href: 'mailto:.........' },
-                { Icon: MapPin, text: '......, .....', href: '#' },
+                { Icon: Phone, text: '+237 655 167 040', href: 'tel:+237655167040' },
+                { Icon: Mail, text: 'info@binova-rockbuilders.com', href: 'mailto:info@binova-rockbuilders.com' },
+                { Icon: MapPin, text: 'Bel Air, Kribi, Cameroun', href: '#' },
               ].map(({ Icon, text, href }, i) => (
                 <a
                   key={i}

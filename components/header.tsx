@@ -35,6 +35,18 @@ const NAV_ITEMS = [
       { label: 'Éthique', href: '/engagement/ethique', desc: 'Intégrité & transparence' },
     ],
   },
+  {
+    label: 'Solutions',
+    href: '/solutions',
+    children: [
+      { label: 'Tunnelage', href: '/tunnelage' , desc: 'Techniques avancées pour infrastructures souterraines' },
+      { label: 'Minage', href: '/minage' , desc: 'Extraction et traitement des ressources naturelles' },
+      { label: 'Terrassement', href: '/terrassement' , desc: 'Préparation et aménagement des sols' },
+      { label: 'Infrastructure', href: '/infrastructure' , desc: 'Conception et réalisation d\'ouvrages publics' },
+    ],
+  },
+  
+  { label: 'Carrière', href: '/offres' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -76,7 +88,7 @@ function DropdownMenu({
               style={{ background: `linear-gradient(to right, transparent, ${ACCENT}50, transparent)` }}
             />
 
-            {items.map((item, i) => (
+            {items.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

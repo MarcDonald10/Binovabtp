@@ -64,20 +64,20 @@ export default function ContactPage() {
                 {
                   icon: <Phone className="w-8 h-8" />,
                   title: 'Téléphone',
-                  content: 'Tel......',
+                  content: '+237 655 167 040',
                   subtitle: 'Appelez-nous directement'
                 },
                 {
                   icon: <Mail className="w-8 h-8" />,
                   title: 'Email',
-                  content: 'mail....',
+                  content: 'info@binova-rockbuilders.com',
                   subtitle: 'Réponse sous 24h'
                 },
                 {
                   icon: <MapPin className="w-8 h-8" />,
                   title: 'Adresse',
-                  content: 'Lieu....',
-                  subtitle: '........'
+                  content: 'Bel Air, Kribi, Cameroun',
+                  subtitle: 'Visitez notre bureau régional'
                 }
               ].map((info, i) => (
                 <div key={i} data-animate className=" p-8 bg-card border border-border/50 rounded-sm hover:border-accent hover:shadow-xl transition-all duration-300 group text-center">
@@ -233,21 +233,9 @@ export default function ContactPage() {
               {[
                 {
                   name: 'Siège Social',
-                  address: 'Lieu....',
-                  phone: 'Tel......',
-                  email: 'mail....'
-                },
-                {
-                  name: 'Bureau Régional',
-                  address: 'Lieu....',
-                  phone: 'Tel......',
-                  email: 'mail....'
-                },
-                {
-                  name: 'Bureau Régional - Provence',
-                  address: 'Lieu....',
-                  phone: 'Tel......',
-                  email: 'mail....'
+                  address: 'Bel Air, Kribi, Cameroun',
+                  phone: '+237 655 167 040',
+                  email: 'info@binova-rockbuilders.com'
                 }
               ].map((office, i) => (
                 <div key={i} data-animate className=" p-8 bg-background border border-border/50 rounded-sm hover:border-accent hover:shadow-lg transition-all duration-300">

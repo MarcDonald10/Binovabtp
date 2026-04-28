@@ -22,11 +22,7 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ study, isActive }: ProjectCardProps) {
-  const stats = [
-    { label: 'Durée', value: study.duration },
-    { label: 'Équipe', value: `${study.team}+` },
-    { label: 'Budget', value: study.budget },
-  ]
+
 
   return (
     <motion.div
@@ -85,23 +81,9 @@ function ProjectCard({ study, isActive }: ProjectCardProps) {
               {study.highlights}
             </motion.p>
 
-            {/* Stats */}
-            <div className="flex gap-10 mb-10">
-              {stats.map((stat, i) => (
-                <div key={i}>
-                  <div className="text-3xl font-medium text-white tracking-tighter">{stat.value}</div>
-                  <div className="text-xs uppercase tracking-widest text-white/60 mt-1.5">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+           
 
-            {/* CTA */}
-            <div className="flex items-center gap-4 text-white group-hover:text-[#1E6B3A] transition-colors">
-              <span className="font-medium">Découvrir le projet</span>
-              <div className="w-10 h-10 rounded-2xl border border-white/70 flex items-center justify-center group-hover:bg-white group-hover:border-[#1E6B3A]">
-                <ArrowRight size={20} className="group-hover:text-[#1E6B3A]" />
-              </div>
-            </div>
+            
           </div>
         </div>
       </Link>

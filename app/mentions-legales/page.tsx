@@ -18,7 +18,7 @@ export default function MentionsLegales() {
             <h2 className="text-2xl font-bold text-foreground mb-4">Propriétaire du site</h2>
             <p>
               BINOVA ROCKBUILDERS<br/>
-              Lieu....<br/>
+              Bel Air, Kribi, Cameroun<br/>
               ......<br/>
               .......<br/>
               ........

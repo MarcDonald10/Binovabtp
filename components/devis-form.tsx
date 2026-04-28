@@ -157,7 +157,7 @@ Un devis précis sera établi après étude de site et validation
 des paramètres techniques par nos experts.
 
 Pour plus d'informations: mail....
-Téléphone: Tel......
+Téléphone: +237 655 167 040
     `.trim()
 
     const element = document.createElement('a')

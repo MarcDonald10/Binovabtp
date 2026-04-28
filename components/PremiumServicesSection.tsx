@@ -58,7 +58,7 @@ const services = [
       'Conception et réalisation d’ouvrages majeurs à forte valeur stratégique et technique.',
     tag: 'Expertise globale',
     icon: Building2,
-    link: '/metier',
+    link: '/infrastructure',
     image: '/slides/dams.jpg',
     accent: '#1E6B3A',
   },

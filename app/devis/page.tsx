@@ -575,7 +575,7 @@ function Step4({ data, update }: { data: FormData; update: (d: Partial<FormData>
             <Phone size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
             <input
               type="tel"
-              placeholder="+33 6 00 00 00 00"
+              placeholder=".............."
               value={data.phone}
               onChange={(e) => update({ phone: e.target.value })}
               className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-900 text-[14px] placeholder:text-gray-400 focus:outline-none focus:border-[#1E6B3A] focus:ring-1 focus:ring-[#1E6B3A]/20 transition-all duration-300"

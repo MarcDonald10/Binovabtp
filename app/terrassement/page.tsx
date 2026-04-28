@@ -59,7 +59,7 @@ export default function Terrassement() {
               </div>
               
               <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-lg h-96 flex items-center justify-center">
-                <p className="text-center text-muted-foreground">Image Terrassement</p>
+                <img src="/terrassement.jpeg" alt="Terrassement" className="object-cover rounded-lg shadow-lg" />
               </div>
             </div>
           </div>

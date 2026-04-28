@@ -45,13 +45,13 @@ export default function GenieCivilPage() {
       }}>
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a392ad40?q=80&w=2070')`,
+          backgroundImage: 'url("/ouvrage-art-fond-header.jpg.jpeg")',
           backgroundSize: 'cover', backgroundPosition: 'center',
-          filter: 'brightness(0.38)',
+          filter: 'brightness(0.9)',
         }} />
         <div style={{
           position: 'absolute', inset: 0,
-          background: `linear-gradient(160deg, rgba(11,11,11,0.85) 40%, rgba(30,93,59,0.55) 100%)`,
+          background: `linear-gradient(160deg, rgba(11,11,11,0.50) 40%, rgba(30,93,59,0.55) 100%)`,
         }} />
         <div style={{
           position: 'absolute', left: 0, top: 0, bottom: 0,
@@ -74,7 +74,7 @@ export default function GenieCivilPage() {
                 textTransform: 'uppercase', marginBottom: 24,
               }}>
                 <div style={{ height: 2, width: 28, background: Y }} />
-                GÉNIE CIVIL & OUVRAGES D'ART
+                GÉNIE CIVIL & OUVRAGES DART
                 <div style={{ height: 2, width: 28, background: Y }} />
               </motion.div>
             )}
@@ -95,7 +95,7 @@ export default function GenieCivilPage() {
               color: 'rgba(255,255,255,0.82)',
               fontWeight: 300, lineHeight: 1.7, marginBottom: 36,
             }}>
-              Nous concevons et réalisons des ouvrages d'art et infrastructures complexes
+              Nous concevons et réalisons des ouvrages dart et infrastructures complexes
               qui allient performance technique, durabilité et élégance architecturale.
             </motion.p>
 
@@ -461,8 +461,8 @@ export default function GenieCivilPage() {
       <section style={{ padding: is.mobile ? '80px 20px' : '120px 40px', background: BK, position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070')`,
-          backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.15)',
+          backgroundImage: `url('/ouvrage-art-fond-pied-de-page.jpg.jpeg')`,
+          backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.3)',
         }} />
 
         <div style={{ position: 'relative', zIndex: 2, maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
@@ -480,11 +480,11 @@ export default function GenieCivilPage() {
               fontSize: is.mobile ? 32 : 'clamp(40px, 5.5vw, 64px)',
               fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 20,
             }}>
-              Votre ouvrage d'art<br />mérite <span style={{ color: GL }}>l'excellence</span>
+              Votre ouvrage dart<br />mérite <span style={{ color: GL }}>l'excellence</span>
             </h2>
 
             <p style={{ fontSize: is.mobile ? 15 : 18, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, fontWeight: 300, marginBottom: 40 }}>
-              Confiez-nous vos projets les plus ambitieux en génie civil et ouvrages d'art.
+              Confiez-nous vos projets les plus ambitieux en génie civil et ouvrages dart.
             </p>
 
             <div style={{ ...r.ctaGroup, justifyContent: 'center' }}>

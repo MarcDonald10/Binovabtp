@@ -8,7 +8,7 @@ const metiers = [
     icon: Building2,
     number: '01',
     title: "Génie Civil",
-    subtitle: "& Ouvrages d'Art",
+    subtitle: "& Ouvrages dArt",
     stats: "847",
     statsLabel: "projets livrés",
     description: "Ponts, viaducs, structures iconiques. Précision millimétrée, durabilité garantie sur des décennies.",
@@ -590,7 +590,7 @@ export default function MetierPage() {
           <em>Métiers</em>
         </h1>
         <p className="hero-description">
-          De la géotechnique aux ouvrages d'art, du tunnelage aux aménagements urbains,
+          De la géotechnique aux ouvrages dart, du tunnelage aux aménagements urbains,
           nous concevons des solutions durables et maîtrisées, adaptées aux environnements les plus exigeants.
         </p>
 

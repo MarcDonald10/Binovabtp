@@ -40,19 +40,16 @@ const pillars = [
 ]
 const testimonials = [
   {
-    text: "BINOVA a su transformer notre vision en une réalisation concrète avec une précision remarquable. Leur approche technique inspire une véritable confiance.",
-    author: 'Jean-Marie Dubois',
-    role: 'Directeur Infrastructure',
+    text: `Chez Rock Builders, il ya une très forte détermination à accomplir au quotidien notre vision, très présente dans l'âme et l'esprit de notre entreprise.
+Nous nous imposons une culture d’excellence rigoureuse par l’expertise éprouvée, la maitrise de la sécurité, l’innovation continue et la précision dans l’exécution de nos travaux. Cela nous permet de transformer la vision de nos clients en réalisation concrète avec précision remarquable.
+Notre approche technique inspire la confiance et nos équipes travaillent continuellement pour rester capable de relever les défis géotechniques les plus complexes avec rigueur et efficacité.
+Si vous cherchez un partenaire fiable à qui confier votre projet de construction et sur qui vous pouvez compter, vous êtes à la bonne adresse.`,
+    author: 'Chancelin EMINI',
+    role: 'Directeur Construction',
     company: 'SNCF Infra',
-    initials: 'JD',
+    initials: 'CE',
   },
-  {
-    text: "Une équipe capable de relever les défis géotechniques les plus complexes avec rigueur et efficacité. Un partenaire fiable sur lequel nous pouvons compter.",
-    author: 'Sophie Laurent',
-    role: 'VP Construction',
-    company: 'Vinci Construction',
-    initials: 'SL',
-  },
+
 ]
 
 function CountUp({ target, suffix = '' }: { target: number; suffix?: string }) {
@@ -224,7 +221,7 @@ export function WhyTrustUsSection() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-foreground">{t.author}</p>
-                      <p className="text-xs text-muted-foreground">{t.role} · {t.company}</p>
+                      <p className="text-xs text-muted-foreground">{t.role} </p>
                     </div>
                   </div>
                 </div>

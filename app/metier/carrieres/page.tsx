@@ -40,7 +40,7 @@ export default function CarrieresPage() {
         }} />
         <div style={{
           position: 'absolute', inset: 0,
-          background: `linear-gradient(150deg, rgba(11,11,11,0.90) 40%, rgba(122,59,30,0.50) 100%)`,
+          background: `linear-gradient(150deg, rgba(11,11,11,0.10) 40%, rgba(122,59,30,0.50) 100%)`,
         }} />
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 6, background: `linear-gradient(to bottom, ${AM}, ${RL})` }} />
 
@@ -314,7 +314,7 @@ export default function CarrieresPage() {
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: `url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070')`,
-          backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.14)',
+          backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.2)',
         }} />
         {!is.mobile && <>
           <div style={{ position: 'absolute', top: -80, right: -80, width: 400, height: 400, borderRadius: '50%', border: `80px solid rgba(201,130,107,0.08)`, pointerEvents: 'none' }} />

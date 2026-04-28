@@ -54,47 +54,27 @@ export const testimonials = [
 export const caseStudies = [
   {
     id: 1,
-    title: "Tunnel Lyon-Turin: 58 km d'Excellence",
-    subtitle: "Le plus grand projet de tunnelage d'Europe",
-    image: "/case-studies/lyon-turin.jpg",
-    client: "SNCF & Société du Tunnel",
-    year: 2023,
-    budget: "€12.5 Milliards",
-    duration: "8 ans",
-    team: 450,
-    challenge: "Percer 58 km à travers les Alpes entre la France et l'Italie. Conditions géologiques extrêmes. Risques sismiques. Gestion de 3 sites multinationaux.",
-    solution: "Tunnel-boring machines (TBM) de 9.58m, excavation par étapes contrôlées, surveillance 24/7 des conditions géologiques, protocoles de sécurité renforcés.",
-    results: [
-      "Zéro accident mortel",
-      "100% du calendrier respecté",
-      "Économies de €200M+ par optimisation",
-      "Réduction CO2 de 60% vs transport routier",
-      "Premier tunnel traversant les Alpes du 21ème siècle"
-    ],
-    highlights: "Un projet de classe mondiale. 58 km parcourus. 3 pays. Zéro retard. BINOVA a piloté les phases critiques avec une expertise technique incomparable.",
-    slug: "lyon-turin-tunnel",
+    title: "Cité du personnel d'industrie",
+    subtitle:"2600+ logements modernes",
+    image: "/projets/cite-personnel.jpeg",
+    
+    challenge: "2600+ Logements modernes pour héberger environ 10000 personnes. Le plus grand projet de logement  d'une mastodonte industrielle du Cameroun. Durée; 2ans - Equipe; 500+ Budget; 70M euro - Client; Fleuron Immobilier.",
+    solution: "Conception modulaire innovante, matériaux durables, gestion de projet agile, coordination étroite avec les parties prenantes pour respecter les délais et les exigences de qualité.",
+    
+    highlights: "Un projet de logement d'envergure pour une entreprise de référence. Logements modernes, durables et livrés dans les délais.",
+    slug: "cite-personnel-industrie",
   },
   {
     id: 2,
-    title: "Mine d'Or Burkina Faso: Extraction Premium",
-    subtitle: "400,000 tonnes de minerai par an",
-    image: "/case-studies/burkina-gold.jpg",
-    client: "Endeavour Mining",
-    year: 2022,
-    budget: "€1.8 Milliards",
-    duration: "5 ans",
-    team: 320,
-    challenge: "Développer une mine d'or souterraine en Afrique de l'Ouest. Accès difficile. Infrastructure locale limitée. Délais stricts de mise en production.",
-    solution: "Cartographie géologique 3D complète, minage par longue taille, système de stabilité des galeries de classe mondiale, logistique intégrée sur-mesure.",
-    results: [
-      "Production: 400,000 t/an",
-      "Récupération 91% (meilleur secteur)",
-      "Coût opérationnel -15%",
-      "500+ emplois locaux créés",
-      "Économie locale: €150M+/an"
-    ],
-    highlights: "Une opération minière de référence. Production maximale. Coûts optimisés. Impact social positif mesurable.",
-    slug: "burkina-gold-mine",
+    title: "Centrale Solaire de 80MW",
+    subtitle: "80MW d'énergie propre",
+    image: "/projets/cite-personnel.jpeg",
+    
+    challenge: "Un projet d'énergie renouvelable sur environ 100ha pour autoalimenter une cité industrielle au Cameroun. Durée 2ans - Equipe 100+ Budget 60M euro - Client, Binova Energies",
+    solution: "Installation de panneaux solaires à haut rendement, optimisation de l'orientation pour maximiser la production, intégration d'un système de stockage d'énergie pour assurer une alimentation continue, et gestion intelligente de la consommation énergétique.",
+    
+    highlights: "Un projet d'énergie renouvelable d'envergure pour une entreprise de référence. Production d'énergie propre et durable pour une cité industrielle.",
+    slug: "centrale-solaire-80mw",
   },
   {
     id: 3,
