@@ -241,7 +241,7 @@ export default function GenieUrbainPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: is.mobile ? 14 : 20 }}>
             {[
               {
-                num: '01', title: 'Une Cité Industrielle – Cameroun', value: '€2.8B',
+                num: '01', title: 'Une Cité Industrielle – Cameroun', value: '€3B',
                 desc: '10 000+ hectares, 2 600+ logements Ultramoderne, corridors verts et mobilité zéro carbone.',
                 tags: ['Ultramoderne', 'Zéro Carbone', '10 000 ha'], accent: G,
               }

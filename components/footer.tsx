@@ -26,7 +26,7 @@ const LINKS = {
     { label: 'Mentions légales', href: '/mentions-legales' },
     { label: 'Confidentialité', href: '/politique-confidentialite' },
     { label: 'Conditions d\'utilisation', href: '/conditions-utilisation' },
-    // { label: 'Devis IA', href: '/devis' },
+    { label: 'Devis IA', href: '/devis' },
   ],
 }
 

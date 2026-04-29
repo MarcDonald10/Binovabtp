@@ -182,52 +182,7 @@ export default function Terrassement() {
           </div>
         </section>
 
-        {/* Projects */}
-        <section className="py-20 bg-background">
-          <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl font-bold text-center mb-16">Projets Réalisés</h2>
-            
-            <div className="space-y-8">
-              {[
-                {
-                  name: 'Parc Éolien Bourgogne',
-                  location: 'Côte d\'Or',
-                  scope: ['25 fondations', '500 m de pistes', 'Stabilisation talus'],
-                  year: 2023
-                },
-                {
-                  name: 'Aménagement Portuaire Marseille',
-                  location: 'Marseille',
-                  scope: ['15 000 m² déblai', 'Stabilisation berge', '50 000 m³ matériau'],
-                  year: 2024
-                },
-                {
-                  name: 'Autoroute A89 Section',
-                  location: 'Côte-d\'Or / Saône-et-Loire',
-                  scope: ['8 km linéaire', 'Trois remblais', 'Deux tranchées'],
-                  year: 2023
-                }
-              ].map((project, idx) => (
-                <div key={idx} className="bg-muted/50 rounded-lg p-8 border border-border hover:border-accent transition">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">{project.name}</h3>
-                      <p className="text-muted-foreground">{project.location}</p>
-                    </div>
-                    <span className="text-accent font-medium">{project.year}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-4">
-                    {project.scope.map((item, sidx) => (
-                      <span key={sidx} className="text-sm text-muted-foreground">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+       
 
         {/* CTA */}
         <section className="py-20 bg-primary text-primary-foreground">

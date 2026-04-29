@@ -189,29 +189,7 @@ export default function Infrastructure() {
         </div>
       </section>
 
-      {/* Statistics */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-5xl font-bold text-accent mb-2">120+</div>
-              <p className="text-muted-foreground">Ouvrages réalisés</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-accent mb-2">850km</div>
-              <p className="text-muted-foreground">Réseaux posés</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-accent mb-2">98.5%</div>
-              <p className="text-muted-foreground">Projets livrés à temps</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-accent mb-2">0</div>
-              <p className="text-muted-foreground">Défaillance structurelle</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA */}
       <section className="py-20 bg-primary text-primary-foreground">

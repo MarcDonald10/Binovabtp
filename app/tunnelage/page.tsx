@@ -189,30 +189,7 @@ export default function Tunnelage() {
         </div>
       </section>
 
-      {/* Statistics */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-5xl font-bold text-accent mb-2">500+</div>
-              <p className="text-muted-foreground">Projets réussis</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-accent mb-2">10km</div>
-              <p className="text-muted-foreground">Linéaire max par projet</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-accent mb-2">25+</div>
-              <p className="text-muted-foreground">Années d&apos;excellence</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-accent mb-2">0</div>
-              <p className="text-muted-foreground">Accident grave (5 ans)</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       {/* CTA */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-6 text-center">

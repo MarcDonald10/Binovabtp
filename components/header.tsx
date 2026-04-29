@@ -406,7 +406,7 @@ export function Header() {
                 })}
 
                 {/* Mobile Devis CTA */}
-                {/* <div className="pt-3 pb-1">
+                <div className="pt-3 pb-1">
                   <Link
                     href="/devis"
                     className="flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl text-[14px] font-semibold text-white transition-all duration-200"
@@ -415,7 +415,7 @@ export function Header() {
                     Demander un Devis IA
                     <ArrowUpRight size={15} />
                   </Link>
-                </div> */}
+                </div>
               </div>
             </motion.nav>
           </>

@@ -178,60 +178,7 @@ export default function CarrieresPage() {
         </div>
       </section>
 
-      {/* ── RÉALISATIONS ──────────────────────────────────────────────────── */}
-      <section id="realisations" style={{ background: '#fff', ...r.section }}>
-        <div style={r.container}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            style={{ marginBottom: is.mobile ? 40 : 64 }}>
-            <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: 4, color: R, textTransform: 'uppercase', marginBottom: 16 }}>Portfolio sélectif</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", ...r.sectionTitle, fontWeight: 700, color: BK, lineHeight: 1.15 }}>
-              Exploitations Emblématiques
-            </h2>
-            <div style={{ width: 64, height: 4, background: AM, borderRadius: 2, marginTop: 20 }} />
-          </motion.div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {[
-              { num: '01', title: 'Mine d\'Or de Bibiani – Ghana',    value: '€2.1B', desc: 'Exploitation souterraine et à ciel ouvert sur 850 hectares. Taux de récupération de 93%, production annuelle de 250 000 onces d\'or et réhabilitation écologique en continu.', tags: ['250k onces/an', '93% récupération', '850 ha'], accent: R  },
-              { num: '02', title: 'Carrière de Granites – Cameroun',  value: '€340M', desc: 'Production de 3,5 millions de tonnes de granites concassés par an pour les grands projets d\'infrastructure régionaux. Certification environnementale ISO 14001 obtenue.',       tags: ['3.5M t/an', 'ISO 14001', 'Cameroun'],         accent: RL },
-              { num: '03', title: 'Mine de Cuivre Katanga – RDC',     value: '€1.4B', desc: 'Extraction de 180 000 tonnes de cuivre par an à 2 800 m de profondeur. Programme de développement communautaire intégré bénéficiant à 45 000 habitants des zones riveraines.',  tags: ['180k t/an', '2 800 m', '45k habitants'],       accent: AM },
-            ].map((project, i) => (
-              <motion.div key={i}
-                initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.7, ease }}
-                style={{
-                  background: '#fff', borderRadius: 8,
-                  border: '1px solid #E8E8E8', boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
-                  borderLeft: `6px solid ${project.accent}`,
-                  ...r.projectCard,
-                }}
-              >
-                {/* Numéro — masqué sur mobile */}
-                <div style={{ ...r.projectNum }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 64, fontWeight: 700, color: `${project.accent}22`, lineHeight: 1, minWidth: 80, textAlign: 'center', userSelect: 'none' }}>
-                    {project.num}
-                  </div>
-                </div>
-
-                <div style={{ flex: 1 }}>
-                  <h3 style={{ fontSize: is.mobile ? 17 : 22, fontWeight: 600, color: BK, marginBottom: 10 }}>{project.title}</h3>
-                  <p style={{ fontSize: is.mobile ? 13 : 15, color: TG, lineHeight: 1.7, fontWeight: 300, marginBottom: 14 }}>{project.desc}</p>
-                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                    {project.tags.map(t => (
-                      <span key={t} style={{ padding: '4px 10px', borderRadius: 4, background: `${project.accent}15`, color: project.accent, fontSize: 11, fontWeight: 600, letterSpacing: 1 }}>{t}</span>
-                    ))}
-                  </div>
-                </div>
-
-                <div style={{ ...r.projectValue }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: is.mobile ? 28 : 40, fontWeight: 700, color: project.accent, lineHeight: 1 }}>{project.value}</div>
-                  <div style={{ fontSize: 11, color: TG, fontWeight: 500, marginTop: 6, textTransform: 'uppercase', letterSpacing: 2 }}>Valeur du projet</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* ── APPROCHE RESPONSABLE ──────────────────────────────────────────── */}
       <section style={{ background: LBG, ...r.section }}>

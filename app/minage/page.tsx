@@ -189,29 +189,7 @@ export default function Minage() {
           </div>
         </section>
 
-        {/* Statistics */}
-        <section className="py-20 bg-background">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-5xl font-bold text-accent mb-2">500+</div>
-                <p className="text-muted-foreground">Minages annuels</p>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl font-bold text-accent mb-2">2.5M</div>
-                <p className="text-muted-foreground">Tonnes extraites/an</p>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl font-bold text-accent mb-2">99.8%</div>
-                <p className="text-muted-foreground">Conformité vibratoire</p>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl font-bold text-accent mb-2">0</div>
-                <p className="text-muted-foreground">Accident grave (5 ans)</p>
-              </div>
-            </div>
-          </div>
-        </section>
+       
 
         {/* CTA */}
         <section className="py-20 bg-primary text-primary-foreground">

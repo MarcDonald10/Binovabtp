@@ -513,8 +513,7 @@ function CandidatureModal({
                 </div>
 
                 <p className="text-[11px] text-black/30 leading-relaxed">
-                  En soumettant ce formulaire, vous acceptez que vos données soient transmises à notre équipe RH à l'adresse{' '}
-                  <span style={{ color: ACCENT }}>{RH_EMAIL}</span> dans le cadre de votre candidature.
+                  En soumettant ce formulaire, vous acceptez que vos données soient transmises à notre équipe RH.
                 </p>
 
                 <button

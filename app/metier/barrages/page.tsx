@@ -155,10 +155,10 @@ export default function BarragesPage() {
 
           <div style={r.grid(220)}>
             {[
-              { value: '1',        label: 'Station de rétention et de traitement',  desc: 'Projets livrés worldwide',    accent: B  },
+              { value: '1',        label: 'Station de traitement',  desc: 'Projets livrés worldwide',    accent: B  },
               { value: '50 km³', label: 'Eau stockée',          desc: 'Réservoirs 1ère catégorie',   accent: BL },
               { value: '80 MW',    label: 'Capacité énergétique', desc: 'Solaire installé',   accent: CY },
-              { value: '180',      label: 'Usine et Foyers alimentés',     desc: 'Énergie renouvelable',        accent: B  },
+              { value: '180',      label: 'Usines et Foyers alimentés',     desc: 'Énergie renouvelable',        accent: B  },
             ].map((stat, i) => (
               <motion.div key={i} variants={fadeUp} custom={i * 0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 style={{
@@ -259,9 +259,9 @@ export default function BarragesPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: is.mobile ? 14 : 20 }}>
             {[
               {
-                num: '01', title: "Station de retenu et traitement — Cameroun",
+                num: '01', title: "Station de retenue et traitement — Cameroun",
                 desc: "Pour l'alimentation d'une cité industrielle, 180 usines et foyers à partir du fleuve Lokoundje.",
-                value: '€3.1B', tags: ['80 MW', 'fleuve Lokoundje', '1 pays'], accent: B,
+                value: '€5M', tags: ['80 MW', 'fleuve Lokoundje', '1 pays'], accent: B,
               },
               
             ].map((project, i) => (

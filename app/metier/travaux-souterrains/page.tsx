@@ -187,66 +187,7 @@ export default function TravauxSouterrainPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          RÉALISATIONS
-      ══════════════════════════════════════════════════════ */}
-      <section id="realisations" style={{ padding: '100px 40px', background: '#fff' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: 64 }}>
-            <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: 4, color: S, textTransform: 'uppercase', marginBottom: 16 }}>Portfolio sélectif</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 48, fontWeight: 700, color: BK, lineHeight: 1.15 }}>Projets Souterrains Emblématiques</h2>
-            <div style={{ width: 64, height: 4, background: GD, borderRadius: 2, marginTop: 24 }} />
-          </motion.div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            {[
-              {
-                num: '01', title: 'Lyon-Turin : Base Tunnel', value: '€12.5B',
-                desc: 'Plus long tunnel ferroviaire d\'Europe à 58 km. Conditions géologiques extrêmes, TBM de 9,58 m de diamètre et coordination binationale exemplaire sur toute la durée du chantier.',
-                tags: ['58 km', 'TBM 9.58 m', 'Europe'], accent: S,
-              },
-              {
-                num: '02', title: 'Extensions du Métro de Bangkok', value: '€3.2B',
-                desc: '5 tunnels entrelacés sous une ville ultra-dense. Excavation multi-usages avec TBM et protection rigoureuse de 2 500 bâtiments environnants par monitoring continu.',
-                tags: ['5 tunnels', 'Milieu urbain dense', 'SCADA'], accent: SL,
-              },
-              {
-                num: '03', title: 'Mine d\'Or Souterraine – Burkina Faso', value: '€1.8B',
-                desc: 'Réseau de galeries à plus de 3 500 m de profondeur. 400 000 tonnes extraites par an avec un taux de récupération de 91% et des standards de sécurité internationaux.',
-                tags: ['3 500 m', '91% récupération', '400k t/an'], accent: GD,
-              },
-            ].map((project, i) => (
-              <motion.div key={i}
-                initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.7, ease }}
-                style={{
-                  background: '#fff', borderRadius: 8, padding: '40px 48px',
-                  border: '1px solid #E8E8E8', boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
-                  display: 'flex', alignItems: 'center', gap: 48,
-                  borderLeft: `6px solid ${project.accent}`,
-                }}
-              >
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 64, fontWeight: 700, color: `${project.accent}22`, lineHeight: 1, minWidth: 80, textAlign: 'center', userSelect: 'none' }}>
-                  {project.num}
-                </div>
-                <div style={{ flex: 1 }}>
-                  <h3 style={{ fontSize: 22, fontWeight: 600, color: BK, marginBottom: 12 }}>{project.title}</h3>
-                  <p style={{ fontSize: 15, color: TG, lineHeight: 1.7, fontWeight: 300, marginBottom: 16 }}>{project.desc}</p>
-                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                    {project.tags.map(t => (
-                      <span key={t} style={{ padding: '4px 12px', borderRadius: 4, background: `${project.accent}15`, color: project.accent, fontSize: 12, fontWeight: 600, letterSpacing: 1 }}>{t}</span>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 40, fontWeight: 700, color: project.accent, lineHeight: 1 }}>{project.value}</div>
-                  <div style={{ fontSize: 12, color: TG, fontWeight: 500, marginTop: 6, textTransform: 'uppercase', letterSpacing: 2 }}>Valeur du projet</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* ══════════════════════════════════════════════════════
           EXCELLENCE TECHNIQUE
