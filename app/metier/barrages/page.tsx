@@ -92,8 +92,7 @@ export default function BarragesPage() {
               color: 'rgba(255,255,255,0.82)',
               fontWeight: 300, lineHeight: 1.7, marginBottom: 36,
             }}>
-              32 barrages construits. 1 850 km³ d'eau stockée.
-              Électricité durable et gestion intégrée des ressources hydriques.
+              Conception, construction des barrages hydroélectriques et des stations de traitement d'eau.
             </motion.p>
 
             {/* CTAs */}
@@ -127,7 +126,7 @@ export default function BarragesPage() {
           ...r.ticker,
           borderTop: `1px solid rgba(110,163,200,0.3)`,
         }}>
-          {['32 barrages', '1 850 km³', '+15 GW', '50M+ foyers'].map((t, i) => (
+          {['1 Station', '50 km³', '80 MW', '180 foyers'].map((t, i) => (
             <span key={i} style={{
               color: 'rgba(255,255,255,0.85)',
               fontSize: is.mobile ? 11 : 13,
@@ -156,10 +155,10 @@ export default function BarragesPage() {
 
           <div style={r.grid(220)}>
             {[
-              { value: '32',        label: 'Barrages construits',  desc: 'Projets livrés worldwide',    accent: B  },
-              { value: '1 850 km³', label: 'Eau stockée',          desc: 'Réservoirs 1ère catégorie',   accent: BL },
-              { value: '+15 GW',    label: 'Capacité énergétique', desc: 'Hydroélectrique installée',   accent: CY },
-              { value: '50M+',      label: 'Foyers alimentés',     desc: 'Énergie renouvelable',        accent: B  },
+              { value: '1',        label: 'Station de rétention et de traitement',  desc: 'Projets livrés worldwide',    accent: B  },
+              { value: '50 km³', label: 'Eau stockée',          desc: 'Réservoirs 1ère catégorie',   accent: BL },
+              { value: '80 MW',    label: 'Capacité énergétique', desc: 'Solaire installé',   accent: CY },
+              { value: '180',      label: 'Usine et Foyers alimentés',     desc: 'Énergie renouvelable',        accent: B  },
             ].map((stat, i) => (
               <motion.div key={i} variants={fadeUp} custom={i * 0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 style={{
@@ -260,20 +259,11 @@ export default function BarragesPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: is.mobile ? 14 : 20 }}>
             {[
               {
-                num: '01', title: "Grand Barrage de l'Inga — RDC",
-                desc: "4 200 MW sur le fleuve Congo. Énergie propre pour 12 pays d'Afrique subsaharienne.",
-                value: '€3.1B', tags: ['4 200 MW', 'Fleuve Congo', '12 pays'], accent: B,
+                num: '01', title: "Station de retenu et traitement — Cameroun",
+                desc: "Pour l'alimentation d'une cité industrielle, 180 usines et foyers à partir du fleuve Lokoundje.",
+                value: '€3.1B', tags: ['80 MW', 'fleuve Lokoundje', '1 pays'], accent: B,
               },
-              {
-                num: '02', title: "Retenue de Souapiti — Guinée",
-                desc: "450 m de longueur, réservoir de 6 700 km² et turbines de 450 MW. 200 000 ha irrigués.",
-                value: '€1.8B', tags: ['450 MW', '6 700 km²', '200k ha'], accent: BL,
-              },
-              {
-                num: '03', title: "Système de Retenues — Maroc",
-                desc: "8 barrages pour l'alimentation de Casablanca et Rabat. 3,5 millions de foyers.",
-                value: '€920M', tags: ['8 barrages', '3.5M foyers', 'Eau potable'], accent: CY,
-              },
+              
             ].map((project, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, x: is.mobile ? 0 : -30, y: is.mobile ? 20 : 0 }}

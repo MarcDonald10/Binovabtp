@@ -17,8 +17,8 @@ const NAV_ITEMS = [
     label: 'Métier',
     href: '/metier',
     children: [
-      { label: 'Génie Civil & Ouvrages d\'Art', href: '/metier/genie-civil', desc: 'Ponts, viaducs, structures complexes' },
-      { label: 'Barrages', href: '/metier/barrages', desc: 'Retenues hydrauliques & digues' },
+      { label: 'Génie Civil & Ouvrages dArt', href: '/metier/genie-civil', desc: 'Ponts, viaducs, structures complexes' },
+      { label: 'Barrages et Hydrologie', href: '/metier/barrages', desc: 'Retenues hydrauliques & digues' },
       { label: 'Génie Urbain', href: '/metier/genie-urbain', desc: 'Réseaux, voiries, espaces publics' },
       { label: 'Infrastructures Linéaires', href: '/metier/infrastructures-lineaires', desc: 'Routes, rails, canaux' },
       { label: 'Travaux Souterrains', href: '/metier/travaux-souterrains', desc: 'Tunnels, galeries, excavations' },

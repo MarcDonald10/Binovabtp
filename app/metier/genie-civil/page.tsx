@@ -124,22 +124,7 @@ export default function GenieCivilPage() {
         </div>
 
         {/* Ticker */}
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0,
-          background: `rgba(30,93,59,0.92)`, backdropFilter: 'blur(6px)',
-          ...r.ticker,
-          borderTop: `1px solid rgba(107,203,61,0.3)`,
-        }}>
-          {['Fondée en 1996', '28 ans d\'expertise', 'Certifiée ISO 9001', 'Présence internationale'].map((t, i) => (
-            <span key={i} style={{
-              color: 'rgba(255,255,255,0.85)',
-              fontSize: is.mobile ? 11 : 13,
-              fontWeight: 500, whiteSpace: 'nowrap', flexShrink: 0,
-            }}>
-              <span style={{ color: Y, marginRight: 6 }}>◆</span>{t}
-            </span>
-          ))}
-        </div>
+        
       </section>
 
       {/* ══ STATS ══ */}
@@ -158,10 +143,10 @@ export default function GenieCivilPage() {
 
           <div style={r.grid(220)}>
             {[
-              { value: '847',   label: 'Projets Livrés',      desc: 'En 28 ans d\'expertise',        accent: G  },
-              { value: '€8.5B', label: 'Valeur Totale',       desc: 'D\'ouvrages réalisés',           accent: GL },
+              { value: '11',   label: 'Projets Livrés',      desc: 'En 3 ans d\'expertise',        accent: G  },
+              { value: '€500M', label: 'Valeur Totale',       desc: 'D\'ouvrages réalisés',           accent: GL },
               { value: '99.2%', label: 'Taux de Succès',      desc: 'En délai et budget',             accent: Y  },
-              { value: '250+',  label: 'Experts Permanents',  desc: 'Spécialisés par discipline',     accent: G  },
+              { value: '120+',  label: 'Experts Permanents',  desc: 'Spécialisés par discipline',     accent: G  },
             ].map((stat, i) => (
               <motion.div key={i} variants={fadeUp} custom={i * 0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 style={{
@@ -290,19 +275,19 @@ export default function GenieCivilPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: is.mobile ? 14 : 20 }}>
             {[
               {
-                num: '01', title: 'Pont Longue Portée – Europe', value: '€1.2B',
-                desc: 'Structure suspendue de 2,8 km franchissant un détroit. Technique innovante de vérinage hydraulique pour maintenir la navigation.',
-                tags: ['Acier', 'Suspendu', 'Maritime'], accent: G,
+                num: '01', title: '2 600+ Logement pour hébergement – Cameroun', value: '€70M',
+                desc: 'Complexe de logements pour hébergement.',
+                tags: ['Cameroun', 'Hébergement'], accent: G,
               },
               {
-                num: '02', title: 'Terminal Aéroportuaire Premium', value: '€890M',
-                desc: 'Architecture spectaculaire avec 450 m de portée libre. Colonnes multiples et distribution de charge révolutionnaire.',
-                tags: ['Béton', 'Grande portée', 'Aviation'], accent: GL,
+                num: '02', title: 'Usine de fabrication de forme Pharmaceutique sur 7 ha', value: '€100M',
+                desc: 'Usine de fabrication de forme pharmaceutique sur 7 ha, avec des exigences strictes en matière de propreté, de contrôle climatique et de flux logistique.',
+                tags: ['Pharmaceutique', 'Propreté', 'Climatique'], accent: GL,
               },
               {
-                num: '03', title: 'Viaduc Montagneux', value: '€650M',
-                desc: '12 km en zone montagneuse avec 156 piles de hauteurs variables. Adaptation aux contraintes sismiques.',
-                tags: ['Montagne', 'Sismique', '12 km'], accent: Y,
+                num: '03', title: "Usine de Biotechnologie et de production d'API sur 12 ha", value: '€140M',
+                desc: "Usine de biotechnologie et de production d'API sur 12 ha, conçue pour répondre aux normes rigoureuses de qualité et de sécurité.",
+                tags: ['Biotechnologie', 'Production', 'API'], accent: Y,
               },
             ].map((project, i) => (
               <motion.div key={i}

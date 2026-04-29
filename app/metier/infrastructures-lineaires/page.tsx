@@ -138,7 +138,7 @@ export default function InfrastructuresLineairesPage() {
         )}
 
         {/* Bottom ticker */}
-        <div style={{
+        {/* <div style={{
           position: 'absolute', bottom: 0, left: 0, right: 0,
           background: `rgba(92,59,26,0.92)`, backdropFilter: 'blur(6px)',
           ...r.ticker,
@@ -153,46 +153,10 @@ export default function InfrastructuresLineairesPage() {
               <span style={{ color: AM, marginRight: 8 }}>◆</span>{t}
             </span>
           ))}
-        </div>
+        </div> */}
       </section>
 
-      {/* ══════════ STATS ══════════ */}
-      <section style={{ ...r.section, background: '#fff' }}>
-        <div style={{ ...r.container }}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: screen.isMobile ? 40 : 64 }}>
-            <div style={{ width: 4, height: 40, background: AM, borderRadius: 2 }} />
-            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: screen.isMobile ? 28 : 36, fontWeight: 700, color: BK }}>
-              Nos Chiffres Clés
-            </span>
-          </motion.div>
-
-          <div style={{ ...r.grid(240) }}>
-            {[
-              { value: '45k+', label: 'Kilomètres construits',   desc: 'Routes, rails et réseaux énergétiques', accent: T  },
-              { value: '2B+',  label: 'Personnes connectées',    desc: 'Accès amélioré à la mobilité',          accent: TL },
-              { value: '€78B', label: 'Valeur des projets',      desc: 'Infrastructures linéaires réalisées',   accent: AM },
-              { value: '12',   label: 'Pays d\'intervention',    desc: 'Présence internationale active',        accent: T  },
-            ].map((stat, i) => (
-              <motion.div key={i} variants={fadeUp} custom={i * 0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                style={{
-                  padding: screen.isMobile ? '28px 24px' : '40px 32px', borderRadius: 8,
-                  border: '1px solid #E8E8E8', background: '#fff',
-                  boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
-                  borderLeft: `4px solid ${stat.accent}`,
-                }}
-                whileHover={{ y: -6, boxShadow: '0 12px 40px rgba(0,0,0,0.12)' }}
-              >
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: r.statValue.fontSize, fontWeight: 700, color: stat.accent, lineHeight: 1, marginBottom: 16 }}>
-                  {stat.value}
-                </div>
-                <h3 style={{ fontSize: screen.isMobile ? 16 : 18, fontWeight: 600, color: BK, marginBottom: 8 }}>{stat.label}</h3>
-                <p style={{ fontSize: 14, color: TG, fontWeight: 300 }}>{stat.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* ══════════ SPÉCIALITÉS ══════════ */}
       <section style={{ ...r.section, background: LBG }}>
@@ -236,75 +200,7 @@ export default function InfrastructuresLineairesPage() {
         </div>
       </section>
 
-      {/* ══════════ RÉALISATIONS ══════════ */}
-      <section id="realisations" style={{ ...r.section, background: '#fff' }}>
-        <div style={{ ...r.container }}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            style={{ marginBottom: screen.isMobile ? 40 : 64 }}>
-            <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: 4, color: T, textTransform: 'uppercase', marginBottom: 16 }}>Portfolio sélectif</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: r.sectionTitle.fontSize, fontWeight: 700, color: BK, lineHeight: 1.15 }}>
-              Projets de Connectivité Emblématiques
-            </h2>
-            <div style={{ width: 64, height: 4, background: AM, borderRadius: 2, marginTop: 24 }} />
-          </motion.div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: screen.isMobile ? 16 : 20 }}>
-            {[
-              {
-                num: '01', title: 'Corridor Ferroviaire Alpes-Méditerranée', value: '€8.9B',
-                desc: '1 400 km de lignes à grande vitesse à 300 km/h. Électrification complète, gares modernes et intermodalité avancée entre la France, l\'Italie et la Slovénie.',
-                tags: ['1 400 km', 'LGV 300 km/h', '3 pays'], accent: T,
-              },
-              {
-                num: '02', title: 'Extensions du Métro du Caire – Phases 3 & 4', value: '€4.2B',
-                desc: '250 km supplémentaires avec capacité de 5 millions de passagers par jour. Signalisation CBTC de dernière génération et accessibilité PMR totale.',
-                tags: ['250 km', '5M passagers/jour', 'CBTC'], accent: TL,
-              },
-              {
-                num: '03', title: 'Autoroute Transafricaine TAO', value: '€5.8B',
-                desc: '3 200 km de routes à 4 voies du Sénégal au Nigeria. Intégration régionale renforcée et développement économique structurant des zones traversées.',
-                tags: ['3 200 km', '4 voies', '6 pays'], accent: AM,
-              },
-            ].map((project, i) => (
-              <motion.div key={i}
-                initial={{ opacity: 0, x: screen.isMobile ? 0 : -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.7, ease }}
-                style={{
-                  background: '#fff', borderRadius: 8,
-                  ...r.projectCard,
-                  border: '1px solid #E8E8E8',
-                  boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
-                  borderLeft: `6px solid ${project.accent}`,
-                }}
-              >
-                {/* Numéro — masqué sur mobile */}
-                {!screen.isMobile && (
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 64, fontWeight: 700, color: `${project.accent}22`, lineHeight: 1, minWidth: 80, textAlign: 'center', userSelect: 'none' }}>
-                    {project.num}
-                  </div>
-                )}
-
-                <div style={{ flex: 1 }}>
-                  <h3 style={{ fontSize: screen.isMobile ? 18 : 22, fontWeight: 600, color: BK, marginBottom: 12 }}>{project.title}</h3>
-                  <p style={{ fontSize: 15, color: TG, lineHeight: 1.7, fontWeight: 300, marginBottom: 16 }}>{project.desc}</p>
-                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                    {project.tags.map(t => (
-                      <span key={t} style={{ padding: '4px 12px', borderRadius: 4, background: `${project.accent}15`, color: project.accent, fontSize: 12, fontWeight: 600, letterSpacing: 1 }}>{t}</span>
-                    ))}
-                  </div>
-                </div>
-
-                <div style={{ ...r.projectValue, marginTop: screen.isMobile ? 16 : 0 }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: screen.isMobile ? 32 : 40, fontWeight: 700, color: project.accent, lineHeight: 1 }}>{project.value}</div>
-                  <div style={{ fontSize: 12, color: TG, fontWeight: 500, marginTop: 6, textTransform: 'uppercase', letterSpacing: 2 }}>Valeur du projet</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* ══════════ APPROCHE ══════════ */}
       <section style={{ ...r.section, background: LBG }}>
@@ -365,9 +261,9 @@ export default function InfrastructuresLineairesPage() {
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: screen.isMobile ? 36 : 'clamp(40px, 5.5vw, 64px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 24 }}>
               Relier les territoires.<br />Développer les <span style={{ color: TL }}>nations</span>.
             </h2>
-            <p style={{ fontSize: screen.isMobile ? 16 : 18, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, fontWeight: 300, marginBottom: screen.isMobile ? 40 : 56 }}>
+            {/* <p style={{ fontSize: screen.isMobile ? 16 : 18, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, fontWeight: 300, marginBottom: screen.isMobile ? 40 : 56 }}>
               45 000+ km de réseaux construits.<br />Plus de 2 milliards de personnes connectées.
-            </p>
+            </p> */}
             <div style={{ ...r.ctaGroup, justifyContent: screen.isMobile ? 'stretch' : 'center' }}>
               <Link href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 12,
@@ -380,7 +276,7 @@ export default function InfrastructuresLineairesPage() {
               >
                 Discuter de votre projet <ArrowRight size={20} />
               </Link>
-              <Link href="/about" style={{
+              {/* <Link href="/about" style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 12,
                 padding: screen.isMobile ? '16px 24px' : '18px 44px', borderRadius: 8,
                 border: `2px solid rgba(255,255,255,0.25)`, color: '#fff',
@@ -388,7 +284,7 @@ export default function InfrastructuresLineairesPage() {
                 width: r.btn.width,
               }}>
                 En savoir plus
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
         </div>

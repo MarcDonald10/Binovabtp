@@ -26,7 +26,7 @@ const OFFRES = [
   {
     id: 1,
     titre: 'Ingénieur Génie Civil Senior',
-    lieu: 'Douala, Cameroun',
+    lieu: 'Kribi, Cameroun',
     type: 'CDI',
     departement: "Génie Civil & Ouvrages dArt",
     description: "Pilotage de projets de construction d'ouvrages dart complexes (ponts, viaducs). Supervision des équipes terrain et coordination avec les maîtres d'ouvrage.",
@@ -35,7 +35,7 @@ const OFFRES = [
   {
     id: 2,
     titre: 'Chef de Projet Barrages',
-    lieu: 'Yaoundé, Cameroun',
+    lieu: 'Kribi, Cameroun',
     type: 'CDI',
     departement: 'Barrages',
     description: "Gestion complète de projets de retenues hydrauliques, de la conception à la réception. Interface technique avec les bureaux d'études et les sous-traitants.",
@@ -44,7 +44,7 @@ const OFFRES = [
   {
     id: 3,
     titre: 'Conducteur de Travaux – Génie Urbain',
-    lieu: 'Douala, Cameroun',
+    lieu: 'Kribi, Cameroun',
     type: 'CDI',
     departement: 'Génie Urbain',
     description: 'Suivi des travaux de voirie, réseaux divers et espaces publics. Coordination des compagnons et planification des ressources sur chantiers urbains.',
@@ -53,7 +53,7 @@ const OFFRES = [
   {
     id: 4,
     titre: 'Topographe',
-    lieu: 'Terrain – Cameroun',
+    lieu: 'Kribi – Cameroun',
     type: 'CDI',
     departement: 'Infrastructures Linéaires',
     description: "Levés topographiques, implantation d'ouvrages et suivi altimétrique sur chantiers linéaires (routes, autoroutes, voies ferrées).",
@@ -62,7 +62,7 @@ const OFFRES = [
   {
     id: 5,
     titre: 'Responsable HSE',
-    lieu: 'Douala, Cameroun',
+    lieu: 'Kribi, Cameroun',
     type: 'CDI',
     departement: 'Sécurité & Santé',
     description: "Déploiement de la politique SSE sur l'ensemble des chantiers du groupe. Formation des équipes, audits terrain et veille réglementaire.",
@@ -71,8 +71,8 @@ const OFFRES = [
   {
     id: 6,
     titre: 'Technicien Laboratoire BTP',
-    lieu: 'Douala, Cameroun',
-    type: 'CDD 12 mois',
+    lieu: 'Kribi, Cameroun',
+    type: 'CDI',
     departement: "Génie Civil & Ouvrages dArt",
     description: "Réalisation des essais géotechniques et matériaux en laboratoire et sur chantier. Analyse des résultats et rédaction des rapports d'essais.",
     competences: ['Essais Proctor / CBR', 'Béton & granulats', 'Normes NF / ISO', 'Laboratoire'],
@@ -748,16 +748,7 @@ export default function CarrierePage() {
           </div>
         </section>
 
-        {/* ── Footer ── */}
-        <footer className="border-t border-black/[0.06] px-8 py-8 bg-white">
-          <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-black/30">
-            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: '#1a1a18', fontSize: 15 }}>
-              Binova <span style={{ color: ACCENT }}>Holding</span>
-            </span>
-            <span>© {new Date().getFullYear()} Binova Holding. Tous droits réservés.</span>
-            <a href={`mailto:${RH_EMAIL}`} style={{ color: ACCENT }}>{RH_EMAIL}</a>
-          </div>
-        </footer>
+        
 
         {/* ── Modal ── */}
         {modal !== undefined && (

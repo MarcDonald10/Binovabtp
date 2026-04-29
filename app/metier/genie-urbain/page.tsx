@@ -149,9 +149,9 @@ export default function GenieUrbainPage() {
 
           <div style={r.grid(220)}>
             {[
-              { value: '156+', label: 'Projets Urbains',       desc: 'Réalisés sur tous les continents', accent: G  },
-              { value: '15M+', label: 'Personnes Impactées',   desc: 'Cadre de vie amélioré',            accent: GL },
-              { value: '€32B', label: 'Valeur Totale',         desc: 'Des projets développés',           accent: Y  },
+              { value: '1', label: 'Projets Urbains',       desc: 'Réalisés au cameroun', accent: G  },
+              { value: '1M+', label: 'Personnes Impactées',   desc: 'Cadre de vie amélioré',            accent: GL },
+              { value: '€3B', label: 'Valeur Totale',         desc: 'Des projets développés',           accent: Y  },
               { value: '90%',  label: 'Certifications Vertes', desc: 'Projets LEED / BREEAM',            accent: G  },
             ].map((stat, i) => (
               <motion.div key={i} variants={fadeUp} custom={i * 0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -241,20 +241,10 @@ export default function GenieUrbainPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: is.mobile ? 14 : 20 }}>
             {[
               {
-                num: '01', title: 'Métropole Durable – Singapour', value: '€2.8B',
-                desc: '700 hectares, 50 000 logements LEED Platinum, corridors verts et mobilité zéro carbone.',
-                tags: ['LEED Platinum', 'Zéro Carbone', '700 ha'], accent: G,
-              },
-              {
-                num: '02', title: 'Revitalisation du Caire Historique', value: '€1.5B',
-                desc: 'Préservation du patrimoine UNESCO et infrastructures modernes. 200 000 habitants bénéficiaires.',
-                tags: ['UNESCO', 'Patrimoine', '200k habitants'], accent: GL,
-              },
-              {
-                num: '03', title: 'Barcelona Green Belt', value: '€680M',
-                desc: '85 km de parcs linéaires et forêts urbaines. Réduction de l\'îlot de chaleur urbain.',
-                tags: ['85 km', 'Forêts urbaines', 'Climat'], accent: Y,
-              },
+                num: '01', title: 'Une Cité Industrielle – Cameroun', value: '€2.8B',
+                desc: '10 000+ hectares, 2 600+ logements Ultramoderne, corridors verts et mobilité zéro carbone.',
+                tags: ['Ultramoderne', 'Zéro Carbone', '10 000 ha'], accent: G,
+              }
             ].map((project, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, x: is.mobile ? 0 : -30, y: is.mobile ? 20 : 0 }}
@@ -394,7 +384,7 @@ export default function GenieUrbainPage() {
             </h2>
 
             <p style={{ fontSize: is.mobile ? 15 : 18, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, fontWeight: 300, marginBottom: 40 }}>
-              156 projets urbains. 15 millions de personnes impactées.<br />
+               1 projet urbain. 1 million de personnes impactées.<br />
               Des villes plus vertes, plus humaines et plus intelligentes.
             </p>
 
@@ -409,7 +399,7 @@ export default function GenieUrbainPage() {
               }}>
                 Démarrer un projet <ArrowRight size={18} />
               </Link>
-              <Link href="/about" style={{
+              {/* <Link href="/about" style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 gap: 10, padding: '16px 36px', borderRadius: 8,
                 border: `2px solid rgba(255,255,255,0.25)`, color: '#fff',
@@ -417,8 +407,8 @@ export default function GenieUrbainPage() {
                 ...r.btn,
               }}>
                 En savoir plus
-              </Link>
-            </div>
+              </Link>*/}
+            </div> 
           </motion.div>
         </div>
       </section>

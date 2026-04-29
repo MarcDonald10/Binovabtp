@@ -131,7 +131,7 @@ export default function TravauxSouterrainPage() {
           <div style={{ width: 1, height: 56, background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent)' }} />
         </motion.div>
 
-        <div style={{
+        {/* <div style={{
           position: 'absolute', bottom: 0, left: 0, right: 0,
           background: `rgba(42,42,42,0.95)`, backdropFilter: 'blur(6px)',
           padding: '14px 40px', display: 'flex', alignItems: 'center', gap: 48,
@@ -142,46 +142,10 @@ export default function TravauxSouterrainPage() {
               <span style={{ color: GD, marginRight: 8 }}>◆</span>{t}
             </span>
           ))}
-        </div>
+        </div> */}
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          STATS
-      ══════════════════════════════════════════════════════ */}
-      <section style={{ padding: '100px 40px', background: '#fff' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 64 }}>
-            <div style={{ width: 4, height: 40, background: GD, borderRadius: 2 }} />
-            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 36, fontWeight: 700, color: BK }}>Nos Chiffres Clés</span>
-          </motion.div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
-            {[
-              { value: '156',   label: 'Tunnels complétés',       desc: 'Tous types et toutes géologies',      accent: S  },
-              { value: '850+',  label: 'Kilomètres creusés',       desc: 'Longueur totale réalisée',            accent: SL },
-              { value: '28 ans',label: 'Sans accident mortel',     desc: 'Record de sécurité exemplaire',       accent: GD },
-              { value: '€45B',  label: 'Valeur des projets',       desc: 'Travaux souterrains réalisés',        accent: S  },
-            ].map((stat, i) => (
-              <motion.div key={i} variants={fadeUp} custom={i * 0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                style={{
-                  padding: '40px 32px', borderRadius: 8,
-                  border: '1px solid #E8E8E8', background: '#fff',
-                  boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
-                  borderLeft: `4px solid ${stat.accent}`, cursor: 'default',
-                }}
-                whileHover={{ y: -6, boxShadow: '0 12px 40px rgba(0,0,0,0.12)' }}
-              >
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 52, fontWeight: 700, color: stat.accent, lineHeight: 1, marginBottom: 16 }}>
-                  {stat.value}
-                </div>
-                <h3 style={{ fontSize: 18, fontWeight: 600, color: BK, marginBottom: 8 }}>{stat.label}</h3>
-                <p style={{ fontSize: 14, color: TG, fontWeight: 300 }}>{stat.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* ══════════════════════════════════════════════════════
           DOMAINES DE MAÎTRISE
@@ -342,9 +306,9 @@ export default function TravauxSouterrainPage() {
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 5.5vw, 64px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 24 }}>
               Percer en profondeur.<br />Construire avec <span style={{ color: GD }}>maîtrise</span>.
             </h2>
-            <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, fontWeight: 300, marginBottom: 56 }}>
+            {/* <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, fontWeight: 300, marginBottom: 56 }}>
               156 tunnels réalisés. 850+ km creusés.<br />28 ans de sécurité exemplaire sans accident mortel.
-            </p>
+            </p> */}
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 12,
@@ -357,7 +321,7 @@ export default function TravauxSouterrainPage() {
               >
                 Discuter de votre projet souterrain <ArrowRight size={20} />
               </Link>
-              <Link href="/about" style={{
+              {/* <Link href="/about" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 12,
                 padding: '18px 44px', borderRadius: 8,
                 border: `2px solid rgba(255,255,255,0.25)`, color: '#fff',
@@ -367,7 +331,7 @@ export default function TravauxSouterrainPage() {
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)' }}
               >
                 En savoir plus
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
         </div>

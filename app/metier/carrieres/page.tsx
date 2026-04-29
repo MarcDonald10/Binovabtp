@@ -120,7 +120,7 @@ export default function CarrieresPage() {
         )}
 
         {/* Ticker */}
-        <div style={{
+        {/* <div style={{
           position: 'absolute', bottom: 0, left: 0, right: 0,
           background: `rgba(122,59,30,0.92)`, backdropFilter: 'blur(6px)',
           borderTop: `1px solid rgba(201,130,107,0.3)`,
@@ -131,46 +131,10 @@ export default function CarrieresPage() {
               <span style={{ color: AM, marginRight: 6 }}>◆</span>{t}
             </span>
           ))}
-        </div>
+        </div> */}
       </section>
 
-      {/* ── STATS ─────────────────────────────────────────────────────────── */}
-      <section style={{ background: '#fff', ...r.section }}>
-        <div style={r.container}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: is.mobile ? 40 : 64 }}>
-            <div style={{ width: 4, height: 40, background: AM, borderRadius: 2 }} />
-            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: is.mobile ? 28 : 36, fontWeight: 700, color: BK }}>
-              Nos Chiffres Clés
-            </span>
-          </motion.div>
-
-          <div style={r.grid(240)}>
-            {[
-              { value: '15M+', label: 'Tonnes extraites',     desc: 'Production annuelle garantie',      accent: R  },
-              { value: '35+',  label: 'Carrières & Mines',    desc: 'Sites opérés à l\'international',   accent: RL },
-              { value: '91%',  label: 'Taux de récupération', desc: 'Efficacité d\'extraction record',   accent: AM },
-              { value: '€8.7B',label: 'Valeur des projets',   desc: 'Projets d\'exploitation développés', accent: R  },
-            ].map((stat, i) => (
-              <motion.div key={i} variants={fadeUp} custom={i * 0.1} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                style={{
-                  padding: is.mobile ? '28px 24px' : '40px 32px', borderRadius: 8,
-                  border: '1px solid #E8E8E8', background: '#fff',
-                  boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
-                  borderLeft: `4px solid ${stat.accent}`, cursor: 'default',
-                }}
-                whileHover={{ y: -6, boxShadow: '0 12px 40px rgba(0,0,0,0.12)' }}
-              >
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: is.mobile ? 40 : 52, fontWeight: 700, color: stat.accent, lineHeight: 1, marginBottom: 12 }}>
-                  {stat.value}
-                </div>
-                <h3 style={{ fontSize: is.mobile ? 16 : 18, fontWeight: 600, color: BK, marginBottom: 8 }}>{stat.label}</h3>
-                <p style={{ fontSize: 14, color: TG, fontWeight: 300 }}>{stat.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* ── EXPERTISE ─────────────────────────────────────────────────────── */}
       <section style={{ background: LBG, ...r.section }}>
@@ -333,9 +297,9 @@ export default function CarrieresPage() {
             }}>
               Extraire aujourd'hui.<br />Préserver pour <span style={{ color: RL }}>demain</span>.
             </h2>
-            <p style={{ fontSize: is.mobile ? 15 : 18, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, fontWeight: 300, marginBottom: 48 }}>
+            {/* <p style={{ fontSize: is.mobile ? 15 : 18, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, fontWeight: 300, marginBottom: 48 }}>
               15 millions de tonnes par an.<br />Un engagement fort pour l'environnement et les communautés locales.
-            </p>
+            </p> */}
             <div style={{ ...r.ctaGroup, justifyContent: is.mobile ? 'stretch' : 'center' }}>
               <Link href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent:'center', gap: 12,
@@ -345,15 +309,7 @@ export default function CarrieresPage() {
               }}>
                 Discuter de votre projet <ArrowRight size={20} />
               </Link>
-              <Link href="/about" style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 12,
-                padding: '16px 36px', borderRadius: 8,
-                border: `2px solid rgba(255,255,255,0.25)`, color: '#fff',
-                fontSize: is.mobile ? 15 : 17, fontWeight: 500, textDecoration: 'none',
-                ...r.btn,
-              }}>
-                En savoir plus
-              </Link>
+             
             </div>
           </motion.div>
         </div>
