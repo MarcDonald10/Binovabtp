@@ -26,7 +26,7 @@ const LINKS = {
     { label: 'Mentions légales', href: '/mentions-legales' },
     { label: 'Confidentialité', href: '/politique-confidentialite' },
     { label: 'Conditions d\'utilisation', href: '/conditions-utilisation' },
-    { label: 'Devis IA', href: '/devis' },
+    // { label: 'Devis IA', href: '/devis' },
   ],
 }
 
@@ -221,13 +221,13 @@ export function Footer() {
                 Nous contacter
                 <MoveRight size={15} className="group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
-              <Link
+              {/* <Link
                 href="/devis"
                 className="group flex items-center gap-2.5 px-6 py-3 rounded-xl text-[13px] font-medium border border-white/[0.08] text-white/55 hover:text-white/90 hover:border-white/[0.15] hover:bg-white/[0.03] transition-all duration-200"
               >
                 Devis IA gratuit
                 <ArrowUpRight size={13} className="opacity-50 group-hover:opacity-100 transition-opacity" />
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

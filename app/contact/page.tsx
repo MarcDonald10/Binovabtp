@@ -214,11 +214,11 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div data-animate className=" p-6 bg-accent/10 border border-accent rounded-sm">
+                {/* <div data-animate className=" p-6 bg-accent/10 border border-accent rounded-sm">
                   <p className="text-sm text-muted-foreground font-light">
                     <strong>Besoin d&apos;une estimation rapide?</strong> Utilisez notre <a href="/devis" className="text-accent font-semibold hover:underline">outil de devis IA</a> pour une première évaluation instantanée.
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
