@@ -258,41 +258,6 @@ export default function SecuriteSantePage() {
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, background: `linear-gradient(to bottom, ${GD}, ${AC})` }} />
       </section>
 
-      {/* ════ STATS BAR ════ */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease }}
-        style={{
-          background: D2,
-          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
-          borderTop: `1px solid rgba(74,158,221,0.15)`,
-        }}
-      >
-        {[
-          { value: '28 ans', label: 'Sans accident mortel', icon: Shield },
-          { value: 'ISO 45001', label: 'Certification SSE', icon: Award },
-          { num: 150, suffix: '+', label: 'Experts SSE formés', icon: Users },
-          { num: 500, suffix: 'h', label: 'Formation par an', icon: CheckCircle2 },
-        ].map((s, i) => {
-          const Icon = s.icon
-          return (
-            <div key={i} style={{
-              padding: '44px 36px',
-              borderRight: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
-            }}>
-              <Icon size={20} color={AC} strokeWidth={1.5} style={{ marginBottom: 12 }} />
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3vw, 46px)', fontWeight: 700, color: AC, lineHeight: 1, marginBottom: 8 }}>
-                {s.num !== undefined
-                  ? <Counter to={s.num} suffix={s.suffix} />
-                  : s.value}
-              </div>
-              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', letterSpacing: 1, textTransform: 'uppercase' }}>{s.label}</div>
-            </div>
-          )
-        })}
-      </motion.div>
 
       {/* ════ STRATÉGIES ════ */}
       <section id="strategies" style={{ padding: '100px 80px', background: D0 }}>
